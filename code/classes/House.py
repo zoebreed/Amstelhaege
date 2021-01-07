@@ -3,12 +3,10 @@ class House():
      class which represents a house 
     """
 
-    def __init__(self, x_bottom_left, y_bottom_left, x_top_right, y_top_right, house_type, extra_freearea):
+    def __init__(self, x_bottom_left, y_bottom_left, house_type, extra_freearea):
         self.house_type = house_type
         self.x_bottom_left = x_bottom_left
         self.y_bottom_left = y_bottom_left
-        self.x_top_right = x_top_right
-        self.y_top_right = y_top_right
         self.extra_freearea = extra_freearea
 
         if self.house_type == 1:
@@ -29,6 +27,9 @@ class House():
             self.increase_value = 0.06
             self.value = 610000
             self.free_area = 6
+
+        self.x_top_right = self.x_bottom_left + self.width
+        self.y_top_right = self.y_bottom_left + self.width
 
     def check_border(self): 
         check = False
