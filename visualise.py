@@ -18,7 +18,7 @@ def visualise(waters, houses):
         if water.name == "Water":
             # get the coordinates and specifications of the water
             x, y = water.x_bottom_left, water.y_bottom_left
-            ax.add_patch(Rectangle((x, y), water.height, water.width, facecolor = 'lightblue', fill=True))
+            ax.add_patch(Rectangle((x, y), water.height, water.width, edgecolor = 'lightskyblue', facecolor = 'lightskyblue', fill=True))
 
     for house in houses:
         # get the coordinates and specifications of the house
@@ -37,6 +37,7 @@ def visualise(waters, houses):
     plt.plot(x,y)
     plt.xlim(left = 0, right=160)
     plt.ylim(bottom= 0, top=180)
+    ax.set_facecolor("palegreen")
     plt.title("Amstelhaege")
     plt.savefig("test.jpeg")
 
