@@ -1,0 +1,45 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>-
+</help_text><element><id>UMLClass</id><coordinates><x>59</x><y>35</y><w>260</w><h>210</h></coordinates><panel_attributes>Amstelhaege
+-
+length = Int
+width = Int
+max_houses = Int
+fraction_house_1 = float (0.60)
+fraction_house_2 = float (0.25)
+fraction_house_3 = float (0.15)
+amount_house_1 = Int
+amount_house_2 = Int
+amount_house_3 = Int
+
+-
+load_map()
+place_house()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>419</x><y>35</y><w>260</w><h>320</h></coordinates><panel_attributes>House
+--
+x_bottom_left = Int
+y_bottom_left = Int
+x_top_right = Int
+y_top_right = Int
+id = Int
+type = string
+length = Int
+width = Int
+increase_value = Int
+value = Int
+free_area = Int
+extra_freearea = Int
+
+--
+__init__ ()
+place_house()
+check_border()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>40</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>290</y><w>260</w><h>170</h></coordinates><panel_attributes>Water
+-
+x_bottom_left = Int
+y_bottom_left = Int
+x_top_right = Int
+y_top_right = Int
+id = Int
+type = string
+
+-
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
