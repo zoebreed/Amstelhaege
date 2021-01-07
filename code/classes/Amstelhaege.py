@@ -23,7 +23,7 @@ class Amstelhaege():
         """
         # TODO  deze lijst wil je niet hier aanmaken
         neighbourhood = []
-        # TODO je gebruikt nu maar 1 csv file
+       
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
     
         # retrieves the coordinates of the water
