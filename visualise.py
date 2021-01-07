@@ -6,19 +6,19 @@ import matplotlib.pyplot as plt
 # # from .house import House
 from random import randrange
 
-def visualise(neighbourhood, houses):
+def visualise(waters, houses):
     """
     Function which visualises the map
     """
+    #TODO geef free area een lichtere kleur met alpha = ...
 
     fig, ax = plt.subplots()
 
-    #TODO geef free area een lichtere kleur met alpha = ...
-
-    # for water in neighbourhood:
-    #     # get the coordinates and specifications of the water
-    #     x, y = water.x_bottom_left, water.y_bottom_left
-    #     ax.add_patch(Rectangle((x, y), height, width, edgecolor = 'blue', facecolor = color, fill=True))
+    for water in waters:
+        if water.name == "Water":
+            # get the coordinates and specifications of the water
+            x, y = water.x_bottom_left, water.y_bottom_left
+            ax.add_patch(Rectangle((x, y), water.height, water.width, facecolor = 'lightblue', fill=True))
 
     for house in houses:
         # get the coordinates and specifications of the house
@@ -33,14 +33,12 @@ def visualise(neighbourhood, houses):
             color = 'yellow'
 
         ax.add_patch(Rectangle((x, y), height, width, edgecolor = 'black', facecolor = color, fill=True))
-    # plt.figure(figsize=(160,180))
+    
     plt.plot(x,y)
-    # plt.xlim(180)
-    # plt.ylim(160)
-    # plt.legend()
+    plt.xlim(left = 0, right=160)
+    plt.ylim(bottom= 0, top=180)
     plt.title("Amstelhaege")
-    plt.savefig("test.png")
-    # plt.show()
+    plt.savefig("test.jpeg")
 
 
 
