@@ -3,6 +3,7 @@ from code.classes.Amstelhaege import Amstelhaege
 from code.classes.House import House
 from visualise import visualise
 from random import randrange
+from output import output
 
 if __name__ == '__main__':
     
@@ -18,3 +19,5 @@ if __name__ == '__main__':
     
     waters = Amstelhaege.load_water(water_map)
     visualise(waters, houses)
+    # voor nu geef ik waters als parameter omdat de neighbourhoods returnt
+    output(waters)
