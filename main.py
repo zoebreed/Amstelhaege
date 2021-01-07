@@ -1,13 +1,14 @@
+import sys
 from code.classes.Amstelhaege import Amstelhaege
 from code.classes.House import House
-from code.classes.Water import Water
 from visualise import visualise
-import matplotlib
-from matplotlib.patches import Rectangle
-import matplotlib.pyplot as plt
 from random import randrange
 
 if __name__ == '__main__':
+    
+     # 0 for wijk_1, 1 for wijk_2, 2 for wijk_3
+    water_map = int(sys.argv[1])
+    
     houses = []
     for x in range(10):
         x1 = randrange(150)
@@ -15,5 +16,5 @@ if __name__ == '__main__':
         house = House(x1, y1, x1+5, y1+5, 1, 1)
         houses.append(house)
     
-    neighbourhood = Amstelhaege.load_water
-    visualise(neighbourhood, houses)
+    waters = Amstelhaege.load_water(water_map)
+    visualise(waters, houses)
