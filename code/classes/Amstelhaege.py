@@ -9,8 +9,8 @@ class Amstelhaege():
     """
     def __init__(self):
         # self.neighbourhood = []
-        self.length = 160
-        self.width = 180
+        self.length = 180
+        self.width = 160
 
         self.fraction_house_1 = 0.6
         self.fraction_house_2 = 0.25
