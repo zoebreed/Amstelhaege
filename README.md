@@ -32,5 +32,5 @@ pip install -r requirements.txt
 ### Wijken
 In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn van links naar rechts: wijk_1, wijk_2 en wijk_3. Voor wijk_1 dient u `0` als argument mee te geven, voor wijk_2 `1` en voor wijk_3 `2`.
 
-<img src="docs/wijk_1.png" width=30%> <img src="docs/wijk_2.png" width=30%> <img src="docs/wijk_3.png" width=30%>
+<img src="/docs/wijk_1.png" width=30%> <img src="/docs/wijk_2.png" width=30%> <img src="/docs/wijk_3.png" width=30%>
 
