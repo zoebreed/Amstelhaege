@@ -1,6 +1,6 @@
 class House():
     """
-     class which represents a house 
+    class which represents a house 
     """
 
     def __init__(self, x_bottom_left, y_bottom_left, house_type, extra_freearea):
@@ -10,18 +10,24 @@ class House():
         self.extra_freearea = extra_freearea
 
         if self.house_type == 1:
+            self.name = 'eengezinswoning'
+            self.id = id
             self.length = 8
             self.width = 8
             self.increase_value = 0.03
             self.value = 285000
             self.free_area = 2
         elif self.house_type == 2:
+            self.name = 'bungalow'
+            self.id = id
             self.length = 11
             self.width = 7
             self.increase_value = 0.04
             self.value = 399000
             self.free_area = 3
         elif self.house_type == 3:
+            self.name = 'maison'
+            self.id = id
             self.length = 12
             self.width = 10
             self.increase_value = 0.06

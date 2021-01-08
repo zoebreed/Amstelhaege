@@ -8,14 +8,14 @@ class Amstelhaege():
     class which represents the area in which houses must be build 
     """
     def __init__(self, choice):
-        # self.neighbourhood = []
+        self.neighbourhood = []
         self.length = 180
         self.width = 160
 
         self.fraction_house_1 = 0.6
         self.fraction_house_2 = 0.25
         self.fraction_house_3 = 0.15
-        self.total = 60
+        self.total = 40
 
         self.houses = []
         self.waters = self.load_water(choice)
@@ -25,9 +25,7 @@ class Amstelhaege():
         """
         Loads the coordinates of the water from the csv file
         """
-        # TODO  deze lijst wil je niet hier aanmaken
-        neighbourhood = []
-       
+ 
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
     
         # retrieves the coordinates of the water
@@ -44,25 +42,37 @@ class Amstelhaege():
                 width = (y_top_right - y_bottom_left)
 
                 # makes a Water object and appends it to the neighbourhood
-                water = Water('Water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
-                neighbourhood.append(water)
+                water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
+                self.neighbourhood.append(water)
 
-        return neighbourhood
+        return self.neighbourhood
 
 
     def place_house(self, house_type, x, y):
         """
         places a new house and saves the created object
+        x and y are the bottom left coordinates of the house
         """
         new_house = House(x, y, house_type, 0)
-        self.houses.append(new_house)
 
-    
+        self.houses.append(new_house)
+        self.neighbourhood.append(new_house)
+        
+ 
     def check_location(self, x, y, length, width, extra):
         """
         checks whether a house can be placed at particular coordinates.
         x and y are the center location of the house
         """
+        for water in self.waters:
+            if ( 
+                x < water.x_top_right and
+                (x + length) > water.x_bottom_left and
+                y < water.y_top_right and
+                (y + width) > water.y_bottom_left
+               ):
+               return False
+
         if len(self.houses) == 0:
             return True
 
@@ -70,20 +80,10 @@ class Amstelhaege():
         for house in self.houses:
             if ( 
                 (x - extra) < (house.x_top_right + house.free_area) and
-                (x + width + extra) > (house.x_bottom_left - house.free_area) and
+                (x + length + extra) > (house.x_bottom_left - house.free_area) and
                 (y - extra) < (house.y_top_right + house.free_area) and
-                (y + length + extra) > (house.y_bottom_left - house.free_area)
-               ):
+                (y + width + extra) > (house.y_bottom_left - house.free_area)
+               ):   
                return False
-
-        for water in self.waters:
-            if ( 
-                (x) < water.x_top_right and
-                (x + width) > water.x_bottom_left and
-                (y) < water.y_top_right and
-                (y + length) > water.y_bottom_left
-               ):
-               return False
-
 
         return True
