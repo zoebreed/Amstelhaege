@@ -19,5 +19,5 @@ if __name__ == '__main__':
     visualise(waters, amstelhaege.houses)
 
     visualise(waters, amstelhaege.houses)
-    # voor nu geef ik waters als parameter omdat de neighbourhoods returnt
-    output(waters)
+
+    output(amstelhaege.neighbourhood)

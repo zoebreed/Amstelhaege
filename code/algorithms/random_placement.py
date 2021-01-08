@@ -8,8 +8,8 @@ def random_placement(amstelhaege):
 
     for i in range(int(amstelhaege.fraction_house_1*total)):
         check = True
-        width = 8
         length = 8
+        width = 8
         extra = 2
 
         while check:
@@ -24,8 +24,8 @@ def random_placement(amstelhaege):
 
     for i in range(int(amstelhaege.fraction_house_2*total)):
         check = True
-        width = 11
-        length = 7
+        length = 11
+        width = 7
         extra = 3
 
         while check:
@@ -40,8 +40,8 @@ def random_placement(amstelhaege):
     for i in range(int(amstelhaege.fraction_house_3*total)):
 
         check = True
-        width = 12
-        length = 10
+        length = 12
+        width = 10
         extra = 6
 
         while check:
