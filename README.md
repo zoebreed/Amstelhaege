@@ -25,9 +25,20 @@ Deze code is geschreven in [Python3](https://www.python.org/downloads/). De vere
 ```
 pip install -r requirements.txt
 ```
+
+## Runnen
+Om de code te runnen dient u in u terminal de volgende code in te voeren:
+```
+python main.py <WIJK> <AANTAL HUIZEN>
+```
+WIJK = 0, 1 of 2
+AANTAL HUIZEN = 20, 40 of 60
+
 ## Algoritme
 
 ### Aantal huizen
+Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.
+Als er een anders getal word meegeven word het maximum automatisch op 20 huizen gezet.
 
 ### Wijken
 In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn van links naar rechts: wijk_1, wijk_2 en wijk_3. Voor wijk_1 dient u `0` als argument mee te geven, voor wijk_2 `1` en voor wijk_3 `2`.

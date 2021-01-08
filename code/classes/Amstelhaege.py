@@ -7,7 +7,7 @@ class Amstelhaege():
     """
     class which represents the area in which houses must be build 
     """
-    def __init__(self, choice):
+    def __init__(self, choice, n_houses):
         self.neighbourhood = []
         self.length = 180
         self.width = 160
@@ -15,7 +15,7 @@ class Amstelhaege():
         self.fraction_house_1 = 0.6
         self.fraction_house_2 = 0.25
         self.fraction_house_3 = 0.15
-        self.total = 40
+        self.total = n_houses
 
         self.houses = []
         self.waters = self.load_water(choice)
