@@ -26,19 +26,19 @@ def visualise(waters, houses):
         height, width = house.length, house.width
 
         if house.house_type == 1:
-            color = 'red'
+            color = 'firebrick'
         elif house.house_type == 2:
-            color = 'green'
+            color = 'darkorange'
         else:
-            color = 'yellow'
+            color = 'salmon'
 
-        ax.add_patch(Rectangle((x, y), height, width, edgecolor = 'black', facecolor = color, fill=True))
+        ax.add_patch(Rectangle((x, y), height, width, facecolor = color, fill=True))
     
     plt.plot(x,y)
     plt.xlim(left = 0, right=160)
     plt.ylim(bottom= 0, top=180)
     ax.set_facecolor("palegreen")
-    plt.title("Amstelhaege")
+    plt.title("€ ")
     plt.savefig("results/test.png")
 
 
