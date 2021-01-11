@@ -27,8 +27,9 @@ if __name__ == '__main__':
         
     amstelhaege = Amstelhaege(water_map, n_houses)
     random_placement(amstelhaege)
+    amstelhaege.random_free_space()
 
     waters = amstelhaege.waters
-    visualise(waters, amstelhaege.houses)
+    visualise(waters, amstelhaege.houses, amstelhaege.price)
 
-    output(amstelhaege.neighbourhood)
+    output(amstelhaege.neighbourhood, amstelhaege.price)
