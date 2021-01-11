@@ -1,6 +1,6 @@
 import math
 from copy import deepcopy
-from shapely.geometry import Polygon, MultiPolygon
+#from shapely.geometry import Polygon, MultiPolygon
 
 def calculate_price(neighbourhood):
     """
@@ -14,8 +14,9 @@ def calculate_price(neighbourhood):
     for house in neighbourhood:
         if house.name != 'water':   
             # calculates the new price of the house 
-            print(house.minimum_distance)
-            house.price = house.value * (1 + house.increase_value * (math.floor(house.minimum_distance) - house.free_area))
+            #NOTE: house.extra_freearea is de gehele free area, daarom trek ik daar de normale free_area vanaf
+            print(f"randomfreearea{house.extra_freearea} minfunction{house.minimum_distance} required free space: {house.free_area}")
+            house.price = house.value * (1 + house.increase_value * (math.floor(house.extra_freearea) - house.free_area))
 
             # print(price)
             # add price to neighbourhood price
