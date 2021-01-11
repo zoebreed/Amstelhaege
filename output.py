@@ -2,7 +2,7 @@ import csv
 from code.classes.House import House
 from code.classes.Water import Water
 
-def output(neighbourhood):
+def output(neighbourhood, price):
     with open('results/output.csv', 'w', newline='') as csvfile:
         wr = csv.writer(csvfile)
         wr.writerow(['structure', 'corner_1', 'corner_2', 'corner_3', 'corner_4', 'type'])
@@ -14,10 +14,10 @@ def output(neighbourhood):
             if item.name not in structures:
                 counter = 1
 
-            corn1 = f"{item.x_bottom_left},{item.y_top_right}"
-            corn2 = f"{item.x_bottom_left},{item.y_bottom_left}"
-            corn3 = f"{item.x_top_right},{item.y_bottom_left}"
-            corn4 = f"{item.x_top_right},{item.y_top_right}"
+            corn1 = f"{item.x_left},{item.y_top}"
+            corn2 = f"{item.x_left},{item.y_bottom}"
+            corn3 = f"{item.x_right},{item.y_bottom}"
+            corn4 = f"{item.x_right},{item.y_top}"
             struc = f"{item.name}_{counter}"
             wr.writerow([struc, corn1, corn2, corn3, corn4, item.name.upper()])
 
@@ -25,5 +25,5 @@ def output(neighbourhood):
             counter += 1
 
         #TODO: networth
-        networth = 0
+        networth = price
         wr.writerow(['networth', networth])
