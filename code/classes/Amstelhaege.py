@@ -63,12 +63,21 @@ class Amstelhaege():
         self.houses.append(new_house)
         self.neighbourhood.append(new_house)
 
+        # #calculates minimum distance and price
+        # if len(self.houses) == self.total:
+        #     minimum_distance(self.neighbourhood)
+
+        #     self.price = calculate_price(self.neighbourhood)
+        #     return self.neighbourhood, self.price
+    
+    def calculate_worth(self):
         #calculates minimum distance and price
         if len(self.houses) == self.total:
             minimum_distance(self.neighbourhood)
 
             self.price = calculate_price(self.neighbourhood)
             return self.neighbourhood, self.price
+
  
     def check_location(self, x, y, length, width, extra):
         """
@@ -174,11 +183,11 @@ class Amstelhaege():
                     min_distance = distance
                     min_house = house_check
             if min_house.extra_freearea == None:
-                house.extra_freearea = randrange(min_distance)
-
+                house.extra_freearea = randrange(house.free_area, min_distance)
             else:
 
                 house.extra_freearea = min_distance 
+    
 
 
                 
