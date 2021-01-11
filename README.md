@@ -31,7 +31,7 @@ Om de code te runnen dient u in u terminal de volgende code in te voeren:
 ```
 python main.py <WIJK> <AANTAL HUIZEN>
 ```
-WIJK = 0, 1 of 2
+WIJK = 0, 1 of 2 
 AANTAL HUIZEN = 20, 40 of 60
 
 ## Algoritme

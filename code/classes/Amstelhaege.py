@@ -2,6 +2,7 @@ from .House import House
 import csv
 
 from code.classes.Water import Water
+from code.helpers.price import calculate_price, minimum_distance
 
 class Amstelhaege():
     """
@@ -57,7 +58,11 @@ class Amstelhaege():
 
         self.houses.append(new_house)
         self.neighbourhood.append(new_house)
-        
+
+        # #calculates minimum distance and price
+        # neighbourhood = minimum_distance(neighbourhood)
+        # price = calculate_price(neighbourhood)
+        # return neighbourhood, price
  
     def check_location(self, x, y, length, width, extra):
         """
