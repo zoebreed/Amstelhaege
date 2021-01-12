@@ -2,7 +2,7 @@ from .House import House
 import csv
 
 from code.classes.Water import Water
-from code.helpers.price import calculate_price, minimum_distance
+from code.helpers.price import calculate_price#, minimum_distance
 from random import randrange
 
 
@@ -73,7 +73,7 @@ class Amstelhaege():
     def calculate_worth(self):
         #calculates minimum distance and price
         if len(self.houses) == self.total:
-            minimum_distance(self.neighbourhood)
+            #minimum_distance(self.neighbourhood)
 
             self.price = calculate_price(self.neighbourhood)
             return self.neighbourhood, self.price
@@ -96,10 +96,10 @@ class Amstelhaege():
 
         # check if the house is placed outside the map
         if (
-            x < 0 or
-            (x + length) > self.width or
-            y < 0 or 
-            (y + width) > self.length
+            (x - extra) < 0 or
+            (x + length + extra) > self.width or
+            (y - extra) < 0 or 
+            (y + width + extra) > self.length
             ):
             return False
 
@@ -108,11 +108,16 @@ class Amstelhaege():
 
         # check whether there is overlap with an existing house
         for house in self.houses:
+
+            # get the biggest required free area
+            if house.free_area > extra:
+                extra = house.free_area
+
             if ( 
-                (x - extra) < (house.x_right + house.free_area) and
-                (x + length + extra) > (house.x_left - house.free_area) and
-                (y - extra) < (house.y_top + house.free_area) and
-                (y + width + extra) > (house.y_bottom - house.free_area)
+                x < (house.x_right + free_area) and
+                (x + length) > (house.x_left - free_area) and
+                y < (house.y_top + free_area) and
+                (y + width) > (house.y_bottom - free_area)
                ):   
                return False
 
@@ -162,5 +167,5 @@ class Amstelhaege():
 
                 if distance < min_distance:
                     min_distance = distance
-
-            house.extra_freearea = min_distance 
+    
+            house.total_freearea = min_distance 

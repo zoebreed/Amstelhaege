@@ -7,7 +7,7 @@ class House():
         self.house_type = house_type
         self.x_left = x_bottom_left
         self.y_bottom = y_bottom_left
-        self.extra_freearea = None
+        self.total_freearea = None
         self.minimum_distance = None
         self.price = None
         self.id = id
