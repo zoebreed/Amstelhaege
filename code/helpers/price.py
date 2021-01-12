@@ -14,10 +14,8 @@ def calculate_price(neighbourhood):
     for house in neighbourhood:
         if house.name != 'water':   
             # calculates the new price of the house 
-            #print(f"randomfreearea{house.extra_freearea} minfunction{house.minimum_distance} required free space: {house.free_area}")
             house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
 
-            # print(price)
             # add price to neighbourhood price
             price += house.price
     
