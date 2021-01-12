@@ -4,12 +4,13 @@ from code.classes.House import House
 from visualise import visualise
 from random import randrange
 from output import output
-from code.algorithms.random_placement import random_placement
+from code.algorithms.random_placement import random_placement, random_algorithm
+
 
 if __name__ == '__main__':
     
     # checks if correct amount of arguments are givem
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("Error: wrong input use: [neighbourhood map] [number of houses]")
         print("neigbourhood map: choose 0, 1 or 2")
         print("number of houses: choose 20, 40 or 60")    
@@ -25,12 +26,23 @@ if __name__ == '__main__':
         if ((n_houses != 20) and (n_houses != 40) and (n_houses != 60)):
             n_houses = 20
         
+        # number of iterations for the algorithm
+        iterations = int(sys.argv[3])
+        
     amstelhaege = Amstelhaege(water_map, n_houses)
-    random_placement(amstelhaege)
-    amstelhaege.get_free_space()
-    amstelhaege.calculate_worth()
+    # random_placement(amstelhaege)
+    best_map, high_score = random_algorithm(iterations, amstelhaege, water_map, n_houses)
+    #amstelhaege.get_free_space()
+    #amstelhaege.calculate_worth()
 
-    waters = amstelhaege.waters
-    visualise(waters, amstelhaege.houses, amstelhaege.price)
+    #waters = amstelhaege.waters
 
-    output(amstelhaege.neighbourhood, amstelhaege.price)
+
+    houses = []
+    for item in best_map:
+        if isinstance(item, House):
+            houses.append(item)
+
+    visualise(best_map, houses, high_score)
+
+    output(best_map, high_score)

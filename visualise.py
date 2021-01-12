@@ -10,7 +10,6 @@ def visualise(waters, houses, price):
     """
     Function which visualises the map
     """
-    #TODO geef free area een lichtere kleur met alpha = ...
 
     fig, ax = plt.subplots()
 
@@ -23,12 +22,12 @@ def visualise(waters, houses, price):
     for house in houses:
         # get the coordinates and specifications of the house
         x, y = house.x_left, house.y_bottom
-        plt.text(x, y,house.extra_freearea)
+        plt.text(x, y,house.total_freearea)
         height, width = house.length, house.width
 
         # get the coordinates and specifications of the free space
-        x2, y2 = x - house.extra_freearea, y - house.extra_freearea
-        height2, width2 = house.length + 2*house.extra_freearea, house.width + 2*house.extra_freearea
+        x2, y2 = x - house.total_freearea, y - house.total_freearea
+        height2, width2 = house.length + 2*house.total_freearea, house.width + 2*house.total_freearea
 
         if house.house_type == 1:
             color = 'firebrick'
