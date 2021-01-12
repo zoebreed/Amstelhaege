@@ -21,28 +21,20 @@ if __name__ == '__main__':
         # maximum number of houses
         n_houses = int(sys.argv[2])
 
-        #TODO volgens mij kan deze korter
         # sets default maximum houses to 20
         if ((n_houses != 20) and (n_houses != 40) and (n_houses != 60)):
             n_houses = 20
         
         # number of iterations for the algorithm
         iterations = int(sys.argv[3])
-        
+    
     amstelhaege = Amstelhaege(water_map, n_houses)
-    # random_placement(amstelhaege)
-    best_map, high_score = random_algorithm(iterations, amstelhaege, water_map, n_houses)
-    #amstelhaege.get_free_space()
-    #amstelhaege.calculate_worth()
+ 
+    # running the random algorithm
+    amstelhaege, high_score = random_algorithm(iterations, amstelhaege, water_map, n_houses)
 
-    #waters = amstelhaege.waters
+    # visualising the results
+    visualise(amstelhaege.waters, amstelhaege.houses, high_score)
 
-
-    houses = []
-    for item in best_map:
-        if isinstance(item, House):
-            houses.append(item)
-
-    visualise(best_map, houses, high_score)
-
-    output(best_map, high_score)
+    # formatting the final output file output.csv
+    output(amstelhaege.neighbourhood, high_score)

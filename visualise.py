@@ -1,9 +1,6 @@
 import matplotlib
 from matplotlib.patches import Rectangle
 import matplotlib.pyplot as plt
-# # from /code/classes/House.py import House
-# # from code.classes.House import House
-# # from .house import House
 from random import randrange
 
 def visualise(waters, houses, price):

@@ -15,17 +15,15 @@ def random_algorithm(iterations, amstelhaege, choice, n_houses):
         
         amstelhaege = Amstelhaege(choice, n_houses)
         random_placement(amstelhaege)
-        new_map = amstelhaege.neighbourhood
         amstelhaege.get_free_space()
         amstelhaege.calculate_worth()
         new_score = amstelhaege.price
    
         if new_score > highest_score:
-            best_map = deepcopy(new_map)
+            best_map = deepcopy(amstelhaege)
             highest_score = new_score
 
         scores.append([i, new_score])
-        print(new_score)
     
     return best_map, highest_score
     

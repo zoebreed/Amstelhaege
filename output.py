@@ -24,6 +24,5 @@ def output(neighbourhood, price):
             structures.append(item.name)
             counter += 1
 
-        #TODO: networth
-        networth = price
+        networth = int(price)
         wr.writerow(['networth', networth])

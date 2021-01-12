@@ -17,9 +17,12 @@ class Amstelhaege():
         self.price = None
 
 
-        self.fraction_house_1 = 0.6
-        self.fraction_house_2 = 0.25
-        self.fraction_house_3 = 0.15
+        # self.fraction_house_1 = 0.6
+        # self.fraction_house_2 = 0.25
+        # self.fraction_house_3 = 0.15
+        self.fraction_house_1 = 0.2
+        self.fraction_house_2 = 0.2
+        self.fraction_house_3 = 0.6
         self.total = n_houses
 
         self.houses = []
@@ -114,10 +117,10 @@ class Amstelhaege():
                 extra = house.free_area
 
             if ( 
-                x < (house.x_right + free_area) and
-                (x + length) > (house.x_left - free_area) and
-                y < (house.y_top + free_area) and
-                (y + width) > (house.y_bottom - free_area)
+                x < (house.x_right + extra) and
+                (x + length) > (house.x_left - extra) and
+                y < (house.y_top + extra) and
+                (y + width) > (house.y_bottom - extra)
                ):   
                return False
 
@@ -168,4 +171,4 @@ class Amstelhaege():
                 if distance < min_distance:
                     min_distance = distance
     
-            house.total_freearea = min_distance 
+            house.total_freearea = min_distance
