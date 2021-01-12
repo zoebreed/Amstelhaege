@@ -27,7 +27,7 @@ if __name__ == '__main__':
         
     amstelhaege = Amstelhaege(water_map, n_houses)
     random_placement(amstelhaege)
-    amstelhaege.random_free_space()
+    amstelhaege.get_free_space()
     amstelhaege.calculate_worth()
 
     waters = amstelhaege.waters

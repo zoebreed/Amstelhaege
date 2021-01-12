@@ -78,12 +78,13 @@ class Amstelhaege():
             self.price = calculate_price(self.neighbourhood)
             return self.neighbourhood, self.price
 
- 
     def check_location(self, x, y, length, width, extra):
         """
         checks whether a house can be placed at particular coordinates.
         x and y are the center location of the house
         """
+
+        # check if the house is placed in water
         for water in self.waters:
             if ( 
                 x < water.x_right and
@@ -92,6 +93,15 @@ class Amstelhaege():
                 (y + width) > water.y_bottom
                ):
                return False
+
+        # check if the house is placed outside the map
+        if (
+            x < 0 or
+            (x + length) > self.width or
+            y < 0 or 
+            (y + width) > self.length
+            ):
+            return False
 
         if len(self.houses) == 0:
             return True
@@ -112,57 +122,31 @@ class Amstelhaege():
         """
         calculates the shortest distance between two houses
         """
-        if house2.extra_freearea == None:
-            free_space = 0
-        else:
-            free_space = house2.extra_freearea
 
         # calculate the horizontal distance
-        if house1.x_right <= (house2.x_left - free_space):
+        if house1.x_right <= house2.x_left:
             horizontal = house2.x_left - house1.x_right
-        elif house1.x_left > (house2.x_right + free_space):
+        elif house1.x_left >= house2.x_right:
             horizontal = house1.x_left - house2.x_right
 
         # calculate the vertical distance
-        if house1.y_top <= (house2.y_bottom + free_space):
+        if house1.y_top <= house2.y_bottom:
             vertical = house2.y_bottom - house1.y_top
-        elif house1.y_bottom > (house2.y_top - free_space):
+        elif house1.y_bottom >= house2.y_top:
             vertical = house1.y_bottom - house2.y_top
 
         # check if there is overlap
-        if self.overlap_x(house1, house2, free_space):
+        if house1.x_left < house2.x_right and house1.x_right > house2.x_left:
             return vertical
-        if self.overlap_y(house1, house2, free_space):
+        if house1.y_bottom < house2.y_top and house1.y_top > house2.y_bottom:
             return horizontal
 
         distance = max([horizontal, vertical])
         return distance
 
-    def overlap_x(self, house1, house2, free_space):
+    def get_free_space(self):
         """
-        Checks whether there is overlap in the x-direction
-        """
-
-        if house1.x_left <= (house2.x_right + free_space) and house1.x_right >= (house2.x_left - free_space):
-            return True
-        
-        return False
-
-    def overlap_y(self, house1, house2, free_space):
-        """
-        Checks whether there is overlap in the y-direction
-        """
-
-        if house1.y_bottom <= (house2.y_top + free_space) and house1.y_top >= (house2.y_bottom - free_space):
-            return True
-
-        return False
-
-
-
-    def random_free_space(self):
-        """
-        assigns the free space randomly
+        assigns the free space
         """
         
         for house in self.houses:
@@ -176,18 +160,7 @@ class Amstelhaege():
 
                 distance = self.get_distance(house, house_check)
 
-                if house_check.extra_freearea != None:
-                    distance -= house_check.extra_freearea
-
                 if distance < min_distance:
                     min_distance = distance
-                    min_house = house_check
-            if min_house.extra_freearea == None:
-                house.extra_freearea = randrange(house.free_area, min_distance)
-            else:
 
-                house.extra_freearea = min_distance 
-    
-
-
-                
+            house.extra_freearea = min_distance 

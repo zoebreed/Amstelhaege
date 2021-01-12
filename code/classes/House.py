@@ -37,7 +37,7 @@ class House():
             self.value = 610000
             self.free_area = 6
 
-        self.x_right = self.x_left + self.width
+        self.x_right = self.x_left + self.length
         self.y_top = self.y_bottom + self.width
 
     def check_border(self): 
