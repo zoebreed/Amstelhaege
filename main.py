@@ -5,6 +5,8 @@ from visualise import visualise
 from random import randrange
 from output import output
 from code.algorithms.random_placement import random_placement, random_algorithm
+from code.algorithms.hillclimber1 import hillclimber1
+
 
 
 if __name__ == '__main__':
@@ -31,7 +33,9 @@ if __name__ == '__main__':
     amstelhaege = Amstelhaege(water_map, n_houses)
  
     # running the random algorithm
-    amstelhaege, high_score = random_algorithm(iterations, amstelhaege, water_map, n_houses)
+    # amstelhaege, high_score = random_algorithm(iterations, amstelhaege, water_map, n_houses)
+
+    amstelhaege, high_score = hillclimber1(amstelhaege)
 
     # visualising the results
     visualise(amstelhaege.waters, amstelhaege.houses, high_score)
