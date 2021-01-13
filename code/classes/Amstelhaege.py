@@ -74,13 +74,14 @@ class Amstelhaege():
         #     self.price = calculate_price(self.neighbourhood)
         #     return self.neighbourhood, self.price
     
+    
     def calculate_worth(self):
         #calculates minimum distance and price
         if len(self.houses) == self.total:
-            #minimum_distance(self.neighbourhood)
+            minimum_distance(self.neighbourhood)
 
-            self.price = calculate_price(self.neighbourhood)
-            return self.neighbourhood, self.price
+        self.price = calculate_price(self.neighbourhood)
+        return self.neighbourhood, self.price
 
     def check_location(self, x, y, length, width, extra):
         """
@@ -166,7 +167,7 @@ class Amstelhaege():
 
                 if house == house_check:
                     continue
-
+                
                 distance = self.get_distance(house, house_check)
 
                 if distance < min_distance:
