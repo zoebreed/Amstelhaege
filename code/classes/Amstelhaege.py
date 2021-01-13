@@ -6,23 +6,18 @@ from code.helpers.price import calculate_price#, minimum_distance
 from random import randrange
 
 
-class Amstelhaege():
+class Amstelhaege:
     """
     class which represents the area in which houses must be build 
     """
     def __init__(self, choice, n_houses):
-        self.neighbourhood = []
         self.length = 180
         self.width = 160
         self.price = None
 
-
         self.fraction_house_1 = 0.6
         self.fraction_house_2 = 0.25
         self.fraction_house_3 = 0.15
-        # self.fraction_house_1 = 0.2
-        # self.fraction_house_2 = 0.2
-        # self.fraction_house_3 = 0.6
         self.total = n_houses
 
         self.houses = []
@@ -53,8 +48,6 @@ class Amstelhaege():
                 # makes a Water object and appends it to the neighbourhood
                 water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
                 self.waters.append(water)
-                self.neighbourhood.append(water)
-
 
 
     def place_house(self, house_type, x, y):
@@ -65,7 +58,6 @@ class Amstelhaege():
         new_house = House(x, y, house_type)
 
         self.houses.append(new_house)
-        self.neighbourhood.append(new_house)
 
         # #calculates minimum distance and price
         # if len(self.houses) == self.total:
@@ -73,15 +65,15 @@ class Amstelhaege():
 
         #     self.price = calculate_price(self.neighbourhood)
         #     return self.neighbourhood, self.price
-    
-    
-    def calculate_worth(self):
-        #calculates minimum distance and price
-        if len(self.houses) == self.total:
-            minimum_distance(self.neighbourhood)
 
-        self.price = calculate_price(self.neighbourhood)
-        return self.neighbourhood, self.price
+
+    def calculate_worth(self):
+        # calculates minimum distance and price
+        if len(self.houses) == self.total:
+            # minimum_distance(self.neighbourhood)
+
+            self.price = calculate_price(self.houses)
+            return self.price
 
     def check_location(self, x, y, length, width, extra):
         """

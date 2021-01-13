@@ -1,7 +1,10 @@
+import itertools 
+
 class House():
     """
     class which represents a house 
     """
+    id_iter = itertools.count()
 
     def __init__(self, x_bottom_left, y_bottom_left, house_type):
         self.house_type = house_type
@@ -10,7 +13,7 @@ class House():
         self.total_freearea = None
         self.minimum_distance = None
         self.price = None
-        self.id = id
+        self.id = next(House.id_iter)
 
         if self.house_type == 1:
             self.name = 'eengezinswoning'
@@ -59,5 +62,15 @@ class House():
             check = True
 
         return check
+    
+    def move(self, x, y):
+        """
+        move the left bottom corner of the house to the (x,y) posistion
+        """
+        self.x_left = x
+        self.x_right = x + self.length
+
+        self.y_bottom = y
+        self.y_top = y + self.width
 
 
