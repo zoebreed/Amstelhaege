@@ -2,7 +2,7 @@ import math
 from copy import deepcopy
 #from shapely.geometry import Polygon, MultiPolygon
 
-def calculate_price(neighbourhood):
+def calculate_price(houses):
     """
     function that calculates the price of the entire neighbourhood
     """
@@ -11,13 +11,12 @@ def calculate_price(neighbourhood):
     price = 0
 
     # loops through all the houses in the neighbourhood
-    for house in neighbourhood:
-        if house.name != 'water':   
-            # calculates the new price of the house 
-            house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
+    for house in houses:
+        # calculates the new price of the house 
+        house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
 
-            # add price to neighbourhood price
-            price += house.price
+        # add price to neighbourhood price
+        price += house.price
     
     return price
 

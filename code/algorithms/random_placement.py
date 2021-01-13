@@ -15,8 +15,6 @@ def random_algorithm(iterations, amstelhaege, choice, n_houses):
         
         amstelhaege = Amstelhaege(choice, n_houses)
         random_placement(amstelhaege)
-        amstelhaege.get_free_space()
-        amstelhaege.calculate_worth()
         new_score = amstelhaege.price
    
         if new_score > highest_score:
@@ -76,7 +74,10 @@ def random_placement(amstelhaege):
                 check = False
         check = True
     
-    #return amstelhaege.neighbourhood
+    amstelhaege.get_free_space()
+    amstelhaege.calculate_worth()
+
+
 
 
 

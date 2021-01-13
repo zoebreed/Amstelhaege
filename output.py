@@ -2,7 +2,7 @@ import csv
 from code.classes.House import House
 from code.classes.Water import Water
 
-def output(neighbourhood, price):
+def output(houses, waters, price):
     with open('results/output.csv', 'w', newline='') as csvfile:
         wr = csv.writer(csvfile)
         wr.writerow(['structure', 'corner_1', 'corner_2', 'corner_3', 'corner_4', 'type'])
@@ -10,7 +10,7 @@ def output(neighbourhood, price):
         counter = 1
         structures = []
 
-        for item in neighbourhood:
+        for item in (houses + waters):
             if item.name not in structures:
                 counter = 1
 
