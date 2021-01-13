@@ -70,4 +70,4 @@ class Hillclimber_1:
                 self.amstelhaege.get_free_space()
                 self.amstelhaege.calculate_worth()
 
-        return self.amstelhaege, self.amstelhaege.price
+        return self.amstelhaege

@@ -4,9 +4,11 @@ from code.classes.House import House
 from visualise import visualise
 from random import randrange
 from output import output
-from code.algorithms.random_placement import random_placement, random_algorithm
+from code.algorithms.random_placement import random_placement
 from code.algorithms.random_greedy import random_greedy
 from code.algorithms.hillclimber1 import Hillclimber_1
+from code.helpers.repeat import repeat
+from time import sleep
 
 
 
@@ -34,14 +36,10 @@ if __name__ == '__main__':
     amstelhaege = Amstelhaege(water_map, n_houses)
  
     #_____________________ random algorithm _____________________
-    
-    # number of iterations indicate how many times the random algorithm should be repeated
-    # amstelhaege, price = random_algorithm(iterations, amstelhaege, water_map, n_houses)
-
+    # amstelhaege, price = repeat(amstelhaege, iterations, 'random')
 
     #_____________________ hillclimber 1 algorithm _____________________
-    hillclimber1 = Hillclimber_1(amstelhaege)
-    amstelhaege, price = hillclimber1.run(10)
+    amstelhaege, price = repeat(amstelhaege, iterations, 'hillclimber')
 
 
     #voor random_greedy
@@ -53,3 +51,7 @@ if __name__ == '__main__':
 
     # formatting the final output file output.csv
     output(amstelhaege.houses, amstelhaege.waters, price)
+
+    print("The results are.....")
+    sleep(1)
+    print(f"Your neighbourhood is worth {price} euro! Amazing!")
