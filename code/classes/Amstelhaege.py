@@ -17,16 +17,17 @@ class Amstelhaege():
         self.price = None
 
 
-        # self.fraction_house_1 = 0.6
-        # self.fraction_house_2 = 0.25
-        # self.fraction_house_3 = 0.15
-        self.fraction_house_1 = 0.2
-        self.fraction_house_2 = 0.2
-        self.fraction_house_3 = 0.6
+        self.fraction_house_1 = 0.6
+        self.fraction_house_2 = 0.25
+        self.fraction_house_3 = 0.15
+        # self.fraction_house_1 = 0.2
+        # self.fraction_house_2 = 0.2
+        # self.fraction_house_3 = 0.6
         self.total = n_houses
 
         self.houses = []
-        self.waters = self.load_water(choice)
+        self.waters = []
+        self.load_water(choice)
         
 
     def load_water(self, choice):
@@ -51,9 +52,9 @@ class Amstelhaege():
 
                 # makes a Water object and appends it to the neighbourhood
                 water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
+                self.waters.append(water)
                 self.neighbourhood.append(water)
 
-        return self.neighbourhood
 
 
     def place_house(self, house_type, x, y):
@@ -123,8 +124,8 @@ class Amstelhaege():
                 (y + width) > (house.y_bottom - extra)
                ):   
                return False
-
         return True
+
     
     def get_distance(self, house1, house2):
         """
