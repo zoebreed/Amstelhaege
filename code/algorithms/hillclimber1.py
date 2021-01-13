@@ -1,6 +1,6 @@
 from copy import deepcopy
 from random import randrange, choice
-from code.algorithms.random_placement import random_placement, random_algorithm
+from code.algorithms.random_placement import random_placement
 import time
 
 class Hillclimber_1:
