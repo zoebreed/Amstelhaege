@@ -45,8 +45,8 @@ if __name__ == '__main__':
 
 
     #_____________________ random algorithm _____________________
-    random_greedy = Random_greedy(water_map,  n_houses, amstelhaege)
-    amstelhaege, high_score = random_greedy.run(water_map, n_houses, amstelhaege)
+    # random_greedy = Random_greedy(water_map,  n_houses, amstelhaege)
+    # amstelhaege, high_score = random_greedy.run(water_map, n_houses, amstelhaege)
 
     #_____________________ result processing __________________________
     # visualising the results

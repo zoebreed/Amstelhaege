@@ -1,6 +1,6 @@
 from copy import deepcopy
 from random import randrange, choice
-from code.algorithms.random_placement import random_placement, random_algorithm
+from code.algorithms.random_placement import random_placement
 import time
 
 class Hillclimber_1:
@@ -70,4 +70,4 @@ class Hillclimber_1:
                 self.amstelhaege.get_free_space()
                 self.amstelhaege.calculate_worth()
 
-        return self.amstelhaege, self.amstelhaege.price
+        return self.amstelhaege
