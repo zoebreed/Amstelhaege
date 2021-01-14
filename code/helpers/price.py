@@ -1,6 +1,16 @@
 import math
 from copy import deepcopy
 #from shapely.geometry import Polygon, MultiPolygon
+def worth(houses):
+    """
+    Calculates the worth of the neighbourhood
+    """
+
+    total_value = 0
+    for houses in houses_list:
+        total_value = total_value + house
+
+
 
 def calculate_price(houses):
     """
