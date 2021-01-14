@@ -36,12 +36,15 @@ class Hillclimber_2:
     def run(self, timeout):
         random(self.amstelhaege)
         old_price = self.amstelhaege.price
-        new_price = self.amstelhaege.price + 1
+        #new_price = self.amstelhaege.price + 1
         timeout_start = time.time()
         while time.time() < timeout_start + timeout:
             for house in self.amstelhaege.houses:
                 shuffle(self.directions)
+                new_price = self.amstelhaege.price + 1
+                #print(self.directions)
                 for direction in self.directions:
+                    #print(f"{house.id} direction {direction}")
                     while new_price > old_price:
                         initial_x = house.x_left
                         initial_y = house.y_bottom
@@ -54,7 +57,7 @@ class Hillclimber_2:
                             house.move(new_coordinates[0], new_coordinates[1])
                         else: 
                             house.move(initial_x, initial_y)
-
+                        #print(f"house {house.id} coordinates {house.x_left} {house.y_bottom}")
                         new_price = self.get_price()
                     
                         if new_price < old_price:
