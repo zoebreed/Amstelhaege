@@ -10,15 +10,21 @@ class User:
 
         print("Which neighbourhood wood you like?")
         self.neighbourhood = self.get_neighbourhood()
+        print('\n')
         
         print("And how many houses would you like to place?")
         self.houses = self.get_houses()
+        print('\n')
 
         print("And which algorithm would you like to use?")
         self.algorithm = self.get_algorithm()
+        print('\n')
+
 
         print("And for how many iterations would you like to run your code?")
         self.iterations = self.get_iterations()
+        print('\n')
+
 
 
     def get_neighbourhood(self):
@@ -26,7 +32,7 @@ class User:
         returns the neighbourhood
         """
         neighbourhood_list = ["wijk1", "wijk2", "wijk3"]
-        neighbourhood = input(f"Choose from: {str(neighbourhood_list)}\n")
+        neighbourhood = input(f"Choose from: {', '.join(neighbourhood_list)}\n")
 
         if neighbourhood not in neighbourhood_list:
             print("You chose an invalid neighbourhood")
@@ -45,7 +51,7 @@ class User:
         returns the houses amount
         """
         houses_list = ['20', '40', '60']
-        houses = input(f"Choose from: {str(houses_list)}\n")
+        houses = input(f"Choose from: {', '.join(houses_list)}\n")
 
         if houses not in houses_list:
             print("You chose an invalid neighbourhood")
@@ -59,7 +65,7 @@ class User:
         returns the algorithm
         """
         algorithm_list = ["random", "random_greedy", "hillclimber", "hillclimber2"]
-        algorithm = input(f"Choose from: {str(algorithm_list)}\n")
+        algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:
             print("You chose an invalid algorithm")
@@ -76,7 +82,7 @@ class User:
         if not iterations.isdigit():
             print("You didn't choose an integer")
             iterations = self.get_iterations()
-
+   
         iterations = int(iterations)
 
         if iterations < 0:
@@ -84,4 +90,3 @@ class User:
             iterations = self.get_iterations()
         
         return int(iterations)
-
