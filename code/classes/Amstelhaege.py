@@ -125,13 +125,13 @@ class Amstelhaege:
         # calculate the horizontal distance
         if house1.x_right <= house2.x_left:
             horizontal = house2.x_left - house1.x_right
-        elif house1.x_left >= house2.x_right:
+        else:
             horizontal = house1.x_left - house2.x_right
 
         # calculate the vertical distance
         if house1.y_top <= house2.y_bottom:
             vertical = house2.y_bottom - house1.y_top
-        elif house1.y_bottom >= house2.y_top:
+        else:
             vertical = house1.y_bottom - house2.y_top
 
         # check if there is overlap
