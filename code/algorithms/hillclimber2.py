@@ -3,7 +3,7 @@ from copy import deepcopy
 from code.classes.Amstelhaege import Amstelhaege
 from code.algorithms.random import random
 import time
-from random import shuffle
+from random import shuffle, choice
 
 class Hillclimber_2:
     """
@@ -36,34 +36,77 @@ class Hillclimber_2:
     def run(self, timeout):
         random(self.amstelhaege)
         old_price = self.amstelhaege.price
-        #new_price = self.amstelhaege.price + 1
         timeout_start = time.time()
         while time.time() < timeout_start + timeout:
-            for house in self.amstelhaege.houses:
-                shuffle(self.directions)
-                new_price = self.amstelhaege.price + 1
-                #print(self.directions)
-                for direction in self.directions:
-                    #print(f"{house.id} direction {direction}")
-                    while new_price > old_price:
-                        initial_x = house.x_left
-                        initial_y = house.y_bottom
-                        old_price = self.get_price()
-                        new_coordinates = self.hillclimber2_move(house, direction)
+            # for house in self.amstelhaege.houses:
+            house = choice(self.amstelhaege.houses)
+            shuffle(self.directions)
+            new_price = self.amstelhaege.price + 1
+            for direction in self.directions:
+                while new_price > old_price:
+                    initial_x = house.x_left
+                    initial_y = house.y_bottom
+                    old_price = self.get_price()
+                    new_coordinates = self.hillclimber2_move(house, direction)
 
-                        house.move(-100, -100)
-                        
-                        if self.amstelhaege.check_location(new_coordinates[0], new_coordinates[1], house.width, house.length, house.free_area):
-                            house.move(new_coordinates[0], new_coordinates[1])
-                        else: 
-                            house.move(initial_x, initial_y)
-                        #print(f"house {house.id} coordinates {house.x_left} {house.y_bottom}")
-                        new_price = self.get_price()
+                    house.move(-100, -100)
                     
-                        if new_price < old_price:
-                            house.move(initial_x, initial_y)
-                            self.amstelhaege.get_free_space()
-                            self.amstelhaege.calculate_worth()
-        
+                    if self.amstelhaege.check_location(new_coordinates[0], new_coordinates[1], house.width, house.length, house.free_area):
+                        house.move(new_coordinates[0], new_coordinates[1])
+                    else: 
+                        house.move(initial_x, initial_y)
+
+                    new_price = self.get_price()
+                
+                    if new_price < old_price:
+                        house.move(initial_x, initial_y)
+                        self.amstelhaege.get_free_space()
+                        self.amstelhaege.calculate_worth()
+
         return self.amstelhaege
 
+    # def find_best_direction(self, house):
+    #     best_direction = None
+    #     for direction in self.directions:
+    #         x = house.x_left
+    #         y = house.y_bottom
+
+    #         old_price = self.get_price()
+    #         new_coordinates = self.hillclimber2_move(house, direction)
+
+    #         house.move(-100, -100)
+            
+    #         if self.amstelhaege.check_location(new_coordinates[0], new_coordinates[1], house.width, house.length, house.free_area):
+    #             house.move(new_coordinates[0], new_coordinates[1])
+    #         else: 
+    #             house.move(x, y)
+
+    #         new_price = self.get_price()
+        
+    #         if new_price < old_price:
+    #             house.move(x, y)
+    #         elif new_price > old_price:
+    #             best_direction = direction
+        
+
+    #     return best_direction
+
+    # def run(self, timeout):
+    #     random(self.amstelhaege)
+    #     timeout_start = time.time()
+    #     while time.time() < timeout_start + timeout:
+    #         # for house in self.amstelhaege.houses:
+    #         house = choice(self.amstelhaege.houses)
+    #         old_price = self.amstelhaege.price
+    #         new_price = self.amstelhaege.price + 1
+        
+    #         while new_price > old_price:
+    #             old_price = self.get_price()
+    #             best_direction = self.find_best_direction(house)
+    #             if best_direction is not None:
+    #                 best_coordinates = self.hillclimber2_move(house, best_direction)
+    #                 house.move(best_coordinates[0], best_coordinates[1])
+    #             new_price = self.get_price()
+    #             # print(f"house{house.id} best dir {best_direction}")
+    
+    #     return self.amstelhaege

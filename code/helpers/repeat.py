@@ -28,7 +28,7 @@ def repeat(amstelhaege, iterations, algorithm):
 
         elif algorithm == 'hillclimber2':
             hillclimber2 = Hillclimber_2(amstelhaege_copy)
-            amstelhaege_copy = hillclimber2.run(30)
+            amstelhaege_copy = hillclimber2.run(10)
 
         new_score = amstelhaege_copy.price
 
