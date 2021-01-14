@@ -2,28 +2,28 @@ from random import randrange
 from code.classes.Amstelhaege import Amstelhaege
 from copy import deepcopy
 
-def random_algorithm(iterations, amstelhaege, choice, n_houses):
-    """
-    repeats the random_placement algorithm with a choosen number of iterations
-    """
-    highest_score, scores = 0, []
+# def random_algorithm(iterations, amstelhaege, choice, n_houses):
+#     """
+#     repeats the random_placement algorithm with a choosen number of iterations
+#     """
+#     highest_score, scores = 0, []
 
-    for i in range(iterations):
+#     for i in range(iterations):
        
-        # amstelhaege.load_water(choice)
-        # new_map = random_placement(amstelhaege)
+#         # amstelhaege.load_water(choice)
+#         # new_map = random_placement(amstelhaege)
         
-        amstelhaege = Amstelhaege(choice, n_houses)
-        random_placement(amstelhaege)
-        new_score = amstelhaege.price
+#         amstelhaege = Amstelhaege(choice, n_houses)
+#         random_placement(amstelhaege)
+#         new_score = amstelhaege.price
    
-        if new_score > highest_score:
-            best_map = deepcopy(amstelhaege)
-            highest_score = new_score
+#         if new_score > highest_score:
+#             best_map = deepcopy(amstelhaege)
+#             highest_score = new_score
 
-        scores.append([i, new_score])
+#         scores.append([i, new_score])
     
-    return best_map, highest_score
+#     return best_map, highest_score
     
 def random_placement(amstelhaege):
     """
@@ -76,8 +76,5 @@ def random_placement(amstelhaege):
     
     amstelhaege.get_free_space()
     amstelhaege.calculate_worth()
-
-
-
-
-
+    
+    return amstelhaege
