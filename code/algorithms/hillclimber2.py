@@ -88,6 +88,7 @@ class Hillclimber_2:
     #         elif new_price > old_price:
     #             best_direction = direction
         
+
     #     return best_direction
 
     # def run(self, timeout):
