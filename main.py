@@ -23,10 +23,11 @@ if __name__ == '__main__':
     #_____________________ result processing __________________________
 
     # visualising the results
-    visualise(amstelhaege.waters, amstelhaege.houses, price)
+    # LETOP! ik heb voor price amstelhaege gezet
+    visualise(amstelhaege.waters, amstelhaege.houses, amstelhaege.price)
 
     # formatting the final output file output.csv
-    output(amstelhaege.houses, amstelhaege.waters, price)
+    output(amstelhaege.houses, amstelhaege.waters, amstelhaege.price)
 
     print("_____________________________")
     print("The results are.....")
