@@ -74,7 +74,7 @@ class House():
         self.y_bottom = y
         self.y_top = y + self.length
 
-    # def update_worth(self):
-    #     self.worth = self.value * (1 + self.increase_value * (self.total_freearea - self.free_area))
+    def update_worth(self):
+        self.worth = self.value * (1 + self.increase_value * (self.total_freearea - self.free_area))
     
 
