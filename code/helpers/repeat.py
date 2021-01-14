@@ -20,6 +20,10 @@ def repeat(amstelhaege, iterations, algorithm):
             hillclimber1 = Hillclimber_1(amstelhaege_copy)
             amstelhaege = hillclimber1.run(10)
 
+        elif algorithm == 'hillclimber2':
+            hillclimber2 = Hillclimber_1(amstelhaege_copy)
+            amstelhaege = hillclimber2.run(10)
+
         new_score = amstelhaege.price
 
         # check if the new price is higher and if so, save the map

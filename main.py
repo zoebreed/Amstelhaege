@@ -39,7 +39,10 @@ if __name__ == '__main__':
     # amstelhaege, price = repeat(amstelhaege, iterations, 'random')
 
     #_____________________ hillclimber 1 algorithm _____________________
-    amstelhaege, price = repeat(amstelhaege, iterations, 'hillclimber')
+    # amstelhaege, price = repeat(amstelhaege, iterations, 'hillclimber')
+
+    #_____________________ hillclimber 2 algorithm _____________________
+    amstelhaege, price = repeat(amstelhaege, iterations, 'hillclimber2')
 
 
     #voor random_greedy
