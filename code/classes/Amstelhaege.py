@@ -11,8 +11,8 @@ class Amstelhaege:
     class which represents the area in which houses must be build 
     """
     def __init__(self, choice, n_houses):
-        self.length = 180
-        self.width = 160
+        self.width = 180
+        self.length = 160
         self.price = None
 
         self.fraction_house_1 = 0.6
@@ -42,8 +42,8 @@ class Amstelhaege:
                 id = row
                 x_bottom_left, y_bottom_left = int(bottom_x), int(bottom_y)
                 x_top_right, y_top_right = int(top_x), int(top_y)
-                height = (x_top_right - x_bottom_left)
-                width = (y_top_right - y_bottom_left)
+                width = (x_top_right - x_bottom_left)
+                height = (y_top_right - y_bottom_left)
 
                 # makes a Water object and appends it to the neighbourhood
                 water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
@@ -69,13 +69,10 @@ class Amstelhaege:
 
     def calculate_worth(self):
         # calculates minimum distance and price
-        # if len(self.houses) == self.total:
-            # minimum_distance(self.neighbourhood)
-
             self.price = calculate_price(self.houses)
             return self.price
 
-    def check_location(self, x, y, length, width, extra):
+    def check_location(self, x, y, width, length, extra):
         """
         checks whether a house can be placed at particular coordinates.
         x and y are the center location of the house
@@ -85,18 +82,18 @@ class Amstelhaege:
         for water in self.waters:
             if ( 
                 x < water.x_right and
-                (x + length) > water.x_left and
+                (x + width) > water.x_left and
                 y < water.y_top and
-                (y + width) > water.y_bottom
+                (y + length) > water.y_bottom
                ):
                return False
 
         # check if the house is placed outside the map
         if (
             (x - extra) < 0 or
-            (x + length + extra) > self.width or
+            (x + width + extra) > self.width or
             (y - extra) < 0 or 
-            (y + width + extra) > self.length
+            (y + length + extra) > self.length
             ):
             return False
 
@@ -112,9 +109,9 @@ class Amstelhaege:
 
             if ( 
                 x < (house.x_right + extra) and
-                (x + length) > (house.x_left - extra) and
+                (x + width) > (house.x_left - extra) and
                 y < (house.y_top + extra) and
-                (y + width) > (house.y_bottom - extra)
+                (y + length) > (house.y_bottom - extra)
                ):   
                return False
         return True
@@ -149,14 +146,11 @@ class Amstelhaege:
     def get_free_space(self):
         """
         assigns the free space
-        """
-        
+        """ 
         for house in self.houses:
-            
             min_distance = 1000
 
             for house_check in self.houses:
-
                 if house == house_check:
                     continue
                 
