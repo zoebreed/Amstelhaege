@@ -20,7 +20,7 @@ def repeat(amstelhaege, iterations, algorithm):
         
         elif algorithm == 'random_greedy':
             random_greedy = Random_greedy(amstelhaege_copy)
-            amstelhaege_copy = random_greedy.run(10)
+            amstelhaege_copy = random_greedy.run()
 
         elif algorithm == 'hillclimber':
             hillclimber1 = Hillclimber_1(amstelhaege_copy)
