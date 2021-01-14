@@ -22,13 +22,13 @@ def repeat(amstelhaege, iterations, algorithm):
 
         elif algorithm == 'hillclimber2':
             hillclimber2 = Hillclimber_1(amstelhaege_copy)
-            amstelhaege = hillclimber2.run(10)
+            amstelhaege_copy = hillclimber2.run(10)
 
-        new_score = amstelhaege.price
+        new_score = amstelhaege_copy.price
 
         # check if the new price is higher and if so, save the map
         if new_score > highest_score:
-            best_map = deepcopy(amstelhaege)
+            best_map = deepcopy(amstelhaege_copy)
             highest_score = new_score
     
     return best_map, highest_score
