@@ -1,6 +1,9 @@
 import random
 from copy import deepcopy
 from code.classes.Amstelhaege import Amstelhaege
+from code.algorithms.random import random
+import time
+from random import shuffle
 
 class Hillclimber_2:
     """
@@ -13,15 +16,15 @@ class Hillclimber_2:
         self.directions = ["up", "down", "right", "left"]
     
     def hillclimber2_move(self, house, direction):
-        # coordinates in new coordinates: [x_left, x_right, y_bottom, y_top]
+        # coordinates in new coordinates: [x_left, y_bottom]
         if direction == "up":
-            self.new_coordinates = [house.x_left, house.x_right, house.y_bottom + 1, house.y_top + 1]
+            self.new_coordinates = [house.x_left, house.y_bottom + 1]
         elif direction == "down":
-            self.new_coordinates = [house.x_left, house.x_right, house.y_bottom - 1, house.y_top - 1]
+            self.new_coordinates = [house.x_left, house.y_bottom - 1]
         elif direction == "right":
-            self.new_coordinates = [house.x_left + 1, house.x_right + 1, house.y_bottom, house.y_top]
+            self.new_coordinates = [house.x_left + 1, house.y_bottom]
         elif direction == "left": 
-            self.new_coordinates = [house.x_left - 1, house.x_right - 1, house.y_bottom, house.y_top]
+            self.new_coordinates = [house.x_left - 1, house.y_bottom]
 
         return self.new_coordinates
     
@@ -30,33 +33,33 @@ class Hillclimber_2:
         self.amstelhaege.calculate_worth()
         return self.amstelhaege.price
 
-    def run(self):
-        random_placement(self.amstelhaege)
+    def run(self, timeout):
+        random(self.amstelhaege)
         old_price = self.amstelhaege.price
-        new_price = self.amstelhaege.price
+        new_price = self.amstelhaege.price + 1
         timeout_start = time.time()
         while time.time() < timeout_start + timeout:
-            for house in self.amstelheage.houses:
-                direction = random.choice(directions)
-                while new_price >= old_price:
-                    initial_house = deepcopy(house)
-                    old_price = self.get_price()
-                    new_coordinates = self.hillclimber2_move(house, direction)
+            for house in self.amstelhaege.houses:
+                shuffle(self.directions)
+                for direction in self.directions:
+                    while new_price > old_price:
+                        initial_x = house.x_left
+                        initial_y = house.y_bottom
+                        old_price = self.get_price()
+                        new_coordinates = self.hillclimber2_move(house, direction)
 
-                    house.x_left = new_coordinates[0]
-                    house.x_right = new_coordinates[1]
-                    house.y_bottom = new_coordinates[2]
-                    house.y_top = new_coordinates[3]
+                        house.move(-100, -100)
+                        
+                        if self.amstelhaege.check_location(new_coordinates[0], new_coordinates[1], house.width, house.length, house.free_area):
+                            house.move(new_coordinates[0], new_coordinates[1])
+                        else: 
+                            house.move(initial_x, initial_y)
 
-                    new_price = self.get_price()
-                
-                    if new_price < old_price:
-                        house.move(initial_house.x_left, initial_house.y_bottom)
-                        self.amstelhaege.get_free_space()
-                        self.amstelhaege.calculate_worth()
+                        new_price = self.get_price()
+                    
+                        if new_price < old_price:
+                            house.move(initial_x, initial_y)
+                            self.amstelhaege.get_free_space()
+                            self.amstelhaege.calculate_worth()
         
         return self.amstelhaege
-
-
-  
-
