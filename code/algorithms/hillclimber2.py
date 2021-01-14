@@ -63,3 +63,4 @@ class Hillclimber_2:
                             self.amstelhaege.calculate_worth()
         
         return self.amstelhaege
+

@@ -18,9 +18,10 @@ if __name__ == '__main__':
     user = User()
 
     amstelhaege = Amstelhaege(user.neighbourhood, user.houses)
-    amstelhaege, price = repeat(amstelhaege, user.iterations, user.algorithm)
+    amstelhaege, best_price, avg_price = repeat(amstelhaege, user.iterations, user.algorithm)
     
     #_____________________ result processing __________________________
+
     # visualising the results
     visualise(amstelhaege.waters, amstelhaege.houses, price)
 
@@ -30,4 +31,5 @@ if __name__ == '__main__':
     print("_____________________________")
     print("The results are.....")
     sleep(1)
-    print(f"Your neighbourhood is worth {price} euro! Amazing!")
+    print(f"The best neighbourhood you found is {best_price} euro! Amazing!")
+    print(f"The average price of the neighbourhoods you found is  {best_price} euro!")

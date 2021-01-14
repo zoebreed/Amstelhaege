@@ -2,6 +2,7 @@ from code.classes.Amstelhaege import House
 from random import randrange
 from copy import deepcopy
 from user_input import User
+from code.helpers.price import total_worth
 from code.classes.Amstelhaege import Amstelhaege
 from code.helpers.price import calculate_price
 import time
@@ -41,12 +42,6 @@ class Random_greedy():
             self.amstelhaege.calculate_worth()
             self.highest_score = self.amstelhaege.price
              
-
-            print(self.amstelhaege.waters)
-            print("dit is het eertse huis")
-            print(self.amstelhaege.houses)
-            print(first_house.x_left)
-    
             # consider 40 different places for next house, select best one
             for number in range(total - 1):
                 #check which house needs to be placed
@@ -60,26 +55,21 @@ class Random_greedy():
                     house_type = 1
                     numb_eengezinswoning -= 1
                 
-                # de x coordinaren van dit huis zijn hetzelfde als van het eerste huis
-                # maar dit maakt niet uit want dan is checks_location false
+                # creates house object
                 temp_house = House(x, y, house_type)
                 self.amstelhaege.houses.append(temp_house)
 
-                # alles hierboven gaat goed
-                
                 tries = 0
-                while tries < 10:
+                while tries < 2:
                     placed = False
-                    print("placed is False")
-                    
-                    # hier gaat het dus fout, hij blijft alleen maar nieuwe x coordianten zoeken
-                    # dus placed wordt niet true
+                
                     # generate coordinates
                     while placed == False:
-                        x = randrange(self.amstelhaege.width)
-                        y = randrange(self.amstelhaege.length)
                         temp_house.x_left = x
                         temp_house.y_left = y
+                        x = randrange(self.amstelhaege.width)
+                        y = randrange(self.amstelhaege.length)
+                        
                     
                         self.amstelhaege.get_free_space()
 
@@ -87,12 +77,10 @@ class Random_greedy():
                         # bereken met het bij elkaar optellen van de huizen waarde.
                         temp_house.update_worth()
 
-
                         # check if the random coordinates are available
                         if self.amstelhaege.check_location(x, y, temp_house.width, temp_house.length, temp_house.free_area):
                             placed = True
-                            print("placed is True")
-                    
+                       
                     # calculates new worth        
                     self.amstelhaege.calculate_worth()
                     self.score = self.amstelhaege.price
@@ -100,13 +88,14 @@ class Random_greedy():
                     # if score is higher than the currrent, save the position
                     if self.score > self.highest_score:
                         self.highest_score = self.score
+                        print(self.highest_score)
                         self.temp_house_list = self.amstelhaege.houses
 
                     tries += 1
-                house = House(best_x, best_y, house_type)
+                house = House(x, y, house_type)
 
-            self.temp_house_list = self.amstelhaege.house      
-
+            self.temp_house_list = self.amstelhaege.houses      
+            
         return self.amstelhaege, self.highest_score
 
     
