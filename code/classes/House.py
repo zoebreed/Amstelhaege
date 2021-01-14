@@ -14,6 +14,7 @@ class House():
         self.minimum_distance = None
         self.price = None
         self.id = next(House.id_iter)
+        self.worth = None
 
         if self.house_type == 1:
             self.name = 'eengezinswoning'
@@ -73,4 +74,7 @@ class House():
         self.y_bottom = y
         self.y_top = y + self.width
 
+    # def update_worth(self):
+    #     self.worth = self.value * (1 + self.increase_value * (self.total_freearea - self.free_area))
+    
 
