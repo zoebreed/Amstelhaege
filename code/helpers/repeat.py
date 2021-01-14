@@ -8,7 +8,7 @@ def repeat(amstelhaege, iterations, algorithm):
     """
     repeats the given algorithm n times and gets the best result
     """
-    highest_score = 0
+    highest_score, total_score = 0, 0
 
     for i in range(iterations):
 
@@ -37,5 +37,7 @@ def repeat(amstelhaege, iterations, algorithm):
             best_map = deepcopy(amstelhaege_copy)
             highest_score = new_score
 
+        total_score += new_score
+
         print(new_score)
-    return best_map, highest_score
+    return best_map, highest_score, total_score/iterations

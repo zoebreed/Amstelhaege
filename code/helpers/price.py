@@ -1,15 +1,14 @@
 import math
 from copy import deepcopy
 
-def worth(houses):
+def total_worth(houses):
     """
-    Calculates the worth of the neighbourhood
+    Calculates the total worth of the neighbourhood
     """
-
     total_value = 0
-    for houses in houses_list:
-        total_value = total_value + house
-
+    for house in houses:
+        total_value = total_value + house.worth
+    return total_value
 
 
 def calculate_price(houses):
