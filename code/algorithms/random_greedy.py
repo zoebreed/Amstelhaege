@@ -18,6 +18,7 @@ class Random_greedy():
         self.house_list = []
         self.highest_score = None
         self.score = None    
+    
 
     def run(self):
         total = self.amstelhaege.total
@@ -36,6 +37,7 @@ class Random_greedy():
         first_house = House(x, y, 3)
         first_house.total_freearea = 10
         self.amstelhaege.houses.append(first_house)
+        self.house_list.append(first_house)
         
         #calculate the worth of map
         self.amstelhaege.calculate_worth()
@@ -54,12 +56,11 @@ class Random_greedy():
             elif number_eengezinswoning > 0:
                 house_type = 1
                 number_eengezinswoning -= 1
+            print("   huis wordt geplaatst")
         
-            
             # creates house object
             house = House(x, y, house_type)
-            highest_house = House(x, y, house_type)
-            # self.amstelhaege.houses.append(house)
+            self.amstelhaege.houses.append(house)
 
             tries = 0
             while tries < 3:
@@ -74,26 +75,30 @@ class Random_greedy():
                     # check if the random coordinates are available
                     if self.amstelhaege.check_location(x, y, house.width, house.length, house.free_area):
                         house.move(x, y)
+                        print(f"x: {house.x_left}")
                         placed = True
                     
                 # calculates new worth        
                 self.amstelhaege.get_free_space()
                 self.amstelhaege.calculate_worth()
                 self.score = self.amstelhaege.price
+                print(f"score: {self.score}")
+               
                 
                 # if score is higher than the currrent, save the position
                 if self.score > self.highest_score:
-                    highest_house = house
-                    print(f"hoogste: {house.x_left}")
+                    highest_house = house 
                     self.highest_score = self.score
                     self.amstelhaege.price = self.highest_score
-                    print(highest_house)
+                    print(f"hoogste_x: {highest_house.x_left}")
+                    print(f"highest_score: {self.highest_score}")
                     
                 tries += 1
             
-            self.amstelhaege.houses.append(highest_house)
-            self.amstelhaege.get_free_space()
+            self.house_list.append(highest_house)
 
+        self.amstelhaege.houses.clear()
+        self.amstelhaege.houses = self.house_list
         return self.amstelhaege
 
     
