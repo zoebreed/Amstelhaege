@@ -29,6 +29,7 @@ class Random_greedy():
         number_bungalow = self.amstelhaege.fraction_house_2 * total
         number_maison = ((self.amstelhaege.fraction_house_3 * total) - 1)
 
+        # TODO deze moet ook gecheckt worden
         # randomly places first house, which is maison
         x = randrange(self.amstelhaege.width)
         y = randrange(self.amstelhaege.length)
@@ -53,10 +54,12 @@ class Random_greedy():
             elif number_eengezinswoning > 0:
                 house_type = 1
                 number_eengezinswoning -= 1
+        
             
             # creates house object
             house = House(x, y, house_type)
-            self.amstelhaege.houses.append(house)
+            highest_house = House(x, y, house_type)
+            # self.amstelhaege.houses.append(house)
 
             tries = 0
             while tries < 3:
@@ -71,7 +74,6 @@ class Random_greedy():
                     # check if the random coordinates are available
                     if self.amstelhaege.check_location(x, y, house.width, house.length, house.free_area):
                         house.move(x, y)
-                        print(f"goed {house.x_left}")
                         placed = True
                     
                 # calculates new worth        
@@ -81,11 +83,17 @@ class Random_greedy():
                 
                 # if score is higher than the currrent, save the position
                 if self.score > self.highest_score:
+                    highest_house = house
                     print(f"hoogste: {house.x_left}")
                     self.highest_score = self.score
                     self.amstelhaege.price = self.highest_score
-
+                    print(highest_house)
+                    
                 tries += 1
+            
+            self.amstelhaege.houses.append(highest_house)
+            self.amstelhaege.get_free_space()
+
         return self.amstelhaege
 
     
