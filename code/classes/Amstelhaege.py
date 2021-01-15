@@ -56,15 +56,9 @@ class Amstelhaege:
         x and y are the bottom left coordinates of the house
         """
         new_house = House(x, y, house_type)
-
         self.houses.append(new_house)
 
-        # #calculates minimum distance and price
-        # if len(self.houses) == self.total:
-        #     minimum_distance(self.neighbourhood)
-
-        #     self.price = calculate_price(self.neighbourhood)
-        #     return self.neighbourhood, self.price
+        return new_house
 
 
     def calculate_worth(self):
@@ -147,6 +141,12 @@ class Amstelhaege:
         """
         assigns the free space
         """ 
+
+        # if there is only 1 house return an arbitrary random number
+        if len(self.houses) == 1:
+            self.houses[0].total_freearea = randrange(20)
+            return
+
         for house in self.houses:
             min_distance = 1000
 

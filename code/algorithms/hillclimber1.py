@@ -13,7 +13,7 @@ class Hillclimber_1:
     decreases the total price, we remove it.
     """
     def __init__(self, amstelhaege):
-        self.amstelhaege = deepcopy(amstelhaege)
+        self.amstelhaege = amstelhaege
 
     def move_house_random(self, house):
         """
@@ -42,8 +42,8 @@ class Hillclimber_1:
 
     def run(self, timeout):
         
-        # places the houses at a random location
-        random(self.amstelhaege)
+        # # places the houses at a random location
+        # random(self.amstelhaege)
 
         timeout_start = time.time()
 
