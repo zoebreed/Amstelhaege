@@ -15,10 +15,17 @@ class Amstelhaege:
         self.length = 160
         self.price = None
 
+        self.total = n_houses
         self.fraction_house_1 = 0.6
         self.fraction_house_2 = 0.25
         self.fraction_house_3 = 0.15
-        self.total = n_houses
+
+        self.house1_amount = int(0.6 * self.total)
+        self.house2_amount = int(0.25 * self.total)
+        self.house3_amount = int(0.15 * self.total)
+
+        # saves the width, length, extra space and amount for each house type
+        self.house_types = {1: [8, 8, 2, self.house1_amount], 2: [11, 7, 3, self.house2_amount], 3: [12, 10, 6, self.house3_amount]}
 
         self.houses = []
         self.waters = []
@@ -48,7 +55,9 @@ class Amstelhaege:
                 # makes a Water object and appends it to the neighbourhood
                 water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
                 self.waters.append(water)
-
+    
+    def get_info(self, house_type):
+        pass
 
     def place_house(self, house_type, x, y):
         """

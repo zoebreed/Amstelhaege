@@ -1,15 +1,15 @@
-from code.algorithms.random import random
+from code.algorithms.random import Random
 from code.algorithms.hillclimber1 import Hillclimber_1
 from code.algorithms.hillclimber2 import Hillclimber_2
 from code.algorithms.random_greedy import Random_greedy
 from copy import deepcopy
+import csv
 
-def repeat(user):
+def repeat(amstelhaege, user):
     """
     repeats the given algorithm n times and gets the best result
     """
     highest_score, total_score = 0, 0
-    amstelhaege = Amstelhaege(user.neighbourhood, user.houses)
 
     for i in range(user.iterations):
 
@@ -17,20 +17,21 @@ def repeat(user):
 
         # first place the houses using the chosen algorithm
         if user.algorithm_p == 'random':
-            amstelhaege_copy = random(amstelhaege_copy)
+            random = Random(amstelhaege_copy)
+            random.run()
 
         elif user.algorithm_p == 'random_greedy':
             random_greedy = Random_greedy(amstelhaege_copy)
-            amstelhaege_copy = random_greedy.run()
+            random_greedy.run(400)
 
         # then improve on the placement with the chosen algorithm        
         if user.algorithm_i == 'hillclimber':
             hillclimber1 = Hillclimber_1(amstelhaege_copy)
-            amstelhaege_copy = hillclimber1.run(10)
+            hillclimber1.run(1)
 
         elif user.algorithm_i == 'hillclimber2':
             hillclimber2 = Hillclimber_2(amstelhaege_copy)
-            hillclimber2.run(10)
+            hillclimber2.run(1)
 
         new_score = amstelhaege_copy.price
 
@@ -42,4 +43,32 @@ def repeat(user):
         total_score += new_score
 
         print(new_score)
-    return best_map, highest_score, total_score/iterations
+        #iteratie,wijk,huizenvariant,prijs
+        if user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber':
+            with open('results/hillclimber1_r.csv', 'a', newline='') as csvfile:
+                wr = csv.writer(csvfile)
+                wr.writerow([i, user.neighbourhood, user.houses, new_score])
+        elif user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber2':
+            with open('results/hillclimber2_r.csv', 'a', newline='') as csvfile:
+                wr = csv.writer(csvfile)
+                wr.writerow([i, user.neighbourhood, user.houses, new_score])
+        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'hillclimber':
+            with open('results/hillclimber1_rg.csv', 'a', newline='') as csvfile:
+                wr = csv.writer(csvfile)
+                wr.writerow([i, user.neighbourhood, user.houses, new_score])
+        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'hillclimber2':
+            with open('results/hillclimber2_rg.csv', 'a', newline='') as csvfile:
+                wr = csv.writer(csvfile)
+                wr.writerow([i, user.neighbourhood, user.houses, new_score])
+        elif user.algorithm_p == 'random' and user.algorithm_i == 'None':
+            with open('results/random.csv', 'a', newline='') as csvfile:
+                wr = csv.writer(csvfile)
+                wr.writerow([i, user.neighbourhood, user.houses, new_score])
+        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'None':
+            with open('results/random_greedy.csv', 'a', newline='') as csvfile:
+                wr = csv.writer(csvfile)
+                wr.writerow([i, user.neighbourhood, user.houses, new_score])
+
+
+    return best_map, highest_score, total_score/user.iterations
+
