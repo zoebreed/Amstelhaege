@@ -71,7 +71,7 @@ class User:
 
         if algorithm not in algorithm_list:
             print("You chose an invalid algorithm")
-            algorithm = self.get_algorithm()
+            algorithm = self.get_p_algorithm()
     
         return algorithm
 
@@ -80,12 +80,12 @@ class User:
         """
         returns the algorithm which is used to improve the placement
         """
-        algorithm_list = ["random", "random_greedy", "hillclimber", "hillclimber2"]
+        algorithm_list = ["None", "hillclimber", "hillclimber2"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:
             print("You chose an invalid algorithm")
-            algorithm = self.get_algorithm()
+            algorithm = self.get_i_algorithm()
     
         return algorithm
         

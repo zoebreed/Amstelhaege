@@ -10,7 +10,7 @@ def output(houses, waters, price):
         counter = 1
         structures = []
 
-        for item in (houses + waters):
+        for item in (waters + houses):
             if item.name not in structures:
                 counter = 1
 

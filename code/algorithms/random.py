@@ -1,57 +1,40 @@
 from random import randrange
 from code.classes.Amstelhaege import Amstelhaege
-from copy import deepcopy
     
-def random(amstelhaege):
+class Random:
     """
-    algorithm which places the houses in a random location
+    Class which executes the random algorithm.
+    The houses are just randomly placed.
     """
-    total = amstelhaege.total
+    def __init__(self, amstelhaege):
+        self.amstelhaege = amstelhaege
 
-    for i in range(int(amstelhaege.fraction_house_1*total)):
-        check = True
-        width, length, extra = 8, 8, 2
+    def place_random(self, house_type, house_info):
+        """
+        places a house at a random valid position
+        """
 
-        while check:
-            
-            # generate random coordinates
-            x = randrange(amstelhaege.width)
-            y = randrange(amstelhaege.length)
+        while True:
+            x = randrange(self.amstelhaege.width)
+            y = randrange(self.amstelhaege.length)
 
-            # check if the coordinates are valid
-            if amstelhaege.check_location(x, y, length, width, extra):
-                amstelhaege.place_house(1, x, y)
-                check = False
+            if self.amstelhaege.check_location(x, y, house_info[0], house_info[1], house_info[2]):
+                self.amstelhaege.place_house(house_type, x, y)
+                return
 
-        check = True
 
-    for i in range(int(amstelhaege.fraction_house_2*total)):
-        check = True
-        width, length, extra = 11, 7, 3
-
-        while check:
-            x = randrange(amstelhaege.width)
-            y = randrange(amstelhaege.length)
-            if amstelhaege.check_location(x, y, length, width, extra):
-                amstelhaege.place_house(2, x, y)
-                check = False
+    def run(self):
         
-        check = True
+        # iterates through the house types
+        for house_type in self.amstelhaege.house_types:
 
-    for i in range(int(amstelhaege.fraction_house_3*total)):
-        check = True
-        width, length, extra = 12, 10, 6
+            house_info = self.amstelhaege.house_types[house_type]
 
-        while check:
-            x = randrange(amstelhaege.width)
-            y = randrange(amstelhaege.length)
+            # places the right amount of houses per house type
+            for i in range(house_info[3]):
+                
+                # place the house at a random position
+                self.place_random(house_type, house_info)
 
-            if amstelhaege.check_location(x, y, width, length, extra):
-                amstelhaege.place_house(3, x, y)
-                check = False
-        check = True
-    
-    amstelhaege.get_free_space()
-    amstelhaege.calculate_worth()
-    
-    return amstelhaege
+        self.amstelhaege.get_free_space()
+        self.amstelhaege.calculate_worth()

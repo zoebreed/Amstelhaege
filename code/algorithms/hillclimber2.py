@@ -1,7 +1,6 @@
 import random
 from copy import deepcopy
 from code.classes.Amstelhaege import Amstelhaege
-from code.algorithms.random import random
 import time
 from random import shuffle, choice
 
@@ -14,7 +13,7 @@ class Hillclimber_2:
     """
     
     def __init__(self, amstelhaege):
-        self.amstelhaege = deepcopy(amstelhaege)
+        self.amstelhaege = amstelhaege
         self.directions = ["up", "down", "right", "left"]
     
     def hillclimber2_move(self, house, direction):
@@ -57,11 +56,11 @@ class Hillclimber_2:
             # shuffle the direction list to avoid a bias
             shuffle(self.directions)
 
-            # make sure that at the start of each house you get in the while loop 
-            new_price = self.amstelhaege.price + 1
-
             # go through every direction in the list
             for direction in self.directions:
+
+                # make sure that at the start of each house and each direction you get in the while loop 
+                new_price = self.amstelhaege.price + 1
 
                 # keep stepping into the same direction if the move increases the worth
                 while new_price > old_price:
@@ -85,15 +84,11 @@ class Hillclimber_2:
 
                     new_price = self.get_price()
 
-                    # mpveiee dreacrecreases the worth
+                    # move decreases the worth
                     if new_price < old_price:
                         house.move(x, y)
-                    elif new_price > old_price:
-                        print(f"highest score{new_price}")
-                    
 
-                    self.amstelhaege.get_free_space()
-                    self.amstelhaege.calculate_worth()
+                    #print(f"house.id {house.id} highest score{new_price} current score {self.get_price()}")
 
         return self.amstelhaege
 

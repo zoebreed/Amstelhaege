@@ -15,7 +15,6 @@ class House():
         self.price = None
         self.id = next(House.id_iter)
         self.worth = None
-
         if self.house_type == 1:
             self.name = 'eengezinswoning'
             #self.id = id

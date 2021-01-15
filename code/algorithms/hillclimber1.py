@@ -1,8 +1,8 @@
 from copy import deepcopy
 from random import randrange, choice
-from code.algorithms.random import random
 import time
 import math
+from random import uniform, randrange
 
 class Hillclimber_1:
     """
@@ -108,7 +108,7 @@ class Hillclimber_1:
                 
                 price_diff = old_price - self.amstelhaege.price
 
-                if  not random.uniform(0, 1) < math.exp(price_diff / current_temp):
+                if  not uniform(0, 1) < math.exp(price_diff / current_temp):
                     house.move(x,y)
                     self.amstelhaege.get_free_space()
                     self.amstelhaege.calculate_worth()

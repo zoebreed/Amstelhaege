@@ -19,7 +19,6 @@ def visualise(waters, houses, price):
     for house in houses:
         # get the coordinates and specifications of the house
         x, y = house.x_left, house.y_bottom
-        plt.text(x, y,house.total_freearea)
         width, length = house.width, house.length
 
         # get the coordinates and specifications of the free space
@@ -33,13 +32,12 @@ def visualise(waters, houses, price):
         else:
             color = 'salmon'
         
-        ax.add_patch(Rectangle((x2, y2), width2, length2, facecolor = 'gray', fill=True, edgecolor=None, alpha=0.5))
+        ax.add_patch(Rectangle((x2, y2), width2, length2, facecolor = 'gray', fill=True, edgecolor=None, alpha=0.35))
         ax.add_patch(Rectangle((x, y), width, length, facecolor = color, fill=True))
 
-    
     plt.plot(x,y)
     plt.xlim(left = 0, right=180)
     plt.ylim(bottom= 0, top=160)
     ax.set_facecolor("palegreen")
     plt.title(f"€{price}")
-    plt.savefig("results/test.png")
+    plt.savefig(f"results/{price}.png")
