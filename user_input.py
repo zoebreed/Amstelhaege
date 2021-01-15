@@ -16,16 +16,19 @@ class User:
         self.houses = self.get_houses()
         print('\n')
 
-        print("And which algorithm would you like to use?")
-        self.algorithm = self.get_algorithm()
+        print("And which algorithm would you like to use to place the houses?")
+        self.algorithm_p = self.get_p_algorithm()
         print('\n')
 
+        print("And which algorithm would you like to use?")
+        self.algorithm_i = self.get_i_algorithm()
+        print('\n')
 
         print("And for how many iterations would you like to run your code?")
         self.iterations = self.get_iterations()
         print('\n')
 
-
+ 
 
     def get_neighbourhood(self):
         """
@@ -59,10 +62,23 @@ class User:
     
         return int(houses)
 
-    
-    def get_algorithm(self):
+    def get_p_algorithm(self):
         """
-        returns the algorithm
+        returns the algorithm which is used to place the houses
+        """
+        algorithm_list = ["random", "random_greedy"]
+        algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
+
+        if algorithm not in algorithm_list:
+            print("You chose an invalid algorithm")
+            algorithm = self.get_algorithm()
+    
+        return algorithm
+
+    
+    def get_i_algorithm(self):
+        """
+        returns the algorithm which is used to improve the placement
         """
         algorithm_list = ["random", "random_greedy", "hillclimber", "hillclimber2"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")

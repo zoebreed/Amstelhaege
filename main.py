@@ -17,17 +17,16 @@ if __name__ == '__main__':
     
     user = User()
 
-    amstelhaege = Amstelhaege(user.neighbourhood, user.houses)
-    amstelhaege, best_price, avg_price = repeat(amstelhaege, user.iterations, user.algorithm)
+    # amstelhaege = Amstelhaege(user.neighbourhood, user.houses)
+    amstelhaege, best_price, avg_price = repeat(user)
     
     #_____________________ result processing __________________________
 
     # visualising the results
-    # LETOP! ik heb voor price amstelhaege gezet
-    visualise(amstelhaege.waters, amstelhaege.houses, amstelhaege.price)
+    visualise(amstelhaege.waters, amstelhaege.houses, best_price)
 
     # formatting the final output file output.csv
-    output(amstelhaege.houses, amstelhaege.waters, amstelhaege.price)
+    output(amstelhaege.houses, amstelhaege.waters, best_price)
 
     print("_____________________________")
     print("The results are.....")

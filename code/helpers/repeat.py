@@ -4,31 +4,33 @@ from code.algorithms.hillclimber2 import Hillclimber_2
 from code.algorithms.random_greedy import Random_greedy
 from copy import deepcopy
 
-def repeat(amstelhaege, iterations, algorithm):
+def repeat(user):
     """
     repeats the given algorithm n times and gets the best result
     """
     highest_score, total_score = 0, 0
+    amstelhaege = Amstelhaege(user.neighbourhood, user.houses)
 
-    for i in range(iterations):
+    for i in range(user.iterations):
 
         amstelhaege_copy = deepcopy(amstelhaege)
 
-        # run the chosen algorithm
-        if algorithm == 'random':
+        # first place the houses using the chosen algorithm
+        if user.algorithm_p == 'random':
             amstelhaege_copy = random(amstelhaege_copy)
-        
-        elif algorithm == 'random_greedy':
+
+        elif user.algorithm_p == 'random_greedy':
             random_greedy = Random_greedy(amstelhaege_copy)
             amstelhaege_copy = random_greedy.run()
 
-        elif algorithm == 'hillclimber':
+        # then improve on the placement with the chosen algorithm        
+        if user.algorithm_i == 'hillclimber':
             hillclimber1 = Hillclimber_1(amstelhaege_copy)
-            amstelhaege_copy = hillclimber1.run_sa()
+            amstelhaege_copy = hillclimber1.run(10)
 
-        elif algorithm == 'hillclimber2':
+        elif user.algorithm_i == 'hillclimber2':
             hillclimber2 = Hillclimber_2(amstelhaege_copy)
-            amstelhaege_copy = hillclimber2.run(10)
+            hillclimber2.run(10)
 
         new_score = amstelhaege_copy.price
 
