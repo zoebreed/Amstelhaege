@@ -29,19 +29,32 @@ pip install -r requirements.txt
 ## Runnen
 Om de code te runnen dient u in u terminal de volgende code in te voeren:
 ```
-python main.py <WIJK> <AANTAL HUIZEN>
+python main.py 
 ```
-WIJK = 0, 1 of 2 
-AANTAL HUIZEN = 20, 40 of 60
+Er volgt dan een keuze menu waarbij je de volgende keuzes kan maken:
+- Welke wijk (wijk1, wijk2, wijk3)
+- Hoeveel huizen er worden geplaatst (20, 40, 60)
+- Met welk algoritme de huizen worden geplaatst (random, random_greedy)
+- Welk algoritme wil je gebruiken (hillclimber, hillclimber2)
+- Hoeveel iteraties wil je maken
 
 ## Algoritme
+#### Random
+In het random algoritme worden de huizen doormiddel van random gegenereerde coordinaten geplaats.
 
-### Aantal huizen
+#### Random + Greedy
+
+#### Hillclimber
+
+#### Hillclimber2
+
+#### Aantal huizen
 Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.
-Als er een anders getal word meegeven word het maximum automatisch op 20 huizen gezet.
 
-### Wijken
-In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn van links naar rechts: wijk_1, wijk_2 en wijk_3. Voor wijk_1 dient u `0` als argument mee te geven, voor wijk_2 `1` en voor wijk_3 `2`.
+#### Wijken
+In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn van links naar rechts: wijk1, wijk2 en wijk3.
 
 <img src="/docs/wijk_1.png" width=30%> <img src="/docs/wijk_2.png" width=30%> <img src="/docs/wijk_3.png" width=30%>
+
+#### Resultaten
 
