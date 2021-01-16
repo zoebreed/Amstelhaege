@@ -2,7 +2,9 @@ from copy import deepcopy
 from random import randrange, choice
 import time
 import math
-from random import uniform, randrange
+from code.algorithms.simulated_annealing import Simulated_annealing
+
+from random import uniform, randrange, random
 
 class Hillclimber_1:
     """
@@ -12,8 +14,19 @@ class Hillclimber_1:
     increases the total price, it stays. If this random location
     decreases the total price, we remove it.
     """
-    def __init__(self, amstelhaege):
+    def __init__(self, amstelhaege, sim_ann=False):
         self.amstelhaege = amstelhaege
+
+        # if the user chose with simulated annealing, initialize
+        if sim_ann:
+            self.simulated_annealing = Simulated_annealing()
+            self.condition = lambda: self.simulated_annealing.get_condition()
+            self.price_check = lambda a: self.simulated_annealing.check_price(a)
+
+        else:
+            self.iterations = 1000
+            self.condition = lambda: self.get_condition()
+            self.price_check = lambda a: self.check_price(a)
 
     def move_house_random(self, house):
         """
@@ -27,30 +40,45 @@ class Hillclimber_1:
             if self.amstelhaege.check_location(x, y, house.width, house.length, house.free_area):
                 house.move(x,y)
                 return
+        
 
-    def check_price(self, old_price):
+    def price_diff(self):
         """
-        returns True when the new price is higher, False otherwise
+        returns the price difference
         """
 
         self.amstelhaege.get_free_space()
         self.amstelhaege.calculate_worth()
 
-        if self.amstelhaege.price > old_price:
+        return self.amstelhaege.price - self.old_price
+
+    def get_condition(self):
+        """
+        simple for loop implementation
+        """
+        
+        if self.iterations == 0:
+            return False
+
+        self.iterations -= 1
+        
+        return True
+
+    def check_price(self, price_diff):
+        """
+        returns True when the old price was higher, else False
+        """
+        
+        if price_diff < 0:
             return True
         return False
 
-    def run(self, timeout):
+
+    def run(self):
         
-        # # places the houses at a random location
-        # random(self.amstelhaege)
-
-        timeout_start = time.time()
-
-        # stop if the given time has passed
-        while time.time() < timeout_start + timeout:
+        while self.condition():
             
-            old_price = self.amstelhaege.price
+            self.old_price = self.amstelhaege.price
             
             # get a random house
             house = choice(self.amstelhaege.houses)
@@ -64,56 +92,14 @@ class Hillclimber_1:
             # move the house to a random location within the map
             self.move_house_random(house)
 
-            # accept the change if the price is higher, else change back the coordinates
-            if not self.check_price(old_price):
+            # get the difference between the old and new price
+            price_diff = self.price_diff()
 
-                house.move(x,y)
+            # accept the change if the price is higher, else change back the coordinates
+            if self.price_check(price_diff):
+
+                house.move(x, y)
                 self.amstelhaege.get_free_space()
                 self.amstelhaege.calculate_worth()
 
         return self.amstelhaege
-
-    def run_sa(self):
-        """
-        runs the same hillclimber version 1 algorithm but with simulated annealing
-        """
-        # initialize the temperature
-        initial_temp = 900
-        final_temp = .1
-        alpha = 0.01
-        current_temp = initial_temp
-
-        # places the houses at a random location
-        random(self.amstelhaege)
-
-        # stop if the given time has passed
-        while current_temp > initial_temp:
-            
-            old_price = self.amstelhaege.price
-            
-            # get a random house
-            house = choice(self.amstelhaege.houses)
-
-            # save the original coordinates for later
-            x, y = house.x_left, house.y_bottom
-
-            # move the house temporarily outside of the map to prevent overlap on itself
-            house.move(-100, -100)
-
-            # move the house to a random location within the map
-            self.move_house_random(house)
-
-            # accept the change if the price is higher, else change back the coordinates
-            if not self.check_price(old_price):
-                
-                price_diff = old_price - self.amstelhaege.price
-
-                if  not uniform(0, 1) < math.exp(price_diff / current_temp):
-                    house.move(x,y)
-                    self.amstelhaege.get_free_space()
-                    self.amstelhaege.calculate_worth()
-
-            current_temp -= alpha
-
-        return self.amstelhaege
-

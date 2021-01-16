@@ -27,8 +27,12 @@ def repeat(amstelhaege, user):
         # then improve on the placement with the chosen algorithm        
         if user.algorithm_i == 'hillclimber':
             hillclimber1 = Hillclimber_1(amstelhaege_copy)
-            hillclimber1.run(1)
+            hillclimber1.run()
 
+        elif user.algorithm_i == 'simulated annealing':
+            hillclimber1 = Hillclimber_1(amstelhaege_copy, True)
+            hillclimber1.run()       
+        
         elif user.algorithm_i == 'hillclimber2':
             hillclimber2 = Hillclimber_2(amstelhaege_copy)
             hillclimber2.run(1)
