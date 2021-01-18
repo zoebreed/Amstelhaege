@@ -28,6 +28,7 @@ class randomWater:
         # ... coordinates
         x = random.randint()
         y = random.randint()
+        
         # set coordinates
         water.x_bottom_left = x
         water.y_bottom_left = y

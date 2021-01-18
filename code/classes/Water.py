@@ -25,6 +25,6 @@ class Water():
         self.min_ratio = 1
         self.max_ratio = 4 
         self.water_area = 5760
-        self.nr_water = nr_water
+        self.nr_water = random.randint(self.min_water, self.max_water)
     
 
