@@ -1,6 +1,6 @@
 from .House import House
 import csv
-
+from code.algorithms.random_water import randomWater
 from code.classes.Water import Water
 from code.helpers.price import calculate_price#, minimum_distance
 from random import randrange
@@ -36,18 +36,13 @@ class Amstelhaege:
         """
         Loads the coordinates of the water from the csv file
         """
-<<<<<<< HEAD
 
         if choice == "random":
             water = random_water(self)
             water.run()
             return
         
-        csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv"), x()][choice]
-=======
- 
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
->>>>>>> 2f2a63ad6258b41ef94eb8993edcaa125f823c0b
     
         # retrieves the coordinates of the water
         with open(csv_file, 'r') as in_file:
@@ -60,10 +55,10 @@ class Amstelhaege:
                 x_bottom_left, y_bottom_left = int(bottom_x), int(bottom_y)
                 x_top_right, y_top_right = int(top_x), int(top_y)
                 width = (x_top_right - x_bottom_left)
-                height = (y_top_right - y_bottom_left)
+                length = (y_top_right - y_bottom_left)
 
                 # makes a Water object and appends it to the neighbourhood
-                water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, height)
+                water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, length)
                 self.waters.append(water)
     
     def get_info(self, house_type):
@@ -178,7 +173,6 @@ class Amstelhaege:
                 if distance < min_distance:
                     min_distance = distance
     
-<<<<<<< HEAD
             house.total_freearea = min_distance
 
     def water_requirements(self, x, y, width, length, water_bodies):
@@ -186,6 +180,3 @@ class Amstelhaege:
         The neighbourhood should consist of 5760 m^2 water
         """
         pass
-=======
-            house.total_freearea = min_distance
->>>>>>> 2f2a63ad6258b41ef94eb8993edcaa125f823c0b

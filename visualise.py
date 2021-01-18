@@ -14,7 +14,7 @@ def visualise(waters, houses, price):
         if water.name == "water":
             # get the coordinates and specifications of the water
             x, y = water.x_left, water.y_bottom
-            ax.add_patch(Rectangle((x, y), water.width, water.height, edgecolor = 'lightskyblue', facecolor = 'lightskyblue', fill=True))
+            ax.add_patch(Rectangle((x, y), water.width, water.length, edgecolor = 'lightskyblue', facecolor = 'lightskyblue', fill=True))
 
     for house in houses:
         # get the coordinates and specifications of the house

@@ -1,4 +1,4 @@
-from code.algorithms.random import Random
+from code.algorithms.randomize import Random
 from code.algorithms.hillclimber1 import Hillclimber_1
 from code.algorithms.hillclimber2 import Hillclimber_2
 from code.algorithms.random_greedy import Random_greedy
@@ -21,11 +21,7 @@ def repeat(amstelhaege, user):
             random.run()
 
         elif user.algorithm_p == 'random_greedy':
-<<<<<<< HEAD
             random_greedy = Random_greedy(amstelhaege_copy, sim_ann=True)
-=======
-            random_greedy = Random_greedy(amstelhaege_copy)
->>>>>>> 2f2a63ad6258b41ef94eb8993edcaa125f823c0b
             random_greedy.run(400)
 
         # then improve on the placement with the chosen algorithm        

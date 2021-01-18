@@ -42,8 +42,6 @@ class House():
 
         self.x_right = self.x_left + self.width
         self.y_top = self.y_bottom + self.length
-<<<<<<< HEAD
-=======
 
     # def check_border(self): 
     #     check = False
@@ -64,7 +62,6 @@ class House():
     #         check = True
 
     #     return check
->>>>>>> 2f2a63ad6258b41ef94eb8993edcaa125f823c0b
     
     def move(self, x, y):
         """
@@ -76,12 +73,7 @@ class House():
         self.y_bottom = y
         self.y_top = y + self.length
 
-<<<<<<< HEAD
     # def update_worth(self):
     #     self.worth = self.value * (1 + self.increase_value * (self.total_freearea - self.free_area))
-=======
-    def update_worth(self):
-        self.worth = self.value * (1 + self.increase_value * (self.total_freearea - self.free_area))
->>>>>>> 2f2a63ad6258b41ef94eb8993edcaa125f823c0b
     
 

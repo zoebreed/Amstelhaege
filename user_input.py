@@ -28,13 +28,12 @@ class User:
         self.iterations = self.get_iterations()
         print('\n')
 
- 
 
     def get_neighbourhood(self):
         """
         returns the neighbourhood
         """
-        neighbourhood_list = ["wijk1", "wijk2", "wijk3"]
+        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random"]
         neighbourhood = input(f"Choose from: {', '.join(neighbourhood_list)}\n")
 
         if neighbourhood not in neighbourhood_list:
@@ -45,8 +44,10 @@ class User:
             return 0
         elif neighbourhood == 'wijk2':
             return 1
-        else:
+        elif neighbourhood == 'wijk3':
             return 2
+        
+
     
 
     def get_houses(self):
