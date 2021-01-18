@@ -36,8 +36,13 @@ class Amstelhaege:
         """
         Loads the coordinates of the water from the csv file
         """
- 
-        csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
+
+        if choice == "random":
+            water = random_water(self)
+            water.run()
+            return
+        
+        csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv"), x()][choice]
     
         # retrieves the coordinates of the water
         with open(csv_file, 'r') as in_file:
@@ -169,3 +174,9 @@ class Amstelhaege:
                     min_distance = distance
     
             house.total_freearea = min_distance
+
+    def water_requirements(self, x, y, width, length, water_bodies):
+        """
+        The neighbourhood should consist of 5760 m^2 water
+        """
+        pass

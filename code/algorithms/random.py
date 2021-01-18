@@ -13,7 +13,7 @@ class Random:
         """
         places a house at a random valid position
         """
-
+        
         while True:
             x = randrange(self.amstelhaege.width)
             y = randrange(self.amstelhaege.length)
@@ -24,10 +24,8 @@ class Random:
 
 
     def run(self):
-        
         # iterates through the house types
         for house_type in self.amstelhaege.house_types:
-
             house_info = self.amstelhaege.house_types[house_type]
 
             # places the right amount of houses per house type

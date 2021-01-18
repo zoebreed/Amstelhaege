@@ -21,7 +21,7 @@ def repeat(amstelhaege, user):
             random.run()
 
         elif user.algorithm_p == 'random_greedy':
-            random_greedy = Random_greedy(amstelhaege_copy)
+            random_greedy = Random_greedy(amstelhaege_copy, sim_ann=True)
             random_greedy.run(400)
 
         # then improve on the placement with the chosen algorithm        
