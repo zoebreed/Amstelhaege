@@ -1,8 +1,6 @@
-from random import randrange
-from math import floor, ceil, sqrt
+from random import randrange, randint, uniform
+from math import ceil, sqrt
 from code.classes.Water import Water
-from random import randrange, uniform
-# from code.classes.Amstelhaege import Amstelhaege
 
 class randomWater:
     """
@@ -15,6 +13,9 @@ class randomWater:
         self.new_waters = []
 
     def check_water(self, x, y, width, length):
+        """
+         function that checks if the water bodies overlap
+        """
         for water in self.new_waters:
             if ( 
                 x < (water.x_right) and
@@ -26,15 +27,15 @@ class randomWater:
         return True
 
     def run(self):
-        bodies = randrange(1, 5)
+        bodies = randint(self.min_ratio, self.max_ratio)
         percentages = self.divide_percentage(bodies)
-     
+
         index_water = 0
         while index_water < bodies:
             water_area = percentages[index_water] * self.total_area
 
             # dimension of water
-            min_width = max(1, int(sqrt(self.total_area * (self.min_ratio / self.max_ratio))))
+            min_width = max(1, int(sqrt(water_area * (self.min_ratio / self.max_ratio))))
             max_width = int(sqrt(water_area * (self.max_ratio / self.min_ratio)))
             water_width = int(randrange(min_width, max_width))
             water_length= int(ceil(water_area / water_width))
@@ -53,13 +54,16 @@ class randomWater:
 
         return self.new_waters
     
-    def divide_percentage(self,bodies, percentage_list=[1]):
+    def divide_percentage(self, bodies, percentage_list=[1]):
+        """
+         function that devides splits the number 1 (n - 1) times into two random parts
+        """
         if bodies == 1:
             return percentage_list
       
         # divide biggest part
         list.sort(percentage_list)
-        part = percentage_list[-1]
+        part = percentage_list[1]
 
         # remove the part we are going to split in two
         percentage_list = percentage_list[:-1]
@@ -68,9 +72,7 @@ class randomWater:
         part1 = uniform(0, part)
         part2 = part - part1
 
-        # add the new part to the list
-        percentage_list.append(part1)
-        percentage_list.append(part2)
+        # add the new parts to the list
+        percentage_list.extend([part1],[part2])
 
-        #recursion
-        return self.divide_percentage(bodies-1, percentage_list)
+        return self.divide_percentage((bodies - 1), percentage_list)

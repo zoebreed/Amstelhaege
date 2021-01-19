@@ -1,12 +1,9 @@
 from code.classes.Amstelhaege import House
 from random import randrange
-from copy import deepcopy
 from user_input import User
-from code.helpers.price import total_worth
 from code.classes.Amstelhaege import Amstelhaege
 from code.algorithms.water_greedy import waterGreedy
-from code.helpers.price import calculate_price
-import time
+
 
 class Random_greedy():
     """
@@ -45,8 +42,6 @@ class Random_greedy():
         return self.amstelhaege.place_house(house_type, -100, -100)
 
     def run(self):
-
-            
         # consider 40 different places for the house, select best one
         for i in range(self.amstelhaege.total):
             self.highest_score = 0
