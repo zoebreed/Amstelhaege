@@ -33,7 +33,7 @@ class User:
         """
         returns the neighbourhood
         """
-        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random", "Other"]
+        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random_water", "greedy_water"]
         neighbourhood = input(f"Choose from: {', '.join(neighbourhood_list)}\n")
 
         if neighbourhood not in neighbourhood_list:
@@ -46,13 +46,9 @@ class User:
             return 1
         elif neighbourhood == 'wijk3':
             return 2
-<<<<<<< HEAD
         else:
             return(neighbourhood)
         
-=======
-
->>>>>>> b085d652507d32ae4e32a2f8c9c5bd32badb2d2e
     def get_houses(self):
         """
         returns the houses amount
@@ -70,10 +66,10 @@ class User:
         """
         returns the algorithm which is used to place the houses
         """
-        if neighbourhood == "Other":
-            algorithm_list = ["random_greedy + water", "greedy + water"]
+        if neighbourhood == "greedy_water":
+            algorithm_list = ["greedy", "random_greedy"]
         else:
-            algorithm_list = ["random", "random_greedy", "greedy"]
+            algorithm_list = ["random", "greedy", "random_greedy" ]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:

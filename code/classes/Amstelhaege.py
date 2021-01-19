@@ -30,31 +30,20 @@ class Amstelhaege:
         # self.water = Water
         self.houses = []
         self.waters = []
-<<<<<<< HEAD
-        self.load_water(choice)
-        # self.bodies = int(randrange(0,5))
-=======
              
-        if choice != 'Other':
+        if choice != 'greedy_water':
             self.load_water(choice)
         
->>>>>>> b085d652507d32ae4e32a2f8c9c5bd32badb2d2e
 
     def load_water(self, choice):
         """
         Loads the coordinates of the water from the csv file
         """
 
-        if choice == "random":
-<<<<<<< HEAD
-            water = self.place_random_water()
-            # water = randomWater(Amstelhaege)
-            # water.run()
-=======
-            water = randomWater(self)
-            water.run()
->>>>>>> b085d652507d32ae4e32a2f8c9c5bd32badb2d2e
-            return
+        if choice == "random_water":
+            water = randomWater()
+            self.waters = water.run()
+            return 
         
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
     
@@ -198,63 +187,4 @@ class Amstelhaege:
                     min_distance = distance
     
             house.total_freearea = min_distance
-
-    def place_random_water(self):
-        bodies = int(randrange(1,5))
-        total_area = 5760
-        min_ratio, max_ratio = 1, 4
-        percentages = self.divide_percentage(bodies)
-        index_water = 0
-        while index_water < bodies:
-            water_area = percentages[index_water] * total_area
-
-            # dimension of water
-            min_width = max(1, int(sqrt(total_area * (min_ratio / max_ratio))))
-            max_width = int(sqrt(water_area * (max_ratio / min_ratio )))
-            water_width = int(randrange(min_width, max_width))
-            water_length= int(ceil(water_area / water_width))
-            
-            # generate random coordinates
-            x = randrange(0, int(self.width - water_width))
-            y = randrange(0, int(self.length - water_length))
-            x_top_right = x + water_width
-            y_top_right = y + water_length
-
-            # checks if the position is valid and places it on the map
-            if self.check_water(x, y, water_width, water_length):
-                water = Water('water', index_water, x, y, x_top_right, y_top_right, water_width, water_length)
-                self.waters.append(water)
-                index_water += 1
-    
-    def divide_percentage(self, bodies, percentage_list=[1]):
-        if bodies == 1:
-            return percentage_list
-      
-        # divide biggest part
-        list.sort(percentage_list)
-        part = percentage_list[-1]
-
-        # remove the part we are going to split in two
-        percentage_list = percentage_list[:-1]
-
-        # split the biggest part into two smaller parts
-        part1 = uniform(0, part)
-        part2 = part - part1
-
-        # add the new part to the list
-        percentage_list.extend([part1], [part2])
-
-        #recursion
-        return self.divide_percentage(bodies-1, percentage_list)
-
-    def check_water(self, x, y, width, length):
-        for water in self.waters:
-            if ( 
-                x < (water.x_right) and
-                (x + width) > (water.x_left) and
-                y < (water.y_top) and
-                (y + length) > (water.y_bottom)
-               ):   
-               return False
-        return True
 
