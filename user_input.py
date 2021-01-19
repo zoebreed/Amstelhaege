@@ -46,10 +46,9 @@ class User:
             return 1
         elif neighbourhood == 'wijk3':
             return 2
+        else:
+            return(neighbourhood)
         
-
-    
-
     def get_houses(self):
         """
         returns the houses amount

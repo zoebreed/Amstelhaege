@@ -1,9 +1,10 @@
 from .House import House
 import csv
+from math import floor, ceil, sqrt
 from code.algorithms.random_water import randomWater
 from code.classes.Water import Water
 from code.helpers.price import calculate_price#, minimum_distance
-from random import randrange
+from random import randrange, uniform
 
 
 class Amstelhaege:
@@ -26,11 +27,11 @@ class Amstelhaege:
 
         # saves the width, length, extra space and amount for each house type
         self.house_types = {1: [8, 8, 2, self.house1_amount], 2: [11, 7, 3, self.house2_amount], 3: [12, 10, 6, self.house3_amount]}
-
+        # self.water = Water
         self.houses = []
         self.waters = []
         self.load_water(choice)
-        
+        # self.bodies = int(randrange(0,5))
 
     def load_water(self, choice):
         """
@@ -38,8 +39,9 @@ class Amstelhaege:
         """
 
         if choice == "random":
-            water = random_water(self)
-            water.run()
+            water = self.place_random_water()
+            # water = randomWater(Amstelhaege)
+            # water.run()
             return
         
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
@@ -123,8 +125,8 @@ class Amstelhaege:
                ):   
                return False
         return True
-
     
+  
     def get_distance(self, house1, house2):
         """
         calculates the shortest distance between two houses
@@ -175,8 +177,62 @@ class Amstelhaege:
     
             house.total_freearea = min_distance
 
-    def water_requirements(self, x, y, width, length, water_bodies):
-        """
-        The neighbourhood should consist of 5760 m^2 water
-        """
-        pass
+    def place_random_water(self):
+        bodies = int(randrange(1,5))
+        total_area = 5760
+        min_ratio, max_ratio = 1, 4
+        percentages = self.divide_percentage(bodies)
+        index_water = 0
+        while index_water < bodies:
+            water_area = percentages[index_water] * total_area
+
+            # dimension of water
+            min_width = max(1, int(sqrt(total_area * (min_ratio / max_ratio))))
+            max_width = int(sqrt(water_area * (max_ratio / min_ratio )))
+            water_width = int(randrange(min_width, max_width))
+            water_length= int(ceil(water_area / water_width))
+            
+            # generate random coordinates
+            x = randrange(0, int(self.width - water_width))
+            y = randrange(0, int(self.length - water_length))
+            x_top_right = x + water_width
+            y_top_right = y + water_length
+
+            # checks if the position is valid and places it on the map
+            if self.check_water(x, y, water_width, water_length):
+                water = Water('water', index_water, x, y, x_top_right, y_top_right, water_width, water_length)
+                self.waters.append(water)
+                index_water += 1
+    
+    def divide_percentage(self, bodies, percentage_list=[1]):
+        if bodies == 1:
+            return percentage_list
+      
+        # divide biggest part
+        list.sort(percentage_list)
+        part = percentage_list[-1]
+
+        # remove the part we are going to split in two
+        percentage_list = percentage_list[:-1]
+
+        # split the biggest part into two smaller parts
+        part1 = uniform(0, part)
+        part2 = part - part1
+
+        # add the new part to the list
+        percentage_list.extend([part1], [part2])
+
+        #recursion
+        return self.divide_percentage(bodies-1, percentage_list)
+
+    def check_water(self, x, y, width, length):
+        for water in self.waters:
+            if ( 
+                x < (water.x_right) and
+                (x + width) > (water.x_left) and
+                y < (water.y_top) and
+                (y + length) > (water.y_bottom)
+               ):   
+               return False
+        return True
+

@@ -1,6 +1,7 @@
-from random import random, randrange
+from random import randrange
 from math import floor, ceil, sqrt
-# from code.classes.Water import Water
+from code.classes.Water import Water
+from random import randrange, uniform
 # from code.classes.Amstelhaege import Amstelhaege
 
 class randomWater:
@@ -9,45 +10,63 @@ class randomWater:
     """
     def __init__(self, amstelhaege):
         self.amstelhaege = amstelhaege
-        self.bodies = randrange(0, 5)
+        self.bodies = randrange(1, 5)
         self.total_area = 5760
 
-        # self.max_length = 
-        # self.water_length = randrange(4, 150)
-        # self.water_width = randrange(int(ceil(water_area / water_length)), water_length
+    def check_water(self, x, y, width, length):
+        for water in self.waters:
+            if ( 
+                x < (water.x_right) and
+                (x + width) > (water.x_left) and
+                y < (water.y_top) and
+                (y + length) > (water.y_bottom)
+               ):   
+               return False
+        return True
 
-    # hoogte breedte verhouding moet tussen 1:1 en 1:4 liggen
     def run(self):
+        percentages = self.divide_percentage(self.bodies)
+     
         index_water = 0
-        while index_water < water.nr_water:
-            water_area = perecentages[index_water] * water.water_area
+        while index_water < self.bodies:
+            water_area = percentages[index_water] * self.total_area
 
             # dimension of water
-            min_width = max(1, int(sqrt(water_area * water.max_ratio / water.min_ratio)))
-            max_width = int(sqr(water_area * water.max_ratio / water.min_ratio))
-            water_width = random.randint(min_length, max_length)
-            water_length= int(ceil(water_area / water_length))
-
+            min_width = max(1, int(sqrt(5760 * (1 / 4))))
+            max_width = int(sqrt(water_area * (4/ 1)))
+            water_width = int(randrange(min_width, max_width))
+            water_length= int(ceil(water_area / water_width))
+            
             # generate random coordinates
-            x = random.randint(0, amstelhaege.width - water_width)
-            y = random.randint(0, int(amstelhaege.length - water_length))
+            x = randrange(0, int(self.amstelhaege.width - water_width))
+            y = randrange(0, int(self.amstelhaege.length - water_length))
             x_top_right = x + water_width
             y_top_right = y + water_length
 
-            # check of de positie valid is
-            if amstelhaege.check_location:
+            # checks if the position is valid and places it on the map
+            if self.check_water(x, y, water_width, water_length):
+                water = Water('water', index_water, x, y, x_top_right, y_top_right, water_width, water_length)
+                self.amstelhaege.waters.append(water)
                 index_water += 1
-            
-            # plaats het water
-            water = Water('water', index_water, x, y, x_top_right, y_top_right, water_width, water_length)
-            amstelhaege.waters.append(water)
-            print(amstelhaege.waters)
-            
-        # for i in range(self.bodies - 1):
-        #     area = floor(self.remaining_area/randrange(self.remaining_area/4))
-        #     self.remaining_area -= area
-        #     areas.append(area)
-        # area.append(self.remaining_area)
+    
+    def divide_percentage(self,bodies, percentage_list=[1]):
+        if bodies == 1:
+            return percentage_list
+      
+        # divide biggest part
+        list.sort(percentage_list)
+        part = percentage_list[-1]
 
-        # ab + cd + ef + gh = 5760
-        # where minimally 1:4
+        # remove the part we are going to split in two
+        percentage_list = percentage_list[:-1]
+
+        # split the biggest part into two smaller parts
+        part1 = uniform(0, part)
+        part2 = part - part1
+
+        # add the new part to the list
+        percentage_list.append(part1)
+        percentage_list.append(part2)
+
+        #recursion
+        return self.divide_percentage(bodies-1, percentage_list)
