@@ -1,9 +1,12 @@
 from code.classes.Amstelhaege import House
 from random import randrange
+from copy import deepcopy
 from user_input import User
+from code.helpers.price import total_worth
 from code.classes.Amstelhaege import Amstelhaege
 from code.algorithms.water_greedy import waterGreedy
-
+from code.helpers.price import calculate_price
+import time
 
 class Random_greedy():
     """
@@ -42,6 +45,8 @@ class Random_greedy():
         return self.amstelhaege.place_house(house_type, -100, -100)
 
     def run(self):
+
+            
         # consider 40 different places for the house, select best one
         for i in range(self.amstelhaege.total):
             self.highest_score = 0
@@ -51,7 +56,6 @@ class Random_greedy():
             
             for x in range(self.amount1):
                 for y in range(self.amount2):
-
                     placed = False
                     placed2 = False
                     house.move(-100, -100)
@@ -106,6 +110,7 @@ class Random_greedy():
             self.amstelhaege.calculate_worth()
         
         if self.water:    
-            self.amstelhaege.load_water2(self.waters.waters[:4])
+            self.waters.minimize()
+            self.amstelhaege.load_water2(self.waters.waters)
 
         return self.amstelhaege

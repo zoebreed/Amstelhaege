@@ -19,17 +19,17 @@ def repeat(amstelhaege, user):
         if user.algorithm_p == 'random':
             random = Random(amstelhaege_copy)
             random.run()
+        elif user.algorithm_p == 'random_greedy' and user.neighbourhood == 'greedy_water':
+            random_greedy = Random_greedy(amstelhaege_copy, water=True)
+            random_greedy.run()
         elif user.algorithm_p == 'random_greedy':
             random_greedy = Random_greedy(amstelhaege_copy)
             random_greedy.run()
-        elif user.algorithm_p == 'random_greedy + water':
-            random_greedy = Random_greedy(amstelhaege_copy, water=True)
+        elif user.algorithm_p == 'greedy' and user.neighbourhood == 'greedy_water':
+            random_greedy = Random_greedy(amstelhaege_copy, random=False, water=True)
             random_greedy.run()
         elif user.algorithm_p == 'greedy':
             random_greedy = Random_greedy(amstelhaege_copy, random=False)
-            random_greedy.run()
-        elif user.algorithm_p == 'greedy + water':
-            random_greedy = Random_greedy(amstelhaege_copy, random=False, water=True)
             random_greedy.run()
 
         # then improve on the placement with the chosen algorithm        
@@ -54,7 +54,6 @@ def repeat(amstelhaege, user):
 
         total_score += new_score
 
-        print(new_score)
         #iteratie,wijk,huizenvariant,prijs
         if user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber':
             with open('results/hillclimber1_r.csv', 'a', newline='') as csvfile:
