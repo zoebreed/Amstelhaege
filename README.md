@@ -58,14 +58,14 @@ In deze versie van het hillclimber algoritme worden de huizen opnieuw allemaal g
 #### Simulated annealing
 Het simulated annealing algortime 
 
-#### Aantal huizen
+### Aantal huizen
 Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.
 
-#### Wijken
+### Wijken
 In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn op de afbeelding te zien van links naar rechts: wijk1, wijk2 en wijk3. Verder is het ook mogelijk om een unieke wijk te creeëren. Dit kan doormiddel van bij de wijken te kiezen uit random_water of greedy_water. random_water plaats een random aantal waterlichamen (tussen de 1 en 4) op een random locactie. Bij greedy_water
 
 <img src="/docs/wijk_1.png" width=30%> <img src="/docs/wijk_2.png" width=30%> <img src="/docs/wijk_3.png" width=30%>
 
-#### Resultaten
+## Resultaten
 De resultaten de berekening zijn te vinden in het mapje results die een output.csv bevat met alle coordinaten van de objecten. Verder wordt er ook een kaart gemaakt die opgeslagen is al "prijs van de wijk".png, hierop is de indeling van de wijk te zien.
 
