@@ -44,19 +44,19 @@ Er volgt dan een keuze menu waarbij je de volgende keuzes kan maken:
 In het random algoritme worden de huizen doormiddel van random gegenereerde coordinaten geplaats op de kaart zodra deze voldoen aan de restricties. Na een aantal iteraties te hebben uitgevoerd wordt de wijk met de hoogste score opgeslagen. 
 
 #### Greedy
-Het greedy algortime plaats de huizen naar afnemende waarde: maison, bungalow, ééngezinswoning. Er word voor elk huis naar alle beschikbare x,y-coordinaten gekeken en het huis wordt geplaats op de positie die de hoogste wijk prijs oplevert. 
+Het greedy algoritme plaats de huizen naar afnemende waarde: maison, bungalow, ééngezinswoning. Er wordt voor elk huis naar alle beschikbare x,y-coordinaten gekeken en het huis wordt geplaats op de positie die de hoogste wijk prijs oplevert. 
 
 #### Random + Greedy
 Het random greedy algoritme plaats huizen één voor één op een random locatie waarna het huis verplaatst wordt naar 400 verschillende locaties en het het huis uiteindelijk geplaatst wordt op de locatie die de hoogste waarde oplevert. De huizen worden verder geplaatst van meest waardevol naar minst waardevol (maison, bungalow en eengezinswoning).
 
 #### Hillclimber
-Bij het hillclimber algoritme worden eerst alle huizen geplaatst (er kan worden gekozen volgens welk algorimte dit gebeurt), dan wordt er een random huis naar een random loctie verplaats. Als deze verplaatsing de totale prijs verhoogt wordt het huis daar neergezet. Echter als deze verplaatsing de totale prijs verlaagt wordt het huis weer teruggeplaatst naar de orginele locatie.
+Bij het hillclimber algoritme worden eerst alle huizen geplaatst (er kan worden gekozen volgens welk algoritme dit gebeurt), dan wordt er een random huis naar een random loctie verplaats. Als deze verplaatsing de totale prijs verhoogt wordt het huis daar neergezet. Echter als deze verplaatsing de totale prijs verlaagt wordt het huis weer teruggeplaatst naar de orginele locatie.
 
 #### Hillclimber2
 In deze versie van het hillclimber algoritme worden de huizen opnieuw allemaal geplaats volgens het gekozen algoritme. Een random huis wordt dan in een elke mogelijke richting verplaatst met stappen van 1 meter. Als door deze verplaatsing de  waarde van de wijk toeneemt blijven we het huis in die richting verplaatsen totdat het de wijkwaarde verlaagt.
 
 #### Simulated annealing
-Het simulated annealing algortime 
+Het zwaktepunt van vele algoritmes, waaronder greedy en hillclimber, is dat er een lokaal optimum in plaats van een globaal optimum gevonden wordt. Om toch een globaal optimaal te kunnen vinden wordt bij simulated annealing soms ook een negatieve zet geaccepteerd. De kans waarmee een negatieve zet wordt geaccepteerd, wordt kleiner naarmate de tijd verstrijkt. Verder wordt de kans groter als het prijsverschil groter is om te zorgen dat er echt een grote stap genomen wordt in plaats van een klein zijstapje.  
 
 ### Aantal huizen
 Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.
