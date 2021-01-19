@@ -17,7 +17,7 @@ class User:
         print('\n')
 
         print("And which algorithm would you like to use to place the houses?")
-        self.algorithm_p = self.get_p_algorithm()
+        self.algorithm_p = self.get_p_algorithm(self.neighbourhood)
         print('\n')
 
         print("And which algorithm would you like to use?")
@@ -33,7 +33,7 @@ class User:
         """
         returns the neighbourhood
         """
-        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random"]
+        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random", "Other"]
         neighbourhood = input(f"Choose from: {', '.join(neighbourhood_list)}\n")
 
         if neighbourhood not in neighbourhood_list:
@@ -46,9 +46,13 @@ class User:
             return 1
         elif neighbourhood == 'wijk3':
             return 2
+<<<<<<< HEAD
         else:
             return(neighbourhood)
         
+=======
+
+>>>>>>> b085d652507d32ae4e32a2f8c9c5bd32badb2d2e
     def get_houses(self):
         """
         returns the houses amount
@@ -62,16 +66,19 @@ class User:
     
         return int(houses)
 
-    def get_p_algorithm(self):
+    def get_p_algorithm(self, neighbourhood):
         """
         returns the algorithm which is used to place the houses
         """
-        algorithm_list = ["random", "random_greedy"]
+        if neighbourhood == "Other":
+            algorithm_list = ["random_greedy + water", "greedy + water"]
+        else:
+            algorithm_list = ["random", "random_greedy", "greedy"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:
             print("You chose an invalid algorithm")
-            algorithm = self.get_p_algorithm()
+            algorithm = self.get_p_algorithm(neighbourhood)
     
         return algorithm
 

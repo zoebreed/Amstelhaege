@@ -30,8 +30,15 @@ class Amstelhaege:
         # self.water = Water
         self.houses = []
         self.waters = []
+<<<<<<< HEAD
         self.load_water(choice)
         # self.bodies = int(randrange(0,5))
+=======
+             
+        if choice != 'Other':
+            self.load_water(choice)
+        
+>>>>>>> b085d652507d32ae4e32a2f8c9c5bd32badb2d2e
 
     def load_water(self, choice):
         """
@@ -39,9 +46,14 @@ class Amstelhaege:
         """
 
         if choice == "random":
+<<<<<<< HEAD
             water = self.place_random_water()
             # water = randomWater(Amstelhaege)
             # water.run()
+=======
+            water = randomWater(self)
+            water.run()
+>>>>>>> b085d652507d32ae4e32a2f8c9c5bd32badb2d2e
             return
         
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
@@ -62,6 +74,16 @@ class Amstelhaege:
                 # makes a Water object and appends it to the neighbourhood
                 water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, length)
                 self.waters.append(water)
+
+    def load_water2(self, water_bodies):
+        """
+        loads the water coordinates from a generated list
+        """
+        id = 0
+        for water in water_bodies:
+            water_body = Water('water', id, water[0], water[2], water[1], water[3], water[1]-water[0], water[3]-water[2])
+            self.waters.append(water_body)
+            id +=1
     
     def get_info(self, house_type):
         pass
