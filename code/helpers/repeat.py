@@ -31,6 +31,9 @@ def repeat(amstelhaege, user):
         elif user.algorithm_p == 'greedy':
             random_greedy = Random_greedy(amstelhaege_copy, random=False)
             random_greedy.run()
+        elif user.algorithm_p == 'genetic':
+            genetic = Genetic(amstelhaege_copy)
+            amstelhaege_copy = genetic.run()
 
         # then improve on the placement with the chosen algorithm        
         if user.algorithm_i == 'hillclimber':

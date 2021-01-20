@@ -87,6 +87,9 @@ class Hillclimber_2:
                     # move decreases the worth
                     if new_price < old_price:
                         house.move(x, y)
+                    
+                    self.amstelhaege_copy.get_free_space()
+                    self.amstelhaege_copy.calculate_worth()
 
                     #print(f"house.id {house.id} highest score{new_price} current score {self.get_price()}")
 

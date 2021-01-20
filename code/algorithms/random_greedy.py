@@ -37,7 +37,7 @@ class Random_greedy():
         """
         if iteration < self.amstelhaege.house3_amount:
             house_type = 3
-        elif iteration < self.amstelhaege.house2_amount:
+        elif iteration < (self.amstelhaege.house2_amount +self.amstelhaege.house3_amount) :
             house_type = 2
         else:
             house_type = 1
@@ -45,7 +45,6 @@ class Random_greedy():
         return self.amstelhaege.place_house(house_type, -100, -100)
 
     def run(self):
-
             
         # consider 40 different places for the house, select best one
         for i in range(self.amstelhaege.total):

@@ -69,7 +69,7 @@ class User:
         if neighbourhood == "greedy_water":
             algorithm_list = ["greedy", "random_greedy"]
         else:
-            algorithm_list = ["random", "greedy", "random_greedy" ]
+            algorithm_list = ["random", "greedy", "random_greedy", "genetic"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:
