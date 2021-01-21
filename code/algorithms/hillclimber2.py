@@ -6,10 +6,9 @@ from random import shuffle, choice
 
 class Hillclimber_2:
     """
-    This version of hillclimber starts with a random solution. The directions list is 
-    shuffled for each random house. And then the house is moved in every direction respectively 
-    to the list (steps of 1m). If this move increases the area worth, we keep moving the 
-    house in this direction, until the worth starts decreasing. 
+    This version of hillclimber starts with a generated solution. Then it choses a random
+    house for which it finds the best direction to move in for this house. This house is 
+    moved in this direction in steps of 1m, until the move doesn't increase the worth anymore.
     """
     
     def __init__(self, amstelhaege):
