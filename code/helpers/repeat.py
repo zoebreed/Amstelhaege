@@ -1,6 +1,7 @@
 from code.algorithms.random import Random
-from code.algorithms.hillclimber1 import Hillclimber_1
-from code.algorithms.hillclimber2 import Hillclimber_2
+from code.algorithms.hillclimber1 import Hillclimber1
+from code.algorithms.hillclimber2 import Hillclimber2
+from code.algorithms.hillclimber3 import Hillclimber3
 from code.algorithms.random_greedy import Random_greedy
 from copy import deepcopy
 import csv
@@ -37,16 +38,17 @@ def repeat(amstelhaege, user):
 
         # then improve on the placement with the chosen algorithm        
         if user.algorithm_i == 'hillclimber':
-            hillclimber1 = Hillclimber_1(amstelhaege_copy)
+            hillclimber1 = Hillclimber1(amstelhaege_copy)
             hillclimber1.run()
-
         elif user.algorithm_i == 'simulated annealing':
-            hillclimber1 = Hillclimber_1(amstelhaege_copy, True)
+            hillclimber1 = Hillclimber1(amstelhaege_copy, True)
             hillclimber1.run()       
-        
         elif user.algorithm_i == 'hillclimber2':
-            hillclimber2 = Hillclimber_2(amstelhaege_copy)
-            hillclimber2.run(1)
+            hillclimber2 = Hillclimber2(amstelhaege_copy)
+            hillclimber2.run()
+        elif user.algorithm_i == 'hillclimber3':
+            hillclimber3 = Hillclimber2(amstelhaege_copy)
+            hillclimber3.run()
 
         new_score = amstelhaege_copy.price
 
