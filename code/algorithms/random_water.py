@@ -63,7 +63,7 @@ class randomWater:
       
         # divide biggest part
         list.sort(percentage_list)
-        part = percentage_list[1]
+        part = percentage_list[-1]
 
         # remove the part we are going to split in two
         percentage_list = percentage_list[:-1]
@@ -73,6 +73,6 @@ class randomWater:
         part2 = part - part1
 
         # add the new parts to the list
-        percentage_list.extend([part1],[part2])
+        percentage_list.extend([part1,part2])
 
         return self.divide_percentage((bodies - 1), percentage_list)
