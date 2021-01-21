@@ -83,7 +83,7 @@ class User:
         """
         returns the algorithm which is used to improve the placement
         """
-        algorithm_list = ["None", "hillclimber", "hillclimber2", "simulated annealing"]
+        algorithm_list = ["None", "hillclimber", "hillclimber2", "hillclimber3", "simulated annealing"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:
