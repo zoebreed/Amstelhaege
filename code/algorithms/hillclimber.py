@@ -10,7 +10,7 @@ class Hillclimber:
         # if the user chose with simulated annealing, initialize
         if sim_ann:
             self.simulated_annealing = Simulated_annealing()
-            self.condition = lambda: self.simulated_annealing.get_condition()
+            self.condition = lambda: self.simulated_annealing.update_temperature()
             self.price_check = lambda a: self.simulated_annealing.check_price(a)
 
         else:

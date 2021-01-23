@@ -15,7 +15,7 @@ class Simulated_annealing():
         self.alpha = 10
         self.T = self.Tmax
 
-    def get_condition(self):
+    def update_temperature(self):
         """
         lowers the temperature each iteration and checks whether
         the minimum temperature has been reached
@@ -23,7 +23,7 @@ class Simulated_annealing():
 
         if self.T < self.Tmin:
             return False
-        self.T -= 10
+        self.T -= self.alpha
 
         return True
         

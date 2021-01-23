@@ -24,6 +24,9 @@ class Hillclimber2(Hillclimber):
         return self.new_coordinates
 
     def find_best_direction(self, house):
+        """
+        Returns the direction which will yield the biggest price gain
+        """
         best_direction = None
         old_price = self.amstelhaege.price
         for direction in self.directions:
