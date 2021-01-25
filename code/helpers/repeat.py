@@ -3,6 +3,7 @@ from code.algorithms.hillclimber1 import Hillclimber1
 from code.algorithms.hillclimber2 import Hillclimber2
 from code.algorithms.hillclimber3 import Hillclimber3
 from code.algorithms.random_greedy import Random_greedy
+from code.algorithms.genetic import Genetic, Chromosome
 from copy import deepcopy
 import csv
 
@@ -33,7 +34,7 @@ def repeat(amstelhaege, user):
             random_greedy = Random_greedy(amstelhaege_copy, random=False)
             random_greedy.run()
         elif user.algorithm_p == 'genetic':
-            genetic = Genetic(amstelhaege_copy)
+            genetic = Genetic(amstelhaege_copy, user.neighbourhood, user.houses)
             amstelhaege_copy = genetic.run()
 
         # then improve on the placement with the chosen algorithm        
