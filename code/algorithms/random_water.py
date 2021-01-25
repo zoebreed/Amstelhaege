@@ -14,7 +14,8 @@ class randomWater:
 
     def check_water(self, x, y, width, length):
         """
-         function that checks if the water bodies overlap
+        Function that checks if the water bodies overlap
+        :param x, y: coordinates of the bottom left of water body
         """
         for water in self.new_waters:
             if ( 
@@ -56,7 +57,7 @@ class randomWater:
     
     def divide_percentage(self, bodies, percentage_list=[1]):
         """
-         function that devides splits the number 1 (n - 1) times into two random parts
+        Function that divides splits the number 1 (n - 1) times into two random parts
         """
         if bodies == 1:
             return percentage_list

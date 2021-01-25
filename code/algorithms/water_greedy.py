@@ -10,6 +10,7 @@ class waterGreedy:
         
         # store the initial water body covering the whole neighbourhood: [xLeft, xRight, yBottom, yTop]
         self.waters = [[0, 180, 0, 160]]
+        self.min_area = 5760
 
     def fix_ratio(self, water, direction, size):
         """
@@ -56,7 +57,7 @@ class waterGreedy:
         total_area = self.get_area(water_bodies[:amount])
 
        # print(total_area)
-        if total_area >= 5760:
+        if total_area >= self.min_area:
             return True, water_bodies
         return False, []
 
@@ -75,7 +76,7 @@ class waterGreedy:
     def overlap(self, water, x, y, width, length):
         """
         checks if the house overlaps on some body of water
-        returns True or False
+        :return: True if overlap, else False
         """
         if x < water[1] and (x + width) > water[0] and y < water[3] and (y + length) > water[2]:
             return True
@@ -83,7 +84,8 @@ class waterGreedy:
 
     def is_valid(self, water):
         """
-        checks whether a body of water is valid
+        Checks whether a body of water is valid
+        :return: True if valid, else False
         """
         if water[0] >= water[1] or water[2] >= water[3]:
             return False
@@ -91,7 +93,8 @@ class waterGreedy:
 
     def minimize(self):
         """
-        minimizes the water to the closest to 5760
+        Minimizes the water to the closest to 5760
+        :return: A list of minimized water coordinates
         """
         waters = self.waters[:4]
 
@@ -117,7 +120,8 @@ class waterGreedy:
 
     def check_water(self, x, y, width, length):
         """
-        if a new house is placed, will there still be enough possible water?
+        If a new house is placed, will there still be enough possible water?
+        :return: Boolean, water bodies. Boolean is True when the water can still be placed
         """
 
         new_waters = []  
