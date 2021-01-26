@@ -1,15 +1,13 @@
 from code.classes.Amstelhaege import House
 from random import randrange
 from copy import deepcopy
-from user_input import User
-from code.helpers.price import total_worth
+from code.helpers.user_input import User
 from code.classes.Amstelhaege import Amstelhaege
-from code.algorithms.water_greedy import waterGreedy
-from code.helpers.price import calculate_price
+from code.algorithms.water_greedy import WaterGreedy
 from code.parameters import iters
 import time
 
-class Random_greedy():
+class RandomGreedy():
     """
     Function that tries to place the house in random locations and places it on the
     best position for the specific house

@@ -1,4 +1,4 @@
-class waterGreedy:
+class WaterGreedy:
     """
     checks if there is enough place for the water bodies
     takes as parameters the coordinates of the house to place,

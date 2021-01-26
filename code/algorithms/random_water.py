@@ -2,7 +2,7 @@ from random import randrange, randint, uniform
 from math import ceil, sqrt
 from code.classes.Water import Water
 
-class randomWater:
+class RandomWater:
     """
     places the bodies of water in a random position
     """

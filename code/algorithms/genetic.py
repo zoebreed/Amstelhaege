@@ -1,5 +1,5 @@
 from code.algorithms.random import Random
-from code.algorithms.random_greedy import Random_greedy
+from code.algorithms.random_greedy import RandomGreedy
 from copy import deepcopy
 import random
 

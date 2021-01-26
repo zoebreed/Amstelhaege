@@ -1,8 +1,8 @@
 from code.algorithms.random import Random
-from code.algorithms.hillclimber1 import Hillclimber1
-from code.algorithms.hillclimber2 import Hillclimber2
-from code.algorithms.hillclimber3 import Hillclimber3
-from code.algorithms.random_greedy import Random_greedy
+from code.algorithms.hillclimber_random import HillclimberRandom
+from code.algorithms.hillclimber_step import HillclimberStep
+from code.algorithms.hillclimber_swap import HillclimberSwap
+from code.algorithms.random_greedy import RandomGreedy
 from copy import deepcopy
 import csv
 
@@ -36,18 +36,18 @@ def repeat(amstelhaege, user):
             amstelhaege_copy = genetic.run()
 
         # then improve on the placement with the chosen algorithm        
-        if user.algorithm_i == 'hillclimber':
-            hillclimber1 = Hillclimber1(amstelhaege_copy)
-            hillclimber1.run()
+        if user.algorithm_i == 'hillclimber_random':
+            hillclimber_random = HillclimberRandom(amstelhaege_copy)
+            hillclimber_random.run()
         elif user.algorithm_i == 'simulated annealing':
-            hillclimber1 = Hillclimber1(amstelhaege_copy, True)
-            hillclimber1.run()       
-        elif user.algorithm_i == 'hillclimber2':
-            hillclimber2 = Hillclimber2(amstelhaege_copy)
-            hillclimber2.run()
-        elif user.algorithm_i == 'hillclimber3':
-            hillclimber3 = Hillclimber2(amstelhaege_copy)
-            hillclimber3.run()
+            hillclimber_random = HillclimberRandom(amstelhaege_copy, True)
+            hillclimber_random.run()       
+        elif user.algorithm_i == 'hillclimber_step':
+            hillclimber_step = HillclimberStep(amstelhaege_copy)
+            hillclimber_step.run()
+        elif user.algorithm_i == 'hillclimber_swap':
+            hillclimber3 = HillclimberSwap(amstelhaege_copy)
+            hillclimber_swap.run()
 
         new_score = amstelhaege_copy.price
 
@@ -59,19 +59,19 @@ def repeat(amstelhaege, user):
         total_score += new_score
 
         #iteratie,wijk,huizenvariant,prijs
-        if user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber':
+        if user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber_random':
             with open('results/hillclimber1_r.csv', 'a', newline='') as csvfile:
                 wr = csv.writer(csvfile)
                 wr.writerow([i, user.neighbourhood, user.houses, new_score])
-        elif user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber2':
+        elif user.algorithm_p == 'random' and user.algorithm_i == 'hillclimber_step':
             with open('results/hillclimber2_r.csv', 'a', newline='') as csvfile:
                 wr = csv.writer(csvfile)
                 wr.writerow([i, user.neighbourhood, user.houses, new_score])
-        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'hillclimber':
+        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'hillclimber_random':
             with open('results/hillclimber1_rg.csv', 'a', newline='') as csvfile:
                 wr = csv.writer(csvfile)
                 wr.writerow([i, user.neighbourhood, user.houses, new_score])
-        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'hillclimber2':
+        elif user.algorithm_p == 'random_greedy' and user.algorithm_i == 'hillclimber_step':
             with open('results/hillclimber2_rg.csv', 'a', newline='') as csvfile:
                 wr = csv.writer(csvfile)
                 wr.writerow([i, user.neighbourhood, user.houses, new_score])

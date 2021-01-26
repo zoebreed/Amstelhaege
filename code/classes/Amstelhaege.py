@@ -1,9 +1,8 @@
 from .House import House
 import csv
 from math import floor, ceil, sqrt
-from code.algorithms.random_water import randomWater
+from code.algorithms.random_water import RandomWater
 from code.classes.Water import Water
-from code.helpers.price import calculate_price#, minimum_distance
 from random import randrange, uniform
 
 
@@ -41,7 +40,7 @@ class Amstelhaege:
         """
 
         if choice == "random_water":
-            water = randomWater()
+            water = RandomWater()
             self.waters = water.run()
             return 
         
@@ -90,7 +89,7 @@ class Amstelhaege:
 
     def calculate_worth(self):
         # calculates minimum distance and price
-            self.price = calculate_price(self.houses)
+            self.price = self.calculate_price(self.houses)
             return self.price
 
     def check_location(self, x, y, width, length, extra):
@@ -187,4 +186,19 @@ class Amstelhaege:
                     min_distance = distance
     
             house.total_freearea = min_distance
+
+    def calculate_price(houses):
+        """
+        function that calculates the price of the entire neighbourhood
+        """
+        price = 0
+        # loops through all the houses in the neighbourhood
+        for house in houses:
+            # calculates the new price of the house 
+            house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
+
+            # add price to neighbourhood price
+            price += house.price
+        
+        return price   
 
