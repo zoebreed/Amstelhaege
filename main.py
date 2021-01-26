@@ -13,7 +13,6 @@ if __name__ == '__main__':
     amstelhaege, best_price, avg_price = repeat(amstelhaege, user)
     
     #_____________________ result processing __________________________
-
     # visualising the results
     visualise(amstelhaege.waters, amstelhaege.houses, best_price)
 

@@ -1,10 +1,9 @@
-from .House import House
-import csv
-from math import floor, ceil, sqrt
-from code.algorithms.random_water import RandomWater
+from code.algorithms.water_random import WaterRandom
 from code.classes.Water import Water
-from random import randrange, uniform
-
+from code.parameters import house1, house2, house3
+from .House import House
+from random import randrange
+import csv
 
 class Amstelhaege:
     """
@@ -16,34 +15,27 @@ class Amstelhaege:
         self.price = None
 
         self.total = n_houses
-        self.fraction_house_1 = 0.6
-        self.fraction_house_2 = 0.25
-        self.fraction_house_3 = 0.15
+        self.house1_amount = int(house1.percentage * self.total)
+        self.house2_amount = int(house2.percentage * self.total)
+        self.house3_amount = int(house3.percentage * self.total)
 
-        self.house1_amount = int(0.6 * self.total)
-        self.house2_amount = int(0.25 * self.total)
-        self.house3_amount = int(0.15 * self.total)
+        # information about each house type is stored here
+        self.house = {1: house1, 2: house2, 3: house3}
 
-        # saves the width, length, extra space and amount for each house type
-        self.house_types = {1: [8, 8, 2, self.house1_amount], 2: [11, 7, 3, self.house2_amount], 3: [12, 10, 6, self.house3_amount]}
-        # self.water = Water
         self.houses = []
         self.waters = []
              
-        if choice != 'greedy_water':
+        if choice == "random water":
+            water = WaterRandom()
+            self.waters = water.run()
+        elif choice != 'greedy water':
             self.load_water(choice)
         
-
     def load_water(self, choice):
         """
         Loads the coordinates of the water from the csv file
-        """
-
-        if choice == "random_water":
-            water = RandomWater()
-            self.waters = water.run()
-            return 
-        
+        :param choice: 
+        """        
         csv_file = [("data/wijk_1.csv"), ("data/wijk_2.csv"), ("data/wijk_3.csv")][choice]
     
         # retrieves the coordinates of the water
@@ -51,46 +43,40 @@ class Amstelhaege:
             reader = csv.DictReader(in_file)
             for row in reader:
                 bottom_x, bottom_y = row['bottom_left_xy'].split(",")
-                top_x, top_y = row ['top_right_xy'].split(",")
-
-                id = row
+                top_x, top_y = row['top_right_xy'].split(",")
                 x_bottom_left, y_bottom_left = int(bottom_x), int(bottom_y)
                 x_top_right, y_top_right = int(top_x), int(top_y)
-                width = (x_top_right - x_bottom_left)
-                length = (y_top_right - y_bottom_left)
+                width = x_top_right - x_bottom_left
+                length = y_top_right - y_bottom_left
 
                 # makes a Water object and appends it to the neighbourhood
-                water = Water('water', id, x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, length)
+                water = Water('water', x_bottom_left, y_bottom_left, x_top_right, y_top_right, width, length)
                 self.waters.append(water)
 
     def load_water2(self, water_bodies):
         """
         loads the water coordinates from a generated list
         """
-        id = 0
         for water in water_bodies:
-            water_body = Water('water', id, water[0], water[2], water[1], water[3], water[1]-water[0], water[3]-water[2])
-            self.waters.append(water_body)
-            id +=1
-    
-    def get_info(self, house_type):
-        pass
+            water_body = Water('water', water[0], water[2], water[1], water[3], water[1]-water[0], water[3]-water[2])
+            self.waters.append(water_body)    
 
     def place_house(self, house_type, x, y):
         """
         places a new house and saves the created object
-        x and y are the bottom left coordinates of the house
         """
-        new_house = House(x, y, house_type)
+        new_house = House(x, y, self.house[house_type])
         self.houses.append(new_house)
-
         return new_house
 
-    def check_location(self, x, y, width, length, extra):
+    def check_location(self, x, y, house):
         """
         checks whether a house can be placed at particular coordinates.
-        x and y are the center location of the house
+        :param x,y: coordinates of the location to check
+        :param house: class or namedtuple where house info can be accesed
         """
+        width, length = house.width, house.length
+        extra = house.free_area
 
         # check if the house is placed in water
         for water in self.waters:
@@ -130,12 +116,10 @@ class Amstelhaege:
                return False
         return True
     
-  
     def get_distance(self, house1, house2):
         """
         calculates the shortest distance between two houses
         """
-
         # calculate the horizontal distance
         if house1.x_right <= house2.x_left:
             horizontal = house2.x_left - house1.x_right
@@ -161,7 +145,6 @@ class Amstelhaege:
         """
         assigns the free space
         """ 
-
         # if there is only 1 house return an arbitrary random number
         if len(self.houses) == 1:
             self.houses[0].total_freearea = randrange(20)
@@ -173,7 +156,7 @@ class Amstelhaege:
             for house_check in self.houses:
                 if house == house_check:
                     continue
-                
+            
                 distance = self.get_distance(house, house_check)
 
                 if distance < min_distance:
@@ -181,16 +164,11 @@ class Amstelhaege:
     
             house.total_freearea = min_distance
 
-<<<<<<< HEAD
-    def calculate_price(self, houses):
-=======
     def calculate_price(self):
->>>>>>> 64cbf009845ff1420f51209090c27643c8b9e42a
         """
         function that calculates the price of the entire neighbourhood
         """
         price = 0
-        # loops through all the houses in the neighbourhood
         for house in self.houses:
             # calculates the new price of the house 
             house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
@@ -200,5 +178,12 @@ class Amstelhaege:
         
         self.price = price
         return self.price
-   
 
+    # TODO: kan deze samen met calculate_price of willen we hem apart houden
+    def get_price(self):
+        """
+        :return: The price of Amstelhaege (float)
+        """
+        self.get_free_space()
+        self.calculate_price()
+        return self.price

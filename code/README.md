@@ -2,7 +2,7 @@
 Deze folder bevat alle algoritmes die wij voor deze case geïmplementeerd hebben
 - random.py: Functie voor het random algoritme
 - random_greedy.py: Functie voor het random_greedy algoritme
-- genetic.py
+- genetic.py: Functie voor het genetic algoritme
 - hillclimber.py: Algemene 'utility' class voor de drie hillclimber algoritmes
 - hillclimber1.py: Functie voor het hillclimber algoritme
 - hillclimber2.py: Functie voor het hillclimber2 algoritme

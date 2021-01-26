@@ -7,19 +7,17 @@ class House():
     """
     id_iter = itertools.count()
 
-    def __init__(self, x_bottom_left, y_bottom_left, house_type):
-        self.house_type = house_type
-        self.x_left = x_bottom_left
-        self.y_bottom = y_bottom_left
+    def __init__(self, x_left, y_bottom, house):
+        self.x_left = x_left
+        self.y_bottom = y_bottom
+        self.id = next(House.id_iter)
         self.total_freearea = None
         self.minimum_distance = None
         self.price = None
-        self.id = next(House.id_iter)
         self.worth = None
         
-        # get the properties of the house depending on the type
-        house = eval('house' + str(house_type))
-        
+        # initialize the properties of the house    
+        self.house_type = house.type    
         self.name = house.name
         self.length = house.length
         self.width = house.width
@@ -31,9 +29,10 @@ class House():
         self.y_top = self.y_bottom + self.length
 
     
-    def move(self, x, y):
+    def move(self, x=-100, y=-100):
         """
         move the left bottom corner of the house to the (x,y) posistion
+        :param x, y: Default = (-100, -100)
         """
         self.x_left = x
         self.x_right = x + self.width

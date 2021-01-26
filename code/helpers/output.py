@@ -1,6 +1,4 @@
 import csv
-from code.classes.House import House
-from code.classes.Water import Water
 
 def output(houses, waters, price):
     with open('results/output.csv', 'w', newline='') as csvfile:
@@ -23,6 +21,5 @@ def output(houses, waters, price):
 
             structures.append(item.name)
             counter += 1
-
-        networth = int(price)
-        wr.writerow(['networth', networth])
+            
+        wr.writerow(['networth', price])

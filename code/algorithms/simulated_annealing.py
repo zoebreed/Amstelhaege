@@ -1,15 +1,15 @@
+from code.parameters import simAnn as SA
 from math import exp
 from random import random
-from code.parameters import simAnn as SA
 
-
-class Simulated_annealing():
+class SimulatedAnnealing():
     """
     class which is used for the simulated annealing algorithm.
-    It is used inside other algorithms. initialize the class in 
+    It is used inside other algorithms. Initialize the class in 
     the beginning of the algorithm and call run when checking the
     price difference 
     """
+    
     def __init__(self):
         self.Tmax = SA.Tmax
         self.Tmin = SA.Tmin
@@ -21,7 +21,6 @@ class Simulated_annealing():
         lowers the temperature each iteration
         :return: False if final temperature been reached, else True
         """
-
         if self.T < self.Tmin:
             return False
         self.T -= self.alpha

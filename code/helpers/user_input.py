@@ -31,7 +31,7 @@ class User:
 
     def get_neighbourhood(self):
         """
-        returns the neighbourhood
+        :return: the neighbourhood
         """
         neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random water", "greedy water"]
         neighbourhood = input(f"Choose from: {', '.join(neighbourhood_list)}\n")
@@ -40,20 +40,20 @@ class User:
             print("You chose an invalid neighbourhood")
             neighbourhood = self.get_neighbourhood()
 
-        if neighbourhood == 'wijk1':
+        if neighbourhood == "wijk1":
             return 0
-        elif neighbourhood == 'wijk2':
+        elif neighbourhood == "wijk2":
             return 1
-        elif neighbourhood == 'wijk3':
+        elif neighbourhood == "wijk3":
             return 2
         else:
             return(neighbourhood)
         
     def get_houses(self):
         """
-        returns the houses amount
+        :return: the amount of houses
         """
-        houses_list = ['20', '40', '60']
+        houses_list = ["20", "40", "60"]
         houses = input(f"Choose from: {', '.join(houses_list)}\n")
 
         if houses not in houses_list:
@@ -64,9 +64,9 @@ class User:
 
     def get_p_algorithm(self, neighbourhood):
         """
-        returns the algorithm which is used to place the houses
+        :return: the algorithm which is used to place the houses
         """
-        if neighbourhood == "greedy_water":
+        if neighbourhood == "greedy water":
             algorithm_list = ["greedy", "random greedy"]
         else:
             algorithm_list = ["random", "greedy", "random greedy", "genetic"]
@@ -81,7 +81,7 @@ class User:
     
     def get_i_algorithm(self):
         """
-        returns the algorithm which is used to improve the placement
+        :return: the algorithm which is used to improve the placement
         """
         algorithm_list = ["None", "hillclimber random", "hillclimber step", "hillclimber swap", "simulated annealing"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
@@ -94,7 +94,7 @@ class User:
         
     def get_iterations(self):
         """
-        returns the amount of iterations
+        :return: the amount of iterations
         """
         iterations = input("Please choose any natural number: ")
 

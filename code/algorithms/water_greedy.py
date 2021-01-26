@@ -17,7 +17,7 @@ class WaterGreedy:
         returns the resulting bodies of water when split
         """
         rest = water[:]
-        water[direction + 1] = water[direction] + size*4
+        water[direction + 1] = water[direction] + size * 4
 
         rest[direction] = water[direction + 1] + 2
         rest = self.check_ratio(rest)
@@ -31,7 +31,6 @@ class WaterGreedy:
         """
         checks whether the water bodies obey the minimum 1:4 ratio, returns the water bodies that do
         """
-
         width = self.get_width(water)
         length = self.get_length(water)
 
@@ -50,12 +49,9 @@ class WaterGreedy:
         """
         checks whether maximally 4 bodies of water can achieve the minimal area of 5760 m^2
         """
-
         water_bodies.sort(reverse=True, key=lambda water: self.get_area([water]))
-
         total_area = self.get_area(water_bodies[:amount])
 
-       # print(total_area)
         if total_area >= self.min_area:
             return True, water_bodies
         return False, []
@@ -122,7 +118,6 @@ class WaterGreedy:
         If a new house is placed, will there still be enough possible water?
         :return: Boolean, water bodies. Boolean is True when the water can still be placed
         """
-
         new_waters = []  
         for water in self.waters:
 
@@ -134,7 +129,6 @@ class WaterGreedy:
                 
                 # split the water in the right direction
                 if water_length > water_width:
-
                     y1, y2 = y + length, water[3]
                     water1 = [water[0], water[1], y1, y2]
                     if self.is_valid(water1):

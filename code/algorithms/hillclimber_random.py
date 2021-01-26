@@ -1,9 +1,9 @@
-from random import randrange, choice
 from code.algorithms.hillclimber import Hillclimber
+from random import randrange, choice
 
 class HillclimberRandom(Hillclimber):
     """
-    Executes the first version of the hillclimber algorithm. As input
+    Executes the random version of the hillclimber algorithm. As input
     it takes amstelhaege with the houses already placed. Then a random 
     house is placed at a random location. If this random location 
     increases the total price, it stays. If this random location
@@ -22,8 +22,8 @@ class HillclimberRandom(Hillclimber):
             y = randrange(self.amstelhaege.length)
 
             # check if the random coordinates are available
-            if self.amstelhaege.check_location(x, y, house.width, house.length, house.free_area):
-                house.move(x,y)
+            if self.amstelhaege.check_location(x, y, house):
+                house.move(x, y)
                 return
 
     def run(self):
@@ -31,7 +31,6 @@ class HillclimberRandom(Hillclimber):
         Runs the hillclimber algorith with the user chosen settings
         :return: The amstelhaege object with the improved house placement
         """
-        
         while self.condition():
             old_price = self.amstelhaege.price
             
@@ -42,7 +41,7 @@ class HillclimberRandom(Hillclimber):
             x, y = house.x_left, house.y_bottom
 
             # move the house temporarily outside of the map to prevent overlap on itself
-            house.move(-100, -100)
+            house.move()
 
             # move the house to a random location within the map
             self.move_house_random(house)
@@ -53,7 +52,6 @@ class HillclimberRandom(Hillclimber):
             # accept the change if the price is higher, else change back the coordinates
             if self.price_check(price_diff):
                 house.move(x, y)
-                self.amstelhaege.get_free_space()
-                self.amstelhaege.calculate_price()
+                self.amstelhaege.get_price()
 
         return self.amstelhaege
