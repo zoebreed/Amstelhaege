@@ -15,7 +15,6 @@ class Water():
         self.y_top = y_top_right
         self.width = width
         self.length = length
-        # self.square_area = self.width * self.length
-        # self.square_area_oval = (math.pi * (self.width/2) * (self.length/2))
+     
         
 

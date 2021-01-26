@@ -36,9 +36,7 @@ class Hillclimber3(Hillclimber):
         return False
 
     def run(self):
-        
         while self.condition():
-            
             old_price = self.amstelhaege.price
             
             # select two random houses
@@ -54,7 +52,6 @@ class Hillclimber3(Hillclimber):
 
             # accept the change if the price is higher, else change back the coordinates
             if self.price_check(price_diff):
-
                 self.swap(house1, house2)
                 self.amstelhaege.get_free_space()
                 self.amstelhaege.calculate_worth()

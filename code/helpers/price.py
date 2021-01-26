@@ -15,9 +15,7 @@ def calculate_price(houses):
     """
     function that calculates the price of the entire neighbourhood
     """
-
     price = 0
-
     # loops through all the houses in the neighbourhood
     for house in houses:
         # calculates the new price of the house 

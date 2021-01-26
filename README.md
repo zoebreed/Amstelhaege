@@ -55,8 +55,14 @@ Bij het hillclimber algoritme worden eerst alle huizen geplaatst (er kan worden 
 #### Hillclimber2
 In deze versie van het hillclimber algoritme worden de huizen opnieuw allemaal geplaats volgens het gekozen algoritme. Een random huis wordt dan in een elke mogelijke richting verplaatst met stappen van 1 meter. Als door deze verplaatsing de  waarde van de wijk toeneemt blijven we het huis in die richting verplaatsen totdat het de wijkwaarde verlaagt.
 
+#### Hillclimber3
+
+
 #### Simulated annealing
 Het zwaktepunt van vele algoritmes, waaronder greedy en hillclimber, is dat er een lokaal optimum in plaats van een globaal optimum gevonden wordt. Om toch een globaal optimaal te kunnen vinden wordt bij simulated annealing soms ook een negatieve zet geaccepteerd. De kans waarmee een negatieve zet wordt geaccepteerd, wordt kleiner naarmate de tijd verstrijkt. Verder wordt de kans groter als het prijsverschil groter is om te zorgen dat er echt een grote stap genomen wordt in plaats van een klein zijstapje.  
+
+#### Genetic
+
 
 ### Aantal huizen
 Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.

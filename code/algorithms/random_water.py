@@ -14,7 +14,7 @@ class randomWater:
 
     def check_water(self, x, y, width, length):
         """
-         function that checks if the water bodies overlap
+        function that checks if the water bodies overlap
         """
         for water in self.new_waters:
             if ( 
@@ -26,6 +26,29 @@ class randomWater:
                return False
         return True
 
+    def divide_percentage(self, bodies, percentage_list=[1]):
+        """
+        function that devides splits the number 1 (n - 1) times into two random parts
+        """
+        if bodies == 1:
+            return percentage_list
+      
+        # divide biggest part
+        list.sort(percentage_list)
+        part = percentage_list[-1]
+
+        # remove the part we are going to split in two
+        percentage_list = percentage_list[:-1]
+
+        # split the biggest part into two smaller parts
+        part1 = uniform(0, part)
+        part2 = part - part1
+
+        # add the new parts to the list
+        percentage_list.extend([part1,part2])
+
+        return self.divide_percentage((bodies - 1), percentage_list)
+  
     def run(self):
         bodies = randint(self.min_ratio, self.max_ratio)
         percentages = self.divide_percentage(bodies)
@@ -54,25 +77,4 @@ class randomWater:
 
         return self.new_waters
     
-    def divide_percentage(self, bodies, percentage_list=[1]):
-        """
-         function that devides splits the number 1 (n - 1) times into two random parts
-        """
-        if bodies == 1:
-            return percentage_list
-      
-        # divide biggest part
-        list.sort(percentage_list)
-        part = percentage_list[-1]
 
-        # remove the part we are going to split in two
-        percentage_list = percentage_list[:-1]
-
-        # split the biggest part into two smaller parts
-        part1 = uniform(0, part)
-        part2 = part - part1
-
-        # add the new parts to the list
-        percentage_list.extend([part1,part2])
-
-        return self.divide_percentage((bodies - 1), percentage_list)

@@ -16,9 +16,9 @@ class Random_greedy():
 
     def __init__(self, amstelhaege, random=True, water=False):
         self.amstelhaege = amstelhaege
+        self.random = random
         self.highest_score = None
         self.score = None   
-        self.random = random
 
         if random:
             self.amount1 = 1
@@ -45,7 +45,6 @@ class Random_greedy():
         return self.amstelhaege.place_house(house_type, -100, -100)
 
     def run(self):
-            
         # consider 40 different places for the house, select best one
         for i in range(self.amstelhaege.total):
             self.highest_score = 0
@@ -61,17 +60,14 @@ class Random_greedy():
 
                     # generate random coordinates
                     while placed == False:
-
                         if self.random:
                             x = randrange(self.amstelhaege.width)
                             y = randrange(self.amstelhaege.length)
                         else:
                             placed = True
-                        
 
                         # check if the coordinates are available
                         if self.amstelhaege.check_location(x, y, house.width, house.length, house.free_area):
-
                             if self.water:
                                 check, temp = self.waters.check_water(x, y, house.width, house.length)
                                 if check:
@@ -103,7 +99,7 @@ class Random_greedy():
             if self.water:    
                 self.waters.waters = waters_max
 
-            # places the hous in the best position
+            # places the hous in the best position and updates the score
             house.move(x_max, y_max)
             self.amstelhaege.get_free_space()
             self.amstelhaege.calculate_worth()

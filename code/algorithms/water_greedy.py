@@ -7,7 +7,6 @@ class waterGreedy:
     """
 
     def __init__(self):
-        
         # store the initial water body covering the whole neighbourhood: [xLeft, xRight, yBottom, yTop]
         self.waters = [[0, 180, 0, 160]]
 
