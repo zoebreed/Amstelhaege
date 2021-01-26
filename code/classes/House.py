@@ -1,4 +1,5 @@
 import itertools 
+from code.parameters import house1, house2, house3
 
 class House():
     """
@@ -15,30 +16,16 @@ class House():
         self.price = None
         self.id = next(House.id_iter)
         self.worth = None
-        if self.house_type == 1:
-            self.name = 'eengezinswoning'
-            #self.id = id
-            self.length = 8
-            self.width = 8
-            self.increase_value = 0.03
-            self.value = 285000
-            self.free_area = 2
-        elif self.house_type == 2:
-            self.name = 'bungalow'
-            #self.id = id
-            self.length = 7
-            self.width = 11
-            self.increase_value = 0.04
-            self.value = 399000
-            self.free_area = 3
-        elif self.house_type == 3:
-            self.name = 'maison'
-            #self.id = id
-            self.length = 10
-            self.width = 12
-            self.increase_value = 0.06
-            self.value = 610000
-            self.free_area = 6
+        
+        # get the properties of the house depending on the type
+        house = eval('house' + str(house_type))
+        
+        self.name = house.name
+        self.length = house.length
+        self.width = house.width
+        self.increase_value = house.increase_value
+        self.value = house.value
+        self.free_area = house.free_area
 
         self.x_right = self.x_left + self.width
         self.y_top = self.y_bottom + self.length
@@ -53,6 +40,3 @@ class House():
 
         self.y_bottom = y
         self.y_top = y + self.length
-
-  
-
