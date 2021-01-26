@@ -86,7 +86,7 @@ class RandomGreedy():
                     if self.random == True or placed2 == True:
                         # calculates worth of the map      
                         self.amstelhaege.get_free_space()
-                        self.amstelhaege.calculate_worth()
+                        self.amstelhaege.calculate_price()
                         self.score = self.amstelhaege.price
                         
                         # if score is higher than the currrent, save the position
