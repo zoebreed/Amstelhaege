@@ -1,11 +1,11 @@
-import matplotlib
 from matplotlib.patches import Rectangle
-import matplotlib.pyplot as plt
 from random import randrange
+import matplotlib.pyplot as plt
+import matplotlib
 
 def visualise(waters, houses, price):
     """
-    Function which visualises the map
+    Function which makes the visualisation for the map
     """
 
     fig, ax = plt.subplots()

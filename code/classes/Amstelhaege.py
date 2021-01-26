@@ -187,7 +187,7 @@ class Amstelhaege:
     
             house.total_freearea = min_distance
 
-    def calculate_price(houses):
+    def calculate_price(self, houses):
         """
         function that calculates the price of the entire neighbourhood
         """

@@ -33,7 +33,7 @@ class User:
         """
         returns the neighbourhood
         """
-        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random_water", "greedy_water"]
+        neighbourhood_list = ["wijk1", "wijk2", "wijk3", "random water", "greedy water"]
         neighbourhood = input(f"Choose from: {', '.join(neighbourhood_list)}\n")
 
         if neighbourhood not in neighbourhood_list:
@@ -67,9 +67,9 @@ class User:
         returns the algorithm which is used to place the houses
         """
         if neighbourhood == "greedy_water":
-            algorithm_list = ["greedy", "random_greedy"]
+            algorithm_list = ["greedy", "random greedy"]
         else:
-            algorithm_list = ["random", "greedy", "random_greedy", "genetic"]
+            algorithm_list = ["random", "greedy", "random greedy", "genetic"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:
@@ -83,7 +83,7 @@ class User:
         """
         returns the algorithm which is used to improve the placement
         """
-        algorithm_list = ["None", "hillclimber_random", "hillclimber_step", "hillclimber_swap", "simulated annealing"]
+        algorithm_list = ["None", "hillclimber random", "hillclimber step", "hillclimber swap", "simulated annealing"]
         algorithm = input(f"Choose from: {', '.join(algorithm_list)}\n")
 
         if algorithm not in algorithm_list:

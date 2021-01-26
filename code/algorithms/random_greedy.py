@@ -1,11 +1,6 @@
-from code.classes.Amstelhaege import House
-from random import randrange
-from copy import deepcopy
-from code.helpers.user_input import User
-from code.classes.Amstelhaege import Amstelhaege
 from code.algorithms.water_greedy import WaterGreedy
 from code.parameters import iters
-import time
+from random import randrange
 
 class RandomGreedy():
     """
@@ -32,7 +27,7 @@ class RandomGreedy():
 
         self.water = water
         if self.water:
-            self.waters = waterGreedy()
+            self.waters = WaterGreedy()
 
     def get_house(self, iteration):
         """
