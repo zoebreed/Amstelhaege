@@ -2,6 +2,11 @@ from random import choice
 from code.algorithms.hillclimber import Hillclimber
 
 class Hillclimber2(Hillclimber):
+    """
+    Executes the second version of the hillclimber algorithm. As input
+    it takes amstelhaege with the houses already placed. Then a random 
+    is moved in the direct with the biggest price gain.
+    """
     def __init__(self, amstelhaege, sim_ann=False):
 
         Hillclimber.__init__(self, amstelhaege, sim_ann)
@@ -9,7 +14,9 @@ class Hillclimber2(Hillclimber):
 
     def hillclimber2_move(self, house, direction):
         """
-        Returns the x_left and y_bottom coordinates according to the direction
+        :param direction: string of the direction
+        :param house: house object
+        :return: The x_left and y_bottom coordinates according to the direction
         """
         # coordinates in new coordinates: [x_left, y_bottom]
         if direction == "up":
@@ -25,7 +32,8 @@ class Hillclimber2(Hillclimber):
 
     def find_best_direction(self, house):
         """
-        Returns the direction which will yield the biggest price gain
+        :param house: house_object
+        :return: the direction which will yield the biggest price gain (string)
         """
         best_direction = None
         old_price = self.amstelhaege.price
@@ -52,13 +60,19 @@ class Hillclimber2(Hillclimber):
         return best_direction
   
     def run(self):
+        """
+        Runs the hillclimber algorith with the user chosen settings
+        :return: The amstelhaege object with the improved house placement
+        """
+
         old_price = self.amstelhaege.price
 
         # stop if the given time has passed
         while self.condition():
-            # for house in self.amstelhaege.houses:
+
             house = choice(self.amstelhaege.houses)
             direction = self.find_best_direction(house)
+
             # make sure that at the start of each house and each direction you get in the while loop 
             new_price = self.amstelhaege.price + 1
 

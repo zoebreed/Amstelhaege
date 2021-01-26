@@ -26,8 +26,8 @@ class Chromosome():
     def swap_houses(self):
         for house in self.amstelhaege.houses:
             r = random.random()
-            if r < 0.2:
 
+            if r < 0.2:
                 house2 = random.choice(self.amstelhaege.houses)
                 if house == house2:
                     continue
@@ -102,7 +102,6 @@ class Genetic():
         self.sum_fitnesses = 0
         for chromosome in self.population:
             self.sum_fitnesses += chromosome.fitness
-        
 
         cum_fitnesses = 0
         for chromosome in self.population:

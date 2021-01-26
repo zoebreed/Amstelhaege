@@ -1,5 +1,6 @@
 from math import exp
 from random import random
+from code.parameters import simAnn as SA
 
 
 class Simulated_annealing():
@@ -10,15 +11,15 @@ class Simulated_annealing():
     price difference 
     """
     def __init__(self):
-        self.Tmax = 170000
-        self.Tmin = 1000
-        self.alpha = 10
+        self.Tmax = SA.Tmax
+        self.Tmin = SA.Tmin
+        self.alpha = SA.alpha
         self.T = self.Tmax
 
     def update_temperature(self):
         """
-        lowers the temperature each iteration and checks whether
-        the minimum temperature has been reached
+        lowers the temperature each iteration
+        :return: False if final temperature been reached, else True
         """
 
         if self.T < self.Tmin:

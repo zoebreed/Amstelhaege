@@ -13,7 +13,6 @@ def repeat(amstelhaege, user):
     highest_score, total_score = 0, 0
 
     for i in range(user.iterations):
-
         amstelhaege_copy = deepcopy(amstelhaege)
 
         # first place the houses using the chosen algorithm

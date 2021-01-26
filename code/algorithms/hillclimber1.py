@@ -15,7 +15,7 @@ class Hillclimber1(Hillclimber):
 
     def move_house_random(self, house):
         """
-        runs until available coordinates are found randomly and the house is places
+        Runs until available coordinates are found randomly and the house is places
         """
         while True:
             x = randrange(self.amstelhaege.width)
@@ -27,6 +27,10 @@ class Hillclimber1(Hillclimber):
                 return
 
     def run(self):
+        """
+        Runs the hillclimber algorith with the user chosen settings
+        :return: The amstelhaege object with the improved house placement
+        """
         
         while self.condition():
             old_price = self.amstelhaege.price

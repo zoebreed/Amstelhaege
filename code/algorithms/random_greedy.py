@@ -6,12 +6,17 @@ from code.helpers.price import total_worth
 from code.classes.Amstelhaege import Amstelhaege
 from code.algorithms.water_greedy import waterGreedy
 from code.helpers.price import calculate_price
+from code.parameters import iters
 import time
 
 class Random_greedy():
     """
-    function that tries to place the house in random locations and places it on the
+    Function that tries to place the house in random locations and places it on the
     best position for the specific house
+
+    :param amstelhaege: The object amstelhaege
+    :param random: Whether to place the houses randomly, default is True
+    :param water: Whether to place the house greedy, default is False
     """
 
     def __init__(self, amstelhaege, random=True, water=False):
@@ -22,10 +27,10 @@ class Random_greedy():
 
         if random:
             self.amount1 = 1
-            self.amount2 = 400
+            self.amount2 = iters.randomGreedy
         elif not random:
-            self.amount1 = 180
-            self.amount2 = 160
+            self.amount1 = self.amstelhaege.width
+            self.amount2 = self.amstelhaege.length
 
         self.water = water
         if self.water:
@@ -33,7 +38,7 @@ class Random_greedy():
 
     def get_house(self, iteration):
         """
-        returns a house of the right type placed at -100, -100 to keep all posibilities open
+        :return: House object of the right type placed at -100, -100 to keep all posibilities open
         """
         if iteration < self.amstelhaege.house3_amount:
             house_type = 3
@@ -45,6 +50,11 @@ class Random_greedy():
         return self.amstelhaege.place_house(house_type, -100, -100)
 
     def run(self):
+        """
+        Runs the algorithm with the chosen settings
+        :return: The amstelhaege object with the houses and water placed
+        """
+            
         # consider 40 different places for the house, select best one
         for i in range(self.amstelhaege.total):
             self.highest_score = 0
@@ -65,14 +75,14 @@ class Random_greedy():
                             y = randrange(self.amstelhaege.length)
                         else:
                             placed = True
-
+                        
                         # check if the coordinates are available
                         if self.amstelhaege.check_location(x, y, house.width, house.length, house.free_area):
                             if self.water:
                                 check, temp = self.waters.check_water(x, y, house.width, house.length)
                                 if check:
                                     waters = temp
-                                    house.move(x,y)
+                                    house.move(x, y)
                                     placed = True
                                     placed2 = True
                             else:

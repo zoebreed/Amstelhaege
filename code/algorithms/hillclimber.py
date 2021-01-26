@@ -1,8 +1,12 @@
 from code.algorithms.simulated_annealing import Simulated_annealing
+from code.parameters import iters
 
 class Hillclimber:
     """
     Hillclimber class from which all the hillclimber algorithms inherit
+
+    :param amstelhaege: The object amstelhaege
+    :param sim_ann: Whether to use simulated annealing or not, True or False
     """
     def __init__(self, amstelhaege, sim_ann):
         self.amstelhaege = amstelhaege
@@ -14,13 +18,13 @@ class Hillclimber:
             self.price_check = lambda a: self.simulated_annealing.check_price(a)
 
         else:
-            self.iterations = 1000
+            self.iterations = iters.hillclimber
             self.condition = lambda: self.get_condition()
             self.price_check = lambda a: self.check_price(a)
   
     def get_price(self):
         """
-        Returns the price of Amstelhaege
+        :return: The price of Amstelhaege (float)
         """
         self.amstelhaege.get_free_space()
         self.amstelhaege.calculate_worth()
@@ -29,7 +33,8 @@ class Hillclimber:
     
     def price_diff(self, old_price):
         """
-        returns the price difference
+        :param: The old price of amstelhaege
+        :return: The price difference between the current amstelhaege and the old price (float)
         """
 
         self.amstelhaege.get_free_space()
@@ -39,7 +44,8 @@ class Hillclimber:
     
     def check_price(self, price_diff):
         """
-        returns True when the old price was higher, else False
+        :param: The price difference between the old and new amstelhaege, new - old
+        :return: True when the old price was higher, else False
         """
         
         if price_diff < 0:
@@ -49,6 +55,7 @@ class Hillclimber:
     def get_condition(self):
         """
         simple for loop implementation
+        :return: False when the for loop ended, else True
         """
         
         if self.iterations == 0:

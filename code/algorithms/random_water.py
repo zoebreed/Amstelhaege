@@ -14,7 +14,8 @@ class randomWater:
 
     def check_water(self, x, y, width, length):
         """
-        function that checks if the water bodies overlap
+        Function that checks if the water bodies overlap
+        :param x, y: coordinates of the bottom left of water body
         """
         for water in self.new_waters:
             if ( 

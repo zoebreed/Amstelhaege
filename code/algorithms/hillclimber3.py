@@ -15,7 +15,9 @@ class Hillclimber3(Hillclimber):
 
     def swap(self, house1, house2):
         """
-        runs until available coordinates are found randomly and the house is places
+        Swaps the location of house1 and house2 if possible
+        :param house: house1 and house2 are objects
+        :return: True when succesfull
         """
         # save the original coordinates for later
         x, y = house1.x_left, house1.y_bottom
@@ -36,6 +38,12 @@ class Hillclimber3(Hillclimber):
         return False
 
     def run(self):
+        """
+        Runs the hillclimber algorith with the user chosen settings
+        :return: The amstelhaege object with the improved house placement
+        """
+
+        
         while self.condition():
             old_price = self.amstelhaege.price
             
