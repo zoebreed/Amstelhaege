@@ -12,7 +12,7 @@ class HillclimberStep(Hillclimber):
         Hillclimber.__init__(self, amstelhaege, sim_ann)
         self.directions = ["up", "down", "right", "left"]
 
-    def hillclimber_step__move(self, house, direction):
+    def hillclimber_step_move(self, house, direction):
         """
         :param direction: string of the direction
         :param house: house object
@@ -103,7 +103,7 @@ class HillclimberStep(Hillclimber):
                     house.move(x, y)
                 
                 self.amstelhaege.get_free_space()
-                self.amstelhaege.calculate_worth()
+                self.amstelhaege.calculate_price()
 
                 #print(f"house.id {house.id} highest score{new_price} current score {self.get_price()}")
 

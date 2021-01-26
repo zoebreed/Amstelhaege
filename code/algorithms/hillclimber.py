@@ -27,7 +27,7 @@ class Hillclimber:
         :return: The price of Amstelhaege (float)
         """
         self.amstelhaege.get_free_space()
-        self.amstelhaege.calculate_worth()
+        self.amstelhaege.calculate_price()
         return self.amstelhaege.price
 
     
@@ -38,7 +38,7 @@ class Hillclimber:
         """
 
         self.amstelhaege.get_free_space()
-        self.amstelhaege.calculate_worth()
+        self.amstelhaege.calculate_price()
 
         return self.amstelhaege.price - old_price
     

@@ -62,6 +62,6 @@ class HillclimberSwap(Hillclimber):
             if self.price_check(price_diff):
                 self.swap(house1, house2)
                 self.amstelhaege.get_free_space()
-                self.amstelhaege.calculate_worth()
+                self.amstelhaege.calculate_price()
 
         return self.amstelhaege

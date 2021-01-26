@@ -7,7 +7,7 @@ class Chromosome():
     def __init__(self, amstelhaege):
         self.amstelhaege = amstelhaege
         self.cum_fitness = None
-        self.worth = self.amstelhaege.calculate_worth()
+        self.worth = self.amstelhaege.calculate_price()
         self.calculate_fitness()
     
     def calculate_fitness(self):
@@ -51,7 +51,7 @@ class Chromosome():
                 
                 self.amstelhaege.get_free_space()
                 # self.amstelhaege.calculate_worth()
-                self.worth = self.amstelhaege.calculate_worth()
+                self.worth = self.amstelhaege.calculate_price()
 
     def random_coordinates(self):
         for house in self.amstelhaege.houses:
@@ -72,8 +72,8 @@ class Chromosome():
                         counter += 1
             
                 self.amstelhaege.get_free_space()
-                self.amstelhaege.calculate_worth()
-                self.worth = self.amstelhaege.calculate_worth()
+                self.amstelhaege.calculate_price()
+                self.worth = self.amstelhaege.price
 
 class Genetic():
     def __init__(self, amstelheage):
@@ -172,6 +172,6 @@ class Genetic():
         #print(f"worth of best individual is {best_individual.worth}")
         best_individual = parents[0]
         best_individual.amstelhaege.get_free_space()
-        best_individual.amstelhaege.calculate_worth()
+        best_individual.amstelhaege.calculate_price()
         return best_individual.amstelhaege
 

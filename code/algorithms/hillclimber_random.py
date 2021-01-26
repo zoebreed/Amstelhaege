@@ -54,6 +54,6 @@ class HillclimberRandom(Hillclimber):
             if self.price_check(price_diff):
                 house.move(x, y)
                 self.amstelhaege.get_free_space()
-                self.amstelhaege.calculate_worth()
+                self.amstelhaege.calculate_price()
 
         return self.amstelhaege

@@ -35,4 +35,4 @@ class Random:
                 self.place_random(house_type, house_info)
 
         self.amstelhaege.get_free_space()
-        self.amstelhaege.calculate_worth()
+        self.amstelhaege.calculate_price()

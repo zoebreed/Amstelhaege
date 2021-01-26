@@ -86,12 +86,6 @@ class Amstelhaege:
 
         return new_house
 
-
-    def calculate_worth(self):
-        # calculates minimum distance and price
-            self.price = self.calculate_price(self.houses)
-            return self.price
-
     def check_location(self, x, y, width, length, extra):
         """
         checks whether a house can be placed at particular coordinates.
@@ -187,18 +181,20 @@ class Amstelhaege:
     
             house.total_freearea = min_distance
 
-    def calculate_price(houses):
+    def calculate_price(self):
         """
         function that calculates the price of the entire neighbourhood
         """
         price = 0
         # loops through all the houses in the neighbourhood
-        for house in houses:
+        for house in self.houses:
             # calculates the new price of the house 
             house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
 
             # add price to neighbourhood price
             price += house.price
         
-        return price   
+        self.price = price
+        return self.price
+   
 
