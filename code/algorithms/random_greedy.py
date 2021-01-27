@@ -74,7 +74,6 @@ class RandomGreedy():
                        
                             # if score is higher than the currrent, save the position
                             if self.score > self.highest_score:
-                                print(self.highest_score)
                                 x_max = house.x_left
                                 y_max = house.y_bottom
                                 # TODO: ik heb deze uitgezet want dit is toch niet nodig?
@@ -83,7 +82,7 @@ class RandomGreedy():
 
                                 if self.water:
                                     waters_max = waters
-                                    
+
                 if self.water:    
                     self.waters.waters = waters_max
 
