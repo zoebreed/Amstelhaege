@@ -22,3 +22,6 @@ Deze folder bevat scripts die de verschillende objecten voor de case aanmaken.
 - repeat.py: functie die het gekozen algoritme aanroept en herhaalt
 - user_input.py: Zorgt voor de dat de gebruiker zijn opties in de terminal kan typen
 - visualise.py: Print de kaart
+
+### parameters.py
+Dit bestand bevat alle parameters voor de algoritmes en objecten
