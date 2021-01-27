@@ -33,10 +33,10 @@ Om de code te runnen dient u in u terminal de volgende code in te voeren:
 python main.py 
 ```
 Er volgt dan een keuze menu waarbij je de volgende keuzes kan maken:
-- Welke wijk (wijk1, wijk2, wijk3, random_water, greedy_water)
+- Welke wijk (wijk1, wijk2, wijk3, random water, greedy water)
 - Hoeveel huizen er worden geplaatst (20, 40, 60)
-- Met welk algoritme de huizen worden geplaatst (random, greedy, random_greedy)
-- Welk algoritme wil je gebruiken (None, hillclimber, hillclimber2, simulated annealing)
+- Met welk algoritme de huizen worden geplaatst (random, greedy, random greedy, genetic)
+- Welk algoritme wil je gebruiken (None, hillclimber random, hillclimber step, hillclimber swap,  simulated annealing)
 - Hoeveel iteraties wil je maken
 
 ## Algoritme
@@ -49,13 +49,14 @@ Het greedy algoritme plaats de huizen naar afnemende waarde: maison, bungalow, �
 #### Random + Greedy
 Het random greedy algoritme plaats huizen één voor één op een random locatie waarna het huis verplaatst wordt naar 400 verschillende locaties en het het huis uiteindelijk geplaatst wordt op de locatie die de hoogste waarde oplevert. De huizen worden verder geplaatst van meest waardevol naar minst waardevol (maison, bungalow en eengezinswoning).
 
-#### Hillclimber
+#### Hillclimber random
 Bij het hillclimber algoritme worden eerst alle huizen geplaatst (er kan worden gekozen volgens welk algoritme dit gebeurt), dan wordt er een random huis naar een random loctie verplaats. Als deze verplaatsing de totale prijs verhoogt wordt het huis daar neergezet. Echter als deze verplaatsing de totale prijs verlaagt wordt het huis weer teruggeplaatst naar de orginele locatie.
 
-#### Hillclimber2
+#### Hillclimber step
 In deze versie van het hillclimber algoritme worden de huizen opnieuw allemaal geplaats volgens het gekozen algoritme. Een random huis wordt dan in een elke mogelijke richting verplaatst met stappen van 1 meter. Als door deze verplaatsing de  waarde van de wijk toeneemt blijven we het huis in die richting verplaatsen totdat het de wijkwaarde verlaagt.
 
-#### Hillclimber3
+#### Hillclimber swap
+In de laatste hillclimber versie 
 
 
 #### Simulated annealing
