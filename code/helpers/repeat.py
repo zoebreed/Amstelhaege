@@ -47,7 +47,7 @@ def repeat(amstelhaege, user):
             hillclimber_step = HillclimberStep(amstelhaege_copy)
             hillclimber_step.run()
         elif user.algorithm_i == 'hillclimber swap':
-            hillclimber3 = HillclimberSwap(amstelhaege_copy)
+            hillclimber_swap = HillclimberSwap(amstelhaege_copy)
             hillclimber_swap.run()
 
         new_score = amstelhaege_copy.price
