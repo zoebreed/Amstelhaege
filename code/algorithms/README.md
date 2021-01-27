@@ -13,6 +13,9 @@ Het random greedy algoritme plaats huizen één voor één op een random locatie
 Bij het creëren van een wijk met random water wordt er een getal tussen de 1 en 4 gekozen die bepaalt hoeveel waterlichamen er worden geplaatst. Er wordt dan een functie aangeroepen die bepaalt hoeveel procent van de totale oppervlakte elk waterlichaam mag innemen. Er worden dan random x,y-coordinaten gecreëerd waar de hoogte-breedteverhoudingen tussen de 1 en de 4 liggen. Er wordt dan gekeken of er geen overlap is met een ander waterlichaam. Als dit niet het geval is wordt het water geplaatst op de kaart.
 
 ### Greedy Water
+Bij het greedy water algoritme wordt het water pas bij het einde geladen. Eerst worden de huizen met behulp van het greedy algoritme geplaatst. Bij elk huis dat geplaatst wordt, wordt er echter ook gechekt of er nog wel genoeg plek is voor het water (5760 m^2 met maximaal 4 lichamen). Als er niet genoeg plek is door de plaatsing van een huis wordt het huis daar niet neer gezet.
+Om efficiente code te behouden, wordt het het water oppervlakte op een simpele manier berekent. Eerst wordt het hele vlak gezien als water. Als er een huis wordt geplaatst, splits dit vlak zich om dat huis heen in twee vlakken water. Per huis dat geplaatst wordt, wordt er dus gekeken welk lichaam water dit beinvloed, en dat lichaam water wordt dan opgesplists. 
+
 
 ### Hillclimber random
 De eerste versie van hillclimber maakt gebruik van random plaatsing. Een random huis wordt geselecteerd en op een random valide plek gezet. Als deze plek de totale prijs hoger maakt, blijft het huis staan. Als de totale prijs lager wordt, wordt het huis teruggezet. Dit principe wordt herhaald voor 20000 iteraties. Na ongeveer 20000 iteraties convergeert de prijs zoals ook te zien is in de grafiek. Minimale winst kan nog gehaald worden door het aantal iteraties te verhogen, maar deze tijd kan veel beter gebruikt worden om het algoritme meerdere keren te herhalen. In de grafiek is namelijk ook te zien dat de prijs per iteratie erg varieert, wat aantoont dat de uiteindelijke prijs sterk afhankelijk is van de initiele plaatsing van de huizen.
@@ -33,8 +36,10 @@ Het simulated annealing algoritme kan uitgevoerd worden met hillclimber1, hillcl
 Deze kans wordt gegeven door de volgende formule:<br><br>
 <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;P&space;=&space;e^{\frac{-dE}{T}}" title="\large P = e^{\frac{-dE}{T}}" />,
 
-waar de het prijsverschil is (new_price - old_price), en T de huidige temperatuur. 
+waar de het prijsverschil is (new_price - old_price), en T de huidige temperatuur. De temperatuur begint bij een waarde Tmax, en eindigt bij een waarde Tmin. Om de Tmax en Tmin te vinden waarvoor de hoogste prijs gevonden wordt hebben we eerste beide temperaturen gevarierd. In de linker grafiek is te zien dat de waarde van Tmin weinig invloed heeft op de prijs, we hebben Tmin gelijkgesteld aan 1000. Daarna hebben we hetzelfde experiment nog een keer uitgevoerd maar nu alleen Tmax gevariert. Nu was duidelijk te zien dat de prijs convergeert vanaf ongeveer 170.000. De stapgrootte alpha is gelijk aan 10.
 
+
+<img src="../../docs/images/Simulatedannealing.png" width=40%> <img src="../../docs/images/Simulatedannealing2.png" width=40%> 
 ### Genetic
 Het genetic algoritme genereert een populatie van oplossingen. Deze populatie kan worden gegenereerd door middel van de plaatsingsalgoritmes: random, randomgreedy of greedy. Dit kan worden aangepast in de initialize_population functie. Vervolgens worden random een aantal 'ouders' (oplossingen) uit deze populatie gekozen. Deze ouders worden gebruikt om samen nieuwe oplossingen (kinderen) mee te creëeren doordat ze een bepaalde crossoverkans hebben. Deze kinderen ondergaan daarna kleine mutaties onder een bepaalde mutatiekans om homogeniteit te voorkomen. Uit deze groep met ouders en kinderen worden de beste individuen (met de hoogste waardes) gekozen die dan de nieuwe generatie vormen. Dit wordt herhaaldelijk gedaan totdat de gemiddelde waarde van zo'n generatie convergeert. Vervolgens wordt de beste oplossting (individu) uit de laatste generatie gekozen en is dit dan de uiteindelijke oplossing.
 
