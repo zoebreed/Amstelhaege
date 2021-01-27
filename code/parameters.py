@@ -18,7 +18,7 @@ gen = geneticAlgorithm(
 probabilities = namedtuple('probability', ['mutation', 'crossover'])
 probs = probabilities(
 
-    0.1,                   # mutation: mutation probability
+    0.5,                   # mutation: mutation probability
     0.6                    # crossover: crossover probability
 )
 
