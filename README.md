@@ -56,14 +56,13 @@ Bij het hillclimber algoritme worden eerst alle huizen geplaatst (er kan worden 
 In deze versie van het hillclimber algoritme worden de huizen opnieuw allemaal geplaats volgens het gekozen algoritme. Een random huis wordt dan in een elke mogelijke richting verplaatst met stappen van 1 meter. Als door deze verplaatsing de  waarde van de wijk toeneemt blijven we het huis in die richting verplaatsen totdat het de wijkwaarde verlaagt.
 
 #### Hillclimber swap
-In de laatste hillclimber versie 
-
+In de laatste hillclimber versie van het hillclimber algoritme wordt uit een al gegenereerde oplossing twee random huizen gekozen. Deze worden met elkaar verwisseld van locatie. Als hierdoor de waarde van de wijk toeneemt staan we deze verplaatsing toe, anders verplaatsen we de twee huizen weer terug naar hun originele locatie.
 
 #### Simulated annealing
 Het zwaktepunt van vele algoritmes, waaronder greedy en hillclimber, is dat er een lokaal optimum in plaats van een globaal optimum gevonden wordt. Om toch een globaal optimaal te kunnen vinden wordt bij simulated annealing soms ook een negatieve zet geaccepteerd. De kans waarmee een negatieve zet wordt geaccepteerd, wordt kleiner naarmate de tijd verstrijkt. Verder wordt de kans groter als het prijsverschil groter is om te zorgen dat er echt een grote stap genomen wordt in plaats van een klein zijstapje.  
 
 #### Genetic
-
+Het genetic algoritme genereert een populatie van oplossingen, waar vervolgens random een aantal 'ouders' (oplossingen) uit worden gekozen. Deze ouders worden gebruikt om samen nieuwe oplossingen (kinderen) mee te creëeren, die vervolgens kleine mutaties ondergaan om homogeniteit te voorkomen. Uit deze groep met ouders en kinderen worden de beste individuen (met de hoogste waardes) gekozen die dan de nieuwe generatie vormen. Dit wordt herhaaldelijk gedaan totdat de gemiddelde waarde van zo'n generatie convergeert. Vervolgens wordt de beste oplossting (individu) uit de laatste generatie gekozen en is dit dan de uiteindelijke oplossing. 
 
 ### Aantal huizen
 Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.
