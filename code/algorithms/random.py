@@ -18,7 +18,7 @@ class Random:
             y = randrange(self.amstelhaege.length)
 
             if self.amstelhaege.check_location(x, y, house):
-                self.amstelhaege.place_house(house.house_type, x, y)
+                self.amstelhaege.place_house(house.type, x, y)
                 return
 
     def run(self):
