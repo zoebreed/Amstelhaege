@@ -39,14 +39,12 @@ class WaterRandom:
         if bodies == 1:
             return percentage_list
       
-        # divide biggest part
+        # select the biggest part and remove from list
         list.sort(percentage_list)
         part = percentage_list[-1]
-
-        # remove the part we are going to split in two
         percentage_list = percentage_list[:-1]
 
-        # split the biggest part into two smaller parts
+        # make two parts of the biggest part
         part1 = uniform(0, part)
         part2 = part - part1
 
