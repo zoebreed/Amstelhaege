@@ -1,5 +1,5 @@
-import itertools 
 from code.parameters import house1, house2, house3
+import itertools 
 
 class House():
     """

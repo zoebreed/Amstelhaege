@@ -12,7 +12,7 @@ Het random greedy algoritme plaats huizen één voor één op een random locatie
 ### Random Water
 Bij het creëren van een wijk met random water wordt er een getal tussen de 1 en 4 gekozen die bepaalt hoeveel waterlichamen er worden geplaatst. Er wordt dan een functie aangeroepen die bepaalt hoeveel procent van de totale oppervlakte elk waterlichaam mag innemen. Er worden dan random x,y-coordinaten gecreëerd waar de hoogte-breedteverhoudingen tussen de 1 en de 4 liggen. Er wordt dan gekeken of er geen overlap is met een ander waterlichaam. Als dit niet het geval is wordt het water geplaatst op de kaart.
 
-## Greedy Water
+### Greedy Water
 
 ### Hillclimber random
 De eerste versie van hillclimber maakt gebruik van random plaatsing. Een random huis wordt geselecteerd en op een random valide plek gezet. Als deze plek de totale prijs hoger maakt, blijft het huis staan. Als de totale prijs lager wordt, wordt het huis teruggezet. Dit principe wordt herhaald voor 20000 iteraties. Na ongeveer 20000 iteraties convergeert de prijs zoals ook te zien is in de grafiek. Minimale winst kan nog gehaald worden door het aantal iteraties te verhogen, maar deze tijd kan veel beter gebruikt worden om het algoritme meerdere keren te herhalen. In de grafiek is namelijk ook te zien dat de prijs per iteratie erg varieert, wat aantoont dat de uiteindelijke prijs sterk afhankelijk is van de initiele plaatsing van de huizen.
