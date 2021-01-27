@@ -34,3 +34,4 @@ waar dE het prijsverschil is (new_price - old_price), en T de huidige temperatuu
 
 
 ### Genetic
+Het genetic algoritme genereert een populatie van oplossingen, waar vervolgens random een aantal 'ouders' uit worden gekozen. Deze ouders worden gebruikt om samen nieuwe oplossingen (kinderen) mee te creëeren, die vervolgens kleine mutaties ondergaan om homogeniteit te voorkomen. Uit deze groep met ouders en kinderen worden de beste individuen (met de hoogste waardes) gekozen die dan de nieuwe generatie vormen. Dit wordt herhaaldelijk gedaan totdat de gemiddelde waarde van zo'n generatie convergeert. Vervolgens wordt de beste oplossting (individu) uit de laatste generatie gekozen en is dit dan de uiteindelijke oplossing. 
