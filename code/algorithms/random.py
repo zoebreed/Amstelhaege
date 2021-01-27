@@ -31,4 +31,4 @@ class Random:
                 # place the house at a random position
                 self.place_random(house)
 
-        self.amstelhaege.get_price()
+        self.amstelhaege.calculate_price()

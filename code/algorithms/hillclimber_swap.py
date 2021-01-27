@@ -58,6 +58,6 @@ class HillclimberSwap(Hillclimber):
             # accept the change if the price is higher, else change back the coordinates
             if self.price_check(price_diff):
                 self.swap(house1, house2)
-                self.amstelhaege.get_price()
+                self.amstelhaege.calculate_price()
 
         return self.amstelhaege

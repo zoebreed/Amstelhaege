@@ -7,7 +7,7 @@ class HillclimberStep(Hillclimber):
     it takes amstelhaege with the houses already placed. Then a random 
     is moved in the direct with the biggest price gain.
     """
-    
+
     def __init__(self, amstelhaege, sim_ann=False):
         Hillclimber.__init__(self, amstelhaege, sim_ann)
         self.directions = ["up", "down", "right", "left"]
@@ -86,7 +86,7 @@ class HillclimberStep(Hillclimber):
                 x, y = house.x_left, house.y_bottom
 
                 # get the initial price
-                old_price = self.amstelhaege.get_price()
+                old_price = self.amstelhaege.calculate_price()
 
                 new_coordinates = self.hillclimber_step_move(house, direction)
                 
@@ -99,12 +99,12 @@ class HillclimberStep(Hillclimber):
                     else: 
                         house.move(x, y)
 
-                new_price = self.amstelhaege.get_price()
+                new_price = self.amstelhaege.calculate_price()
 
                 # move decreases the worth
                 if new_price < old_price:
                     house.move(x, y)
                 
-                self.amstelhaege.get_price()
+                self.amstelhaege.calculate_price()
 
         return self.amstelhaege

@@ -5,9 +5,7 @@ from math import ceil, sqrt
 class WaterRandom:
     """
     places the bodies of water in a random position
-
-
-     checks if there is enough place for the water bodies
+    checks if there is enough place for the water bodies
     takes as parameters the coordinates of the house to place,
     the necessary water bodies amount and the possible water bodies
     till date

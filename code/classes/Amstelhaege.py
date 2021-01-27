@@ -152,7 +152,7 @@ class Amstelhaege:
 
         for house in self.houses:
             min_distance = 1000
-
+            
             for house_check in self.houses:
                 if house == house_check:
                     continue
@@ -167,8 +167,10 @@ class Amstelhaege:
     def calculate_price(self):
         """
         function that calculates the price of the entire neighbourhood
+        :return: The price of Amstelhaege (float)
         """
         price = 0
+        self.get_free_space()
         for house in self.houses:
             # calculates the new price of the house 
             house.price = house.value * (1 + house.increase_value * (house.total_freearea - house.free_area))
@@ -177,13 +179,4 @@ class Amstelhaege:
             price += house.price
         
         self.price = price
-        return self.price
-
-    # TODO: kan deze samen met calculate_price of willen we hem apart houden
-    def get_price(self):
-        """
-        :return: The price of Amstelhaege (float)
-        """
-        self.get_free_space()
-        self.calculate_price()
         return self.price

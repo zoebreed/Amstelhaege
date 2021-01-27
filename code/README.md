@@ -1,22 +1,24 @@
-## Algorithms
+### Algorithms
 Deze folder bevat alle algoritmes die wij voor deze case geïmplementeerd hebben
-- random.py: Functie voor het random algoritme
-- random_greedy.py: Functie voor het random_greedy algoritme
 - genetic.py: Functie voor het genetic algoritme
 - hillclimber.py: Algemene 'utility' class voor de drie hillclimber algoritmes
-- hillclimber1.py: Functie voor het hillclimber algoritme
-- hillclimber2.py: Functie voor het hillclimber2 algoritme
-- hillclimber3.py: Functie voor het hillclimber3 algoritme
+- hillclimber_random.py: Functie voor het hillclimber random algoritme
+- hillclimber_step.py: Functie voor het hillclimber step algoritme
+- hillclimber_swap.py: Functie voor het hillclimber swap algoritme
+- random.py: Functie voor het random algoritme
+- random_greedy.py: Functie voor het random_greedy algoritme
 - simulated_annealing.py: Functie voor het simulated annealing algorimte
-- random_water.py: Functie voor het random_water algoritme
-- water_greedy.py: Functie voor het greedy_water algoritme
+- water_greedy.py: Functie voor het random water algoritme
+- water_greedy.py: Functie voor het greedy water algoritme
 
-## Classes
+### Classes
 Deze folder bevat scripts die de verschillende objecten voor de case aanmaken. 
-- Amstelhaege.py
-- House.py
-- Water.py
+- Amstelhaege.py: representatie voor de gehele woonwijk
+- House.py: representatie voor de huis objecten
+- Water.py: representatie voor de water objecten
 
-## Helpers
-- price.py
-- repeat.py
+### Helpers
+- output.py: Maakt de csv output file
+- repeat.py: functie die het gekozen algoritme aanroept en herhaalt
+- user_input.py: Zorgt voor de dat de gebruiker zijn opties in de terminal kan typen
+- visualise.py: Print de kaart

@@ -7,7 +7,7 @@ class Hillclimber:
     :param amstelhaege: The object amstelhaege
     :param sim_ann: Whether to use simulated annealing or not, True or False
     """
-    
+
     def __init__(self, amstelhaege, sim_ann):
         self.amstelhaege = amstelhaege
 
@@ -26,7 +26,7 @@ class Hillclimber:
         :param: The old price of amstelhaege
         :return: The price difference between the current amstelhaege and the old price (float)
         """
-        self.amstelhaege.get_price()
+        self.amstelhaege.calculate_price()
         return self.amstelhaege.price - old_price
     
     def check_price(self, price_diff):
