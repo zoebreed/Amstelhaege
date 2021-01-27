@@ -68,7 +68,7 @@ Het genetic algoritme genereert een populatie van oplossingen, waar vervolgens r
 Voor de wijk is het mogelijk om een verschillend aantal maximum huizen te plaatsen. De opties hiervoor zijn: 20, 40 en 60.
 
 ### Wijken
-In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn op de afbeelding te zien van links naar rechts: wijk1, wijk2 en wijk3. Verder is het ook mogelijk om een unieke wijk te creeëren. Dit kan doormiddel van bij de wijken te kiezen uit random_water of greedy_water. random_water plaats een random aantal waterlichamen (tussen de 1 en 4) op een random locactie. Bij greedy_water
+In de case is er keuzen uit drie wijken die onderling verschillen in de ligging van het water. Deze wijken zijn op de afbeelding te zien van links naar rechts: wijk1, wijk2 en wijk3. Verder is het ook mogelijk om een unieke wijk te creeëren. Dit kan doormiddel van bij de wijken te kiezen uit random water of greedy water. random water plaats een random aantal waterlichamen (tussen de 1 en 4) op een random locactie. Bij greedy_water
 
 <img src="/docs/images/wijk_1.png" width=30%> <img src="/docs/images/wijk_2.png" width=30%> <img src="/docs/images/wijk_3.png" width=30%>
 

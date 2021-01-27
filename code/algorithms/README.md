@@ -25,6 +25,7 @@ Deze versie is aan variatie op hillclimber random. Hierbij wordt ook een random 
 ### Hillclimber swap
 Deze variatie van het hillclimber algoritme kiest random twee huizen. Deze huizen worden met elkaar verwisseld van locatie. Als deze valide verwisseling een hogere waarde voor de wijk oplevert wordt deze verwisseling doorgevoerd. Anders worden de huizen weer terug naar hun originele locactie verplaatst.
 
+
 ### Simulated annealing
 Het simulated annealing algoritme kan uitgevoerd worden met hillclimber1, hillclimber2 en hillclimber3. Het algoritme wordt normaal uitgevoerd, maar in plaats van alleen bij een hogere prijs de verandering te accepteren, wordt een negatieve verandering ook geaccepteerd met een bepaalde kans.
 
@@ -32,7 +33,7 @@ Het simulated annealing algoritme kan uitgevoerd worden met hillclimber1, hillcl
 Deze kans wordt gegeven door de volgende formule:<br><br>
 <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;P&space;=&space;e^{\frac{-dE}{T}}" title="\large P = e^{\frac{-dE}{T}}" />,
 
-waar dE het prijsverschil is (new_price - old_price), en T de huidige temperatuur. 
+waar de het prijsverschil is (new_price - old_price), en T de huidige temperatuur. 
 
 ### Genetic
 Het genetic algoritme genereert een populatie van oplossingen. Deze populatie kan worden gegenereerd door middel van de plaatsingsalgoritmes: random, randomgreedy of greedy. Dit kan worden aangepast in de initialize_population functie. Vervolgens worden random een aantal 'ouders' (oplossingen) uit deze populatie gekozen. Deze ouders worden gebruikt om samen nieuwe oplossingen (kinderen) mee te creëeren doordat ze een bepaalde crossoverkans hebben. Deze kinderen ondergaan daarna kleine mutaties onder een bepaalde mutatiekans om homogeniteit te voorkomen. Uit deze groep met ouders en kinderen worden de beste individuen (met de hoogste waardes) gekozen die dan de nieuwe generatie vormen. Dit wordt herhaaldelijk gedaan totdat de gemiddelde waarde van zo'n generatie convergeert. Vervolgens wordt de beste oplossting (individu) uit de laatste generatie gekozen en is dit dan de uiteindelijke oplossing.

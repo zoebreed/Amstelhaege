@@ -52,6 +52,6 @@ class HillclimberRandom(Hillclimber):
             # accept the change if the price is higher, else change back the coordinates
             if self.price_check(price_diff):
                 house.move(x, y)
-                self.amstelhaege.get_price()
+                self.amstelhaege.calculate_price()
 
         return self.amstelhaege

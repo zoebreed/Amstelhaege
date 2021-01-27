@@ -14,7 +14,6 @@ class House():
         self.total_freearea = None
         self.minimum_distance = None
         self.price = None
-        self.worth = None
         
         # initialize the properties of the house    
         self.house_type = house.type    

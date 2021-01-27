@@ -69,15 +69,13 @@ class RandomGreedy():
 
                         if self.random == True or placed2 == True:
                             # calculates worth of the map      
-                            self.amstelhaege.get_price()
+                            self.amstelhaege.calculate_price()
                             self.score = self.amstelhaege.price
                        
                             # if score is higher than the currrent, save the position
                             if self.score > self.highest_score:
                                 x_max = house.x_left
                                 y_max = house.y_bottom
-                                # TODO: ik heb deze uitgezet want dit is toch niet nodig?
-                                # self.amstelhaege.get_free_space()
                                 self.highest_score = self.score
 
                                 if self.water:
@@ -88,7 +86,7 @@ class RandomGreedy():
 
                 # places the hous in the best position and updates the score
                 house.move(x_max, y_max)
-                self.amstelhaege.get_price()
+                self.amstelhaege.calculate_price()
         
         if self.water:    
             self.waters.minimize()
