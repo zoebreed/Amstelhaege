@@ -1,19 +1,25 @@
 <diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>-
-</help_text><element><id>UMLClass</id><coordinates><x>59</x><y>35</y><w>260</w><h>210</h></coordinates><panel_attributes>Amstelhaege
+</help_text><element><id>UMLClass</id><coordinates><x>19</x><y>35</y><w>300</w><h>300</h></coordinates><panel_attributes>Amstelhaege
 -
-length = Int
-width = Int
-max_houses = Int
-fraction_house_1 = float (0.60)
-fraction_house_2 = float (0.25)
-fraction_house_3 = float (0.15)
-amount_house_1 = Int
-amount_house_2 = Int
-amount_house_3 = Int
+length = 160
+width = 180
+total = Int
+amount_house_1 = House.fraction_house_1 *total
+amount_house_2 = House.fraction_house_2 * total
+amount_house_3 = House.fraction_house_3 * total
+houses = [ ]
+waters = [ ]
 
 -
-load_map()
-place_house()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>419</x><y>35</y><w>260</w><h>320</h></coordinates><panel_attributes>House
+__init__()
+load_water()
+load_water2()
+place_house()
+check_location()
+get_distance()
+get_free_space()
+calculate_price()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>419</x><y>35</y><w>260</w><h>320</h></coordinates><panel_attributes>House
 --
 x_bottom_left = Int
 y_bottom_left = Int
@@ -27,19 +33,19 @@ increase_value = Int
 value = Int
 free_area = Int
 extra_freearea = Int
-
+name = string
+house_type = Int
 --
 __init__ ()
-place_house()
-check_border()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>40</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>290</y><w>260</w><h>170</h></coordinates><panel_attributes>Water
+move()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>40</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>370</y><w>300</w><h>170</h></coordinates><panel_attributes>Water
 -
+name = string
 x_bottom_left = Int
 y_bottom_left = Int
 x_top_right = Int
 y_top_right = Int
-id = Int
-type = string
-
+width = Int
+length = Int
 -
-</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+__init__()</panel_attributes><additional_attributes></additional_attributes></element></diagram>
