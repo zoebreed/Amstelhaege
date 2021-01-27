@@ -36,7 +36,8 @@ class RandomGreedy():
         """
             
         # consider different places for the house, select best one
-        for house_info in self.amstelhaege.house.values():
+        for j in [3, 2, 1]:
+            house_info = self.amstelhaege.house[j]
             for i in range(int(house_info.percentage * self.amstelhaege.total)):
                 self.highest_score = 0
 

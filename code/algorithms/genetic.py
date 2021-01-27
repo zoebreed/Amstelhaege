@@ -46,7 +46,6 @@ class Chromosome():
                 # use the swap function in the hillclimber_swap algorithm to swap the houses
                 hillclimber_swap = HillclimberSwap(self.amstelhaege)
                 if hillclimber_swap.swap(house, house2):
-                    self.amstelhaege.get_free_space()
                     self.fitness = self.amstelhaege.calculate_price()
 
     def move_houses(self):
@@ -60,7 +59,6 @@ class Chromosome():
                 hillclimber_random = HillclimberRandom(self.amstelhaege)
                 hillclimber_random.move_house_random(house)
         
-                self.amstelhaege.get_free_space()
                 self.fitness = self.amstelhaege.calculate_price()
 
 class Genetic():
@@ -182,7 +180,6 @@ class Genetic():
                                 random_alg.place_random(home)
                 
                 # append the child to the list if all the houses are placed
-                child.get_free_space()
                 child.calculate_price()
                 child = Chromosome(child)
                 self.children.append(child)
@@ -251,13 +248,8 @@ class Genetic():
                 counter = 0
             
             parents = survivors
-            best_individual = parents[0]
-            best_individual.amstelhaege.get_free_space()
-            best_individual.amstelhaege.calculate_price()
         
         # get the individual with the highest fitness value
         best_individual = parents[0]
-        best_individual.amstelhaege.get_free_space()
         best_individual.amstelhaege.calculate_price()
-        print(f"{best_individual.amstelhaege.price}")
         return best_individual.amstelhaege
