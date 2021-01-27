@@ -172,14 +172,14 @@ class Genetic():
                                 child.place_house(home2.house_type, home2.x_left, home2.y_bottom)
                             else:
                                 random_alg = Random(child)
-                                random_alg.place_random(home.house_type, child.house_types[home.house_type])
+                                random_alg.place_random(home)
     
                         elif home == home2:
                             if child.check_location(home1.x_left, home1.y_bottom, home1):
                                 child.place_house(home1.house_type, home1.x_left, home1.y_bottom)
                             else:
                                 random_alg = Random(child)
-                                random_alg.place_random(home.house_type, child.house_types[home.house_type])
+                                random_alg.place_random(home)
                 
                 # append the child to the list if all the houses are placed
                 child.get_free_space()
@@ -230,13 +230,14 @@ class Genetic():
         Runs the genetic algorithm
         :return: the amstelhaege area of the best individual/chromosome of the last generation
         """
+        print("start")
         # generate the initial population and select parents
         self.initialize_population()
         parents = self.parent_selection()
 
         counter = 0
         average = self.get_average(parents)
-        
+
         # terminate when the average of a generation doesn't increase anymore
         while counter < gen.termination:
 
@@ -250,9 +251,13 @@ class Genetic():
                 counter = 0
             
             parents = survivors
+            best_individual = parents[0]
+            best_individual.amstelhaege.get_free_space()
+            best_individual.amstelhaege.calculate_price()
         
         # get the individual with the highest fitness value
         best_individual = parents[0]
         best_individual.amstelhaege.get_free_space()
         best_individual.amstelhaege.calculate_price()
+        print(f"{best_individual.amstelhaege.price}")
         return best_individual.amstelhaege

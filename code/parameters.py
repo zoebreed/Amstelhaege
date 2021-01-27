@@ -12,14 +12,14 @@ geneticAlgorithm = namedtuple('genetic', ['population', 'termination'])
 gen = geneticAlgorithm(
 
     25,                    # population: number of individuals in initial population
-    750                    # termination: number of iterations that the average of a population doesn't have to increase
+    100                    # termination: number of iterations that the average of a population doesn't have to increase
 )
 
 probabilities = namedtuple('probability', ['mutation', 'crossover'])
 probs = probabilities(
 
-    0.2,                   # mutation: mutation probability
-    0.7                    # crossover: crossover probability
+    0.1,                   # mutation: mutation probability
+    0.6                    # crossover: crossover probability
 )
 
 iterations = namedtuple('iteration', ['hillclimber', 'randomGreedy', ])

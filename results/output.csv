@@ -1,4 +1,28 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
+<<<<<<< HEAD
+water_1,"0,32","0,0","180,0","180,32",WATER
+eengezinswoning_1,"72,83","72,75","80,75","80,83",EENGEZINSWONING
+eengezinswoning_2,"170,70","170,62","178,62","178,70",EENGEZINSWONING
+eengezinswoning_3,"159,154","159,146","167,146","167,154",EENGEZINSWONING
+eengezinswoning_4,"10,157","10,149","18,149","18,157",EENGEZINSWONING
+eengezinswoning_5,"2,65","2,57","10,57","10,65",EENGEZINSWONING
+eengezinswoning_6,"85,153","85,145","93,145","93,153",EENGEZINSWONING
+eengezinswoning_7,"79,40","79,32","87,32","87,40",EENGEZINSWONING
+eengezinswoning_8,"122,41","122,33","130,33","130,41",EENGEZINSWONING
+eengezinswoning_9,"117,83","117,75","125,75","125,83",EENGEZINSWONING
+eengezinswoning_10,"166,113","166,105","174,105","174,113",EENGEZINSWONING
+eengezinswoning_11,"162,43","162,35","170,35","170,43",EENGEZINSWONING
+eengezinswoning_12,"144,75","144,67","152,67","152,75",EENGEZINSWONING
+bungalow_1,"5,110","5,103","16,103","16,110",BUNGALOW
+bungalow_2,"34,45","34,38","45,38","45,45",BUNGALOW
+bungalow_3,"125,117","125,110","136,110","136,117",BUNGALOW
+bungalow_4,"121,154","121,147","132,147","132,154",BUNGALOW
+bungalow_5,"82,118","82,111","93,111","93,118",BUNGALOW
+maison_1,"49,154","49,144","61,144","61,154",MAISON
+maison_2,"41,117","41,107","53,107","53,117",MAISON
+maison_3,"33,77","33,67","45,67","45,77",MAISON
+networth,13235670.0
+=======
 water_1,"98,71","98,54","138,54","138,71",WATER
 water_2,"81,36","81,11","165,11","165,36",WATER
 water_3,"42,141","42,113","129,113","129,141",WATER
@@ -24,3 +48,4 @@ maison_1,"6,58","6,48","18,48","18,58",MAISON
 maison_2,"42,16","42,6","54,6","54,16",MAISON
 maison_3,"46,64","46,54","58,54","58,64",MAISON
 networth,14823000.0
+>>>>>>> 530d466ef4b16a3197e3892b4614a19723133b4a
