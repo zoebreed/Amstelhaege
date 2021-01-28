@@ -42,7 +42,7 @@ class RandomGreedy():
                 self.highest_score = 0
 
                 # creates house object at an arbitrary location outside the map
-                house = self.amstelhaege.place_house(house_info.type, -100, -100)
+                house = self.amstelhaege.place_house(house_info.house_type, -100, -100)
                 
                 for x in range(self.amount1):
                     for y in range(self.amount2):
