@@ -11,8 +11,8 @@ simAnn = simulatedAnnealing(
 geneticAlgorithm = namedtuple('genetic', ['population', 'termination'])
 gen = geneticAlgorithm(
 
-    25,                    # population: number of individuals in initial population
-    200                    # termination: number of iterations that the average of a population doesn't have to increase
+    30,                    # population: number of individuals in initial population
+    120                    # termination: number of iterations that the average of a population doesn't have to increase
 )
 
 probabilities = namedtuple('probability', ['mutation', 'crossover'])
@@ -32,7 +32,7 @@ iters = iterations(
 
 # __________________________ information about each house type is stored below __________________________
 
-houseInformation = namedtuple('houseInformation', ['name', 'type', 'percentage', 'width', 'length', 'increase_value', 'value', 'free_area'])
+houseInformation = namedtuple('houseInformation', ['name', 'house_type', 'percentage', 'width', 'length', 'increase_value', 'value', 'free_area'])
 house1 = houseInformation(
 
     'eengezinswoning',     # name

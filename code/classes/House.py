@@ -16,7 +16,7 @@ class House():
         self.price = None
         
         # initialize the properties of the house    
-        self.house_type = house.type    
+        self.house_type = house.house_type    
         self.name = house.name
         self.length = house.length
         self.width = house.width
