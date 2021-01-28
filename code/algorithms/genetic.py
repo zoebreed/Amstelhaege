@@ -227,7 +227,6 @@ class Genetic():
         Runs the genetic algorithm
         :return: the amstelhaege area of the best individual/chromosome of the last generation
         """
-        print("start")
         # generate the initial population and select parents
         self.initialize_population()
         parents = self.parent_selection()
